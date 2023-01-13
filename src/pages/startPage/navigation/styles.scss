@@ -1,0 +1,55 @@
+
+  main {
+    display: flex;
+  }
+  
+  aside {
+    z-index: 4;
+    background: rgb(20,70,30);
+    background: linear-gradient(174deg, rgb(11, 116, 4) 0%, rgb(28, 158, 19) 20%, rgb(77, 220, 75) 65%);
+    
+    position: fixed;
+    width: 18.75rem;
+    height: 100vh;
+  }
+  
+  .container {
+    margin: 4.5rem 1.4rem;
+  }
+  
+  .btn-container {
+    position: fixed;
+  }
+  
+  .container a {
+    color: #f9fafb;
+    text-align: left;
+    text-decoration: none;  
+    font-size: 1.75rem;
+    font-weight: 600;
+    display: block;
+    margin: 20px;
+  }
+  
+  button {
+    cursor: pointer;
+    margin: 1.25rem;
+    border: none;
+    padding: 0.5rem 1rem;
+    background-color: #f9fafb;
+  }
+  .Navigation_exit-button {
+    position: absolute;
+    top:20px;
+    right:20px;
+
+    padding: .5rem;
+    margin-left: 2rem;
+    border-radius: 50px;
+
+    &:hover {
+        background-color: rgba(1, 1, 1, .1);
+        cursor: pointer;
+    }
+  }
+  

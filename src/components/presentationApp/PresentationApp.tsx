@@ -1,14 +1,15 @@
 import React from 'react'
-import './style.scss'
+import './styles.scss'
 import { IoReorderThreeOutline } from "react-icons/io5";
+import { AnimatePresence, motion, useCycle } from "framer-motion";
 import nameApp from '../../assets/nameApp.png'
 import linkImage from '../../assets/linkImage.png'
 
-export const PresentationApp = () => {
+export const PresentationApp:React.FC<{cycleOpen: (value:any) => void}> = ({cycleOpen}) => {
   return (
     <div className='PresentationApp_container'>
         <nav className='PresentationApp_nav'>
-            <div className='PresentationApp_nav_hamburger-button'>
+            <div className='PresentationApp_nav_hamburger-button' onClick={()=>cycleOpen(true)}>
                 <IoReorderThreeOutline size={45} color={'white'}/>
             </div>
             <div className='PresentationApp_nav_right'>
@@ -18,11 +19,13 @@ export const PresentationApp = () => {
 
         <div className='PresentationApp_main'>
             <div className='PresentationApp_main_content'>
-                <h1>
+                <motion.h1 viewport={{ once: true }} whileInView={{opacity: [0, .1, .2, .4, .5, .7,  1]}}>
                     Motorization brings people together
-                </h1>
+                </motion.h1>
                 <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis quibusdam, optio exercitationem quidem est quae debitis excepturi nostrum delectus, non incidunt? 
+                 Aplikacja mająca ma za zadanie umożliwić użytkownikom udostępnianie własnych projektów
+                 samochodów w tym zdjęcia, podzespoły, historię modyfikacje. Dostępne jest w niej wiele innych funkcji,
+                 przykładowo tworzenie szeroko pojętych spotów motoryzacyjnych, spotkań.
                 </p>
                 <footer>
                     <img className='PresentationApp_main_content-linkImage' src={linkImage}/>
