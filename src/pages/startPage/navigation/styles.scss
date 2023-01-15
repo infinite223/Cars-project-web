@@ -5,8 +5,8 @@
   
   aside {
     z-index: 4;
-    background: rgb(20,70,30);
-    background: linear-gradient(174deg, rgb(11, 116, 4) 0%, rgb(28, 158, 19) 20%, rgb(77, 220, 75) 65%);
+    background: rgb(34, 34, 34);
+    // background: linear-gradient(174deg, rgb(6, 88, 1) 0%, rgb(51, 87, 49) 20%, rgb(44, 64, 44) 65%);
     
     position: fixed;
     width: 18.75rem;
@@ -29,6 +29,12 @@
     font-weight: 600;
     display: block;
     margin: 20px;
+    font-weight: 400;
+    letter-spacing: 3px;
+
+    &:hover {
+      color: #2b3
+    }
   }
   
   button {

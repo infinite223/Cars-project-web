@@ -39,32 +39,38 @@ export const LookApp:React.FC<{}> = () => {
     'Przeglądaj sworzone projekty przez użytkowników aplikacji w jednym miejscu',
   ];
 
+  const images = [project_image, addProject, spot_image]
+
   console.log(activeSlide)
   return (
     <div className='LookApp_container'>
        {/* <img className='LookApp_container-image' src={project_image}/>  */}
        <Slide {...proprietes} onChange={(e)=> setActiveSlide(e)}  canSwipe={false} cssClass='slider'>
+            {images.map((image) => 
               <div className="each-slide-effect">
-                  {/* <h2>Przeglądaj projekty</h2> */}
-                  <img className='LookApp_container-image' src={project_image}/> 
+                <img className='LookApp_container-image' src={image}/> 
+                <div className='LookApp_container_info'>
+                <h1>
+                  {headers[activeSlide]}
+                </h1>
+                <p>
+                  {texts[activeSlide]}
+                </p>
+              </div>
               </div>  
-              <div className="each-slide-effect" >
-                  {/* <h2>Dodawaj projekty</h2> */}
-                  <img className='LookApp_container-image' src={addProject}/> 
-              </div>
-              <div className="each-slide-effect">
-                  {/* <h2>Dołączaj do spotów</h2> */}
-                  <img className='LookApp_container-image' src={spot_image}/> 
-              </div>
+            )}
+            
+    
           </Slide>
-       <div className='LookApp_container_info'>
+  
+          {/* <div className='LookApp_container_info'>
         <h1>
           {headers[activeSlide]}
         </h1>
         <p>
           {texts[activeSlide]}
         </p>
-       </div>
+       </div> */}
     </div>
   )
 }

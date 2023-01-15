@@ -4,11 +4,17 @@ import { IoReorderThreeOutline } from "react-icons/io5";
 import { AnimatePresence, motion, useCycle } from "framer-motion";
 import nameApp from '../../assets/nameApp.png'
 import linkImage from '../../assets/linkImage.png'
+import useMousePosition from './../../hooks/useMousePosition';
 
 export const PresentationApp:React.FC<{cycleOpen: (value:any) => void}> = ({cycleOpen}) => {
+    const mousePosition = useMousePosition()
+    console.log(mousePosition)
   return (
-    <div className='PresentationApp_container'>
-        <nav className='PresentationApp_nav'>
+    <motion.div className='PresentationApp_container'
+        // whileInView={{gradientTransform:  `rotate(120deg)`}}
+        style={{background:`linear-gradient(90deg, rgb(18, 18, 19) ${mousePosition.x?mousePosition.x/10:0}%,  rgb(28, 138, 19) ${mousePosition.x?mousePosition.x/10:0}%`}}
+    >   
+        <nav className='PresentationApp_nav' >
             <div className='PresentationApp_nav_hamburger-button' onClick={()=>cycleOpen(true)}>
                 <IoReorderThreeOutline size={45} color={'white'}/>
             </div>
@@ -23,9 +29,9 @@ export const PresentationApp:React.FC<{cycleOpen: (value:any) => void}> = ({cycl
                     Motorization brings people together
                 </motion.h1>
                 <p>
-                 Aplikacja mająca ma za zadanie umożliwić użytkownikom udostępnianie własnych projektów
-                 samochodów w tym zdjęcia, podzespoły, historię modyfikacje. Dostępne jest w niej wiele innych funkcji,
-                 przykładowo tworzenie szeroko pojętych spotów motoryzacyjnych, spotkań.
+                 Chcesz pokazać innym co stworzyłeś? to indealne miejsce dla Ciebie, udostępnij swój projekt reszcie światu i 
+                 zaprezentuj siebie. Przeglądaj inne projekty samochodów, inpiruj się, twórz spoty... to jedynie cześć możliwości jakie daje Ci
+                 <span> Carsdesign</span>
                 </p>
                 <footer>
                     <img className='PresentationApp_main_content-linkImage' src={linkImage}/>
@@ -39,6 +45,6 @@ export const PresentationApp:React.FC<{cycleOpen: (value:any) => void}> = ({cycl
 
             </div>
         </div>
-    </div>
+    </motion.div>
   )
 }
