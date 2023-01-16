@@ -5,14 +5,16 @@ import { AnimatePresence, motion, useCycle } from "framer-motion";
 import nameApp from '../../assets/nameApp.png'
 import linkImage from '../../assets/linkImage.png'
 import useMousePosition from './../../hooks/useMousePosition';
+import backgroundImage from '../../assets/carOnBackground_.png'
+
 
 export const PresentationApp:React.FC<{cycleOpen: (value:any) => void}> = ({cycleOpen}) => {
     const mousePosition = useMousePosition()
-    console.log(mousePosition)
-  return (
+
+    return (
     <motion.div className='PresentationApp_container'
         // whileInView={{gradientTransform:  `rotate(120deg)`}}
-        style={{background:`linear-gradient(90deg, rgb(18, 18, 19) ${mousePosition.x?mousePosition.x/10:0}%,  rgb(28, 138, 19) ${mousePosition.x?mousePosition.x/10:0}%`}}
+        style={{background:`linear-gradient(90deg, rgb(28, 138, 19) ${mousePosition.x?mousePosition.x/10:0}%,  rgb(18, 18, 19)  ${mousePosition.x?mousePosition.x/10:0}%`}}
     >   
         <nav className='PresentationApp_nav' >
             <div className='PresentationApp_nav_hamburger-button' onClick={()=>cycleOpen(true)}>
@@ -42,7 +44,7 @@ export const PresentationApp:React.FC<{cycleOpen: (value:any) => void}> = ({cycl
             </div>
 
             <div className='PresentationApp_main-images'>
-
+                <img className='PresentationApp_main-image-img' src={backgroundImage}/>
             </div>
         </div>
     </motion.div>

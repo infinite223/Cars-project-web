@@ -5,6 +5,7 @@ import { useCycle } from "framer-motion";
 import { Navigation } from './navigation';
 import { LookApp } from '../../components/lookApp/LookApp';
 import { WhatOffers } from '../../components/whatoffers/Whatoffers';
+import { Footer } from '../../components/footer/Footer';
 
 
 export const StartPage = () => {
@@ -26,9 +27,9 @@ export const StartPage = () => {
           <WhatOffers/>
         </section>
 
-        <footer>
-
-        </footer>
+        <section>
+         <Footer/>
+        </section>
     </div>
   )
 }

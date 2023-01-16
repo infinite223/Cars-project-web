@@ -61,6 +61,7 @@
         margin-right: 2rem;
 
         .PresentationApp_main_content {
+            z-index: 3;
             margin-left: 3rem;
             max-width: 550px;
             display: flex;
@@ -112,7 +113,24 @@
         }
   
         .PresentationApp_main-images {
-            width: auto;
+            // width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            // background-color: antiquewhite;
+            align-self: flex-end;
+            position: absolute;
+            right: -100px;
+            bottom: 20px;
+
+            .PresentationApp_main-image-img {
+                width: 800px;
+                background-repeat: no-repeat;
+                background-size: contain;
+                z-index: 1;
+                opacity: .5;
+                // height: 440px;
+            }
         }
     }
 }
