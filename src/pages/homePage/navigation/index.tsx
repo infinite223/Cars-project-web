@@ -1,7 +1,7 @@
 import React from 'react'
-import { useRef } from "react";
-import { AnimatePresence, motion, useCycle } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import './styles.scss'
+import { Navigate, useNavigate, Link } from "react-router-dom";
 import { IoCloseSharp } from "react-icons/io5";
 
 const links = [
@@ -34,6 +34,8 @@ const sideVariants = {
 };
 
 export const Navigation:React.FC<{open:any, cycleOpen: (value:any) => void}> = ({open, cycleOpen}) =>{
+  const navigate = useNavigate();
+
   return (
       <AnimatePresence>
         {open && (
@@ -64,8 +66,14 @@ export const Navigation:React.FC<{open:any, cycleOpen: (value:any) => void}> = (
                         href={to}
                         whileHover={{ scale: 1.1 }}
                         variants={itemVariants}
+                        onClick={() => {
+                          navigate('start')
+                          console.log('xd')}
+                        }
                     >
-                    {name}
+                      <Link to='/start'>
+                      {name}
+                      </Link>
                     </motion.a>
                 ))}
             </motion.div>
