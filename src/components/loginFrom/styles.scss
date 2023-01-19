@@ -1,0 +1,50 @@
+.loginForm {
+    margin: 20px;
+    width: 200px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:30px;
+
+    height: 100%;
+
+    h2 {
+        color: gray;
+        font-size: 22px;
+    }
+
+    form {
+        button {
+            background-color: #293;
+            color: white;
+            padding: 7px 25px;
+            border-radius: 5px;  
+        }
+    }
+
+    p {
+        font-size: smaller;
+        color: gray;
+
+        .loginForm-link {
+            color: rgb(35, 125, 250);
+            text-decoration: none;
+            font-weight: 600;
+        }
+    }
+
+    ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: rgb(139, 137, 137);
+        opacity: 1; /* Firefox */
+      }
+      
+      :-ms-input-placeholder { /* Internet Explorer 10-11 */
+        color: rgb(139, 137, 137);
+      }
+      
+      ::-ms-input-placeholder { /* Microsoft Edge */
+        color: rgb(139, 137, 137);
+      }
+}

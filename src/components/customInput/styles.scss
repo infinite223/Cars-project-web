@@ -1,0 +1,18 @@
+.customInput {
+    width: 200px;
+    padding: 7px 10px;
+    font-size: 14px;
+    margin: 10px 10px;
+    border-width: 0px;
+    background-color: rgba(56, 56, 56, 0.03);
+    color: #4b4949;
+    border-style: solid;
+    border-radius: 0px;
+    box-shadow: 0px 0px 3px rgba(56, 56, 56, 0.45);
+    // text-shadow: 0px 0px 5px rgba(66,66,66,.75);
+
+    &:focus, textarea:focus, select:focus{
+        outline: none;
+        box-shadow: 0px 0px 5px rgba(14, 134, 8, 0.75);
+    }
+}
