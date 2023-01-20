@@ -1,12 +1,12 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { CustomInput } from '../customInput'
 import './styles.scss'
 
 export const LoginForm = () => {
     
-    const emailRef = useRef<HTMLInputElement>(null)
-    const passwordRef = useRef<HTMLInputElement>(null)
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
 
   return (
     <div className='loginForm'>
@@ -14,8 +14,8 @@ export const LoginForm = () => {
         <div style={{alignItems:'center', display:'flex', flexDirection:'column'}}>
             <h2>Zaloguj się do Cars Designs</h2>
             <form>
-                <CustomInput ref={emailRef} placeholder='E-mail' type='email'/>
-                <CustomInput ref={passwordRef} placeholder='Password' type='password'/>
+                <CustomInput setValue={setEmail} placeholder='E-mail' type='email'/>
+                <CustomInput setValue={setPassword} placeholder='Password' type='password'/>
                 
                 <button>Zaloguj</button>
             </form>

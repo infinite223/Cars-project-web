@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import './styles.scss'
 import { Navigate, useNavigate, Link } from "react-router-dom";
 import { IoCloseSharp } from "react-icons/io5";
+import useAuth from '../../../hooks/useAuth';
 
 const links = [
   { name: "Start", to: "#", id: 1 },
@@ -36,6 +37,8 @@ const sideVariants = {
 export const Navigation:React.FC<{open:any, cycleOpen: (value:any) => void}> = ({open, cycleOpen}) =>{
   const navigate = useNavigate();
 
+  const { user }:any = useAuth()
+
   return (
       <AnimatePresence>
         {open && (
@@ -67,7 +70,7 @@ export const Navigation:React.FC<{open:any, cycleOpen: (value:any) => void}> = (
                         whileHover={{ scale: 1.1 }}
                         variants={itemVariants}
                         onClick={() => {
-                          navigate('start')
+                          user?navigate('app'):navigate('start/login')
                           console.log('xd')}
                         }
                     >

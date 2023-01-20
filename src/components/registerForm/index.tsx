@@ -1,24 +1,27 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { register } from '../../firebase/account/register'
+import useAuth from '../../hooks/useAuth'
 import { CustomInput } from '../customInput'
 import './styles.scss'
+import { useNavigate } from 'react-router-dom';
 
 export const RegisterForm = () => {
 
-    const emailRef = useRef<HTMLInputElement>(null)
-    const passwordRef = useRef<HTMLInputElement>(null)
-    const repeatPasswordRef = useRef<HTMLInputElement>(null)
+   const [email, setEmail] = useState('')
+   const [password, setPassword] = useState('')
+   const [repeatPassword, setRepeatPassword] = useState('')
+   const navigate = useNavigate()
 
   return (
     <div className='registerForm'>
         <h3>Dobry wybór!</h3>
         <div style={{alignItems:'center', display:'flex', flexDirection:'column'}}>
             <h2>Utwórz konto w Cars Designs</h2>
-            <form onSubmit={(e)=>register(e, emailRef.current?.value, passwordRef.current?.value, repeatPasswordRef.current?.value)}>
-                <CustomInput ref={emailRef} placeholder='E-mail' type='email'/>
-                <CustomInput ref={passwordRef} placeholder='Password' type='password'/>
-                <CustomInput ref={repeatPasswordRef} placeholder='Repeat password' type='password'/>
+            <form onSubmit={(e)=>register(e, email, password, repeatPassword, navigate)}>
+                <CustomInput setValue={setEmail} placeholder='E-mail' type='email'/>
+                <CustomInput setValue={setPassword} placeholder='Password' type='password'/>
+                <CustomInput setValue={setRepeatPassword} placeholder='Repeat password' type='password'/>
 
                 <button type='submit'>Utwórz</button>
             </form>

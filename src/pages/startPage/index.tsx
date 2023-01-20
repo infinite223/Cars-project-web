@@ -1,26 +1,15 @@
 import React from 'react'
 import { PresentationApp } from '../../components/presentationApp/PresentationApp'
 import './styles.scss'
-import { useCycle } from "framer-motion";
+import { motion, useCycle } from "framer-motion";
 import { LoginForm } from '../../components/loginFrom';
 import {
-  createBrowserRouter,
-  createRoutesFromElements,
-  createRoutesFromChildren,
-  Route,
-  RouterProvider,
-  Routes,
   Outlet,
 } from "react-router-dom";
 import { RegisterForm } from '../../components/registerForm';
-
-const Router = 
-  createRoutesFromChildren(
-    <Route path="/">
-      <Route index element={<LoginForm/>} />
-      <Route path="start" element={<RegisterForm/>} />
-    </Route>
-);
+import { MdOutlineArrowBackIosNew } from 'react-icons/md'
+import { useNavigate } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 
 interface RoutesProps {
   children?: React.ReactNode;
@@ -29,15 +18,16 @@ interface RoutesProps {
 
 export const StartPage:React.FC<RoutesProps> = ({location}) => {
   const [showForm, setShowForm] = useCycle(false, true);
-  
+  const navigate = useNavigate()
+
   return (
-    <div className='start_container'>
+    <motion.div className='start_container' animate={{ scale: [1.2, 1]}}>
 
       <div className='start_container_main'>
         
         <div className='start_container_main-forms'>
-        <Outlet />
-
+          <MdOutlineArrowBackIosNew onClick={() => navigate('/')} className='start_container_main-forms-back'/>
+          <Outlet />
         </div>
 
         <div className='start_container_main-logocontainer'>
@@ -45,6 +35,6 @@ export const StartPage:React.FC<RoutesProps> = ({location}) => {
         </div>
 
       </div>
-    </div>
+    </motion.div>
   )
 }

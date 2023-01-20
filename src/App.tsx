@@ -11,8 +11,11 @@ import {
 import { StartPage } from './pages/startPage';
 import { LoginForm } from './components/loginFrom';
 import { RegisterForm } from './components/registerForm';
+import useAuth, { AuthProvider } from './hooks/useAuth';
+import { AppPage } from './pages/appPage';
+import { useEffect } from 'react';
 
-const router = createBrowserRouter(
+const routerNoLogin = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/">
       <Route index element={<HomePage/>} />
@@ -24,10 +27,29 @@ const router = createBrowserRouter(
   )
 );
 
+
+const routerLogin = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/">
+      <Route index element={<HomePage/>} />
+      <Route path="app" element={<AppPage/>}/>
+        {/* <Route index path="login" element={ <LoginForm/>} />
+        <Route errorElement path="register" element={ <RegisterForm/>} /> */}
+      {/* </Route> */}
+    </Route>
+  )
+);
+
 function App() {
+  const { user }:any = useAuth()
+  
   return (
     <div className="App">
-      <RouterProvider router={router} />
+          {user?  
+                    <RouterProvider router={routerLogin} />
+
+                :   <RouterProvider router={routerNoLogin} />
+          }
     </div>
   );
 }
