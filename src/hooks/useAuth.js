@@ -78,7 +78,10 @@ export const AuthProvider = ({children}) => {
     const logout = () => {
       setLoading(true)
       if(user.uid){
-        signOut(auth).catch((err)=>setError(err)).finally(()=>setLoading(false))
+        signOut(auth)
+        .then(()=> setUser(null))
+        .catch((err)=>setError(err))
+        .finally(()=>setLoading(false))
         // const { id_token, accessToken, oauthIdToken } = response.params;
         // AuthSession.revokeAsync({token: id_token, clientId: envGoogle.authKey}, Google.discovery)
         // .then(()=>console.log("xd")).catch((e)=>console.log(e))

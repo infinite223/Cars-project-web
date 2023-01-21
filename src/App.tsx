@@ -14,42 +14,32 @@ import { RegisterForm } from './components/registerForm';
 import useAuth, { AuthProvider } from './hooks/useAuth';
 import { AppPage } from './pages/appPage';
 import { useEffect } from 'react';
-
-const routerNoLogin = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="/">
-      <Route index element={<HomePage/>} />
-      <Route path="start" element={<StartPage/>}>
-        <Route index path="login" element={ <LoginForm/>} />
-        <Route errorElement path="register" element={ <RegisterForm/>} />
-      </Route>
-    </Route>
-  )
-);
-
-
-const routerLogin = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="/">
-      <Route index element={<HomePage/>} />
-      <Route path="app" element={<AppPage/>}/>
-        {/* <Route index path="login" element={ <LoginForm/>} />
-        <Route errorElement path="register" element={ <RegisterForm/>} /> */}
-      {/* </Route> */}
-    </Route>
-  )
-);
+import { ProjectsList } from './components/projectsList';
 
 function App() {
   const { user }:any = useAuth()
-  
+
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/">
+        <Route index element={<HomePage/>} />
+        {!user?
+          <Route path="start" element={<StartPage/>}>
+            <Route index path="login" element={ <LoginForm/>} />
+            <Route errorElement path="register" element={ <RegisterForm/>} />
+          </Route>:
+          <Route path="app" element={<AppPage/>}>
+            <Route index path="projects" element={ <ProjectsList/>} />
+            <Route path="meeting" element={ <LoginForm/>} />
+          </Route>
+        }
+      </Route>
+    )
+  );
+
   return (
     <div className="App">
-          {user?  
-                    <RouterProvider router={routerLogin} />
-
-                :   <RouterProvider router={routerNoLogin} />
-          }
+        <RouterProvider router={router} />
     </div>
   );
 }

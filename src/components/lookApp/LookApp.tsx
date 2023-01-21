@@ -46,8 +46,8 @@ export const LookApp:React.FC<{}> = () => {
     <div className='LookApp_container'>
        {/* <img className='LookApp_container-image' src={project_image}/>  */}
        <Slide {...proprietes} onChange={(e)=> setActiveSlide(e)}  canSwipe={false} cssClass='slider'>
-            {images.map((image) => 
-              <div className="each-slide-effect">
+            {images.map((image, id) => 
+              <div key={id} className="each-slide-effect">
                 <img className='LookApp_container-image' src={image}/> 
                 <div className='LookApp_container_info'>
                 <h1>
