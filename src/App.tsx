@@ -18,6 +18,7 @@ import { ProjectsList } from './components/projectsList';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectMessage } from './reducers/messageSlice';
 import { Message } from './components/message/Message';
+import { SearchProjects } from './components/searchProjects/SearchProjects';
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
           </Route>:
           <Route path="app" element={<AppPage/>}>
             <Route index path="projects" element={ <ProjectsList/>} />
+            <Route path='searchProjects' element={<SearchProjects/>}/>
             <Route path="meeting" element={ <LoginForm/>} />
           </Route>
         }
