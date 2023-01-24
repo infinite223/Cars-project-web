@@ -4,6 +4,8 @@ import { login } from '../../firebase/account/login'
 import { CustomInput } from '../customInput'
 import './styles.scss'
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setMessage } from '../../reducers/messageSlice'
 
 export const LoginForm = () => {
     
@@ -11,6 +13,7 @@ export const LoginForm = () => {
     const [password, setPassword] = useState('')
 
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
   return (
     <div className='loginForm'>
@@ -19,7 +22,7 @@ export const LoginForm = () => {
             <h2>Zaloguj się do Cars Designs</h2>
             <form onSubmit={(e)=>login(e, email, password, navigate)
               .then((message)=>console.log(message))
-              .catch((error)=>console.log(error))
+              .catch((error)=> dispatch(setMessage({show:true, type: "ERROR", message:error})))
               }>
                 <CustomInput setValue={setEmail} placeholder='E-mail' type='email'/>
                 <CustomInput setValue={setPassword} placeholder='Password' type='password'/>

@@ -15,7 +15,7 @@ export const login = (e:any, email?:string, password?:string, navigate?:any) => 
             .catch(() => reject('error'))
         }
         else {
-            reject('error')
+            reject('Nie wprowadzono danych')
         }
     }) 
 

@@ -1,21 +1,29 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { RootStore } from '../store'
+
+export interface MessageStore {
+    show:boolean, 
+    message:string,
+    type: string
+}
 
 export const messageSlice = createSlice({
   name: 'message',
   initialState: {
-    show:false, 
-    message:'',
-    type: 'ERROR'
+    prompt: {
+      show:true, 
+      message:'Nie prawidłowe dane!',
+      type: 'ERROR'
+    }
   },
   reducers: {
     setMessage: (state, action) => {
-      state = action.payload
+      state.prompt = action.payload
     }
   },
 })
 
-// Action creators are generated for each case reducer function
 export const { setMessage } = messageSlice.actions
-export const selectMessage = (state:{show:boolean, message:string, type:string}) => state.message
+export const selectMessage = (state:RootStore) => state.message.prompt
 
 export default messageSlice.reducer

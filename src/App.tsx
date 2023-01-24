@@ -15,6 +15,10 @@ import useAuth, { AuthProvider } from './hooks/useAuth';
 import { AppPage } from './pages/appPage';
 import { useEffect } from 'react';
 import { ProjectsList } from './components/projectsList';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectMessage } from './reducers/messageSlice';
+import { Message } from './components/message/Message';
+
 
 function App() {
   const { user }:any = useAuth()
@@ -39,7 +43,8 @@ function App() {
 
   return (
     <div className="App">
-        <RouterProvider router={router} />
+      <Message/>
+      <RouterProvider router={router} />
     </div>
   );
 }

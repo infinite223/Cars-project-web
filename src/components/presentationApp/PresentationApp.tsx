@@ -16,7 +16,7 @@ export const PresentationApp:React.FC<{cycleOpen: (value:any) => void}> = ({cycl
         // whileInView={{gradientTransform:  `rotate(120deg)`}}
         style={{
             // background:`linear-gradient(90deg, rgb(28, 138, 19) ${mousePosition.x?mousePosition.x/10:0}%,  rgb(18, 18, 19)  ${mousePosition.x?mousePosition.x/10:0}%`
-            background:`linear-gradient(90deg, rgb(28, 138, 19) 3%,  rgb(18, 18, 19) 5%`
+            background:`linear-gradient(90deg, rgb(28, 138, 19) 5%,  rgb(18, 18, 19) 5%`
         }}
     >   
         <nav className='PresentationApp_nav' >
