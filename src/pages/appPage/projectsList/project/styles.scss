@@ -1,0 +1,45 @@
+.projects {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border-top: 1px solid rgb(35, 35, 35);
+
+    .projects_nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        width: 100%;
+
+        .projects_nav-data {
+
+            .projects_nav-data-model {
+
+            }
+
+            .projects_nav-data-carMake {
+
+            } 
+        }
+    }
+
+    .projects_image {
+        width: 400px !important;
+        height: 350px;
+    }
+
+    .projects_footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        
+        .projects_footer-icons {
+
+        }
+
+        .projects_footer-options {
+
+        }
+    }
+}
