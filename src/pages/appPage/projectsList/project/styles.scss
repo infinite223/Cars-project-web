@@ -1,45 +1,76 @@
-.projects {
+.project {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    border-top: 1px solid rgb(35, 35, 35);
+    padding: 10px 0px;
+    gap:10px;
+    background-color: rgba(46, 46, 46, .35);
+    border-radius: 7px;
 
-    .projects_nav {
+    .project_nav {
         display: flex;
         align-items: center;
         justify-content: space-between;
 
-        width: 100%;
+        width: 95%;
 
-        .projects_nav-data {
+        .project_nav-data {
+            text-align: left;
 
-            .projects_nav-data-model {
+            .project_nav-data-model {
 
             }
 
-            .projects_nav-data-carMake {
-
+            .project_nav-data-CarMake {
+                color: white;
             } 
+        }
+
+        .project_nav-performance {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            gap: 15px;
+
+            .project_nav-performance-gradient{
+                color:white
+            }
+
+            .project_nav-performance-data {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                .type {
+                    color: rgb(202, 199, 199);
+                    font-size: 15px;
+                }
+            }
         }
     }
 
-    .projects_image {
-        width: 400px !important;
-        height: 350px;
+    .project_image {
+        width: 100%;
+        height:auto;
     }
 
-    .projects_footer {
+    .project_footer {
         display: flex;
         align-items: center;
         justify-content: space-between;
         
-        .projects_footer-icons {
+        .project_footer-icons {
 
         }
 
-        .projects_footer-options {
+        .project_footer-options {
 
         }
+    }
+
+    &:hover{ 
+        cursor: pointer;
     }
 }

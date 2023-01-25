@@ -1,7 +1,16 @@
 .projects {
-    background-color: rgb(39, 38, 38);
-    width: 700px;
-    height: 100%;
+    // background-color: rgba(39, 38, 38, .3);
+    // border: 1px solid rgba(99, 98, 98, .2);
+    width: 550px;
+    overflow-y: scroll;
+    max-height: 100% !important;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 
-
+    scroll-behavior: smooth;
+    
+    &::-webkit-scrollbar {
+        display: none;
+    }
 }
