@@ -35,7 +35,11 @@
             gap: 15px;
 
             .project_nav-performance-gradient{
-                color:white
+                color:white;
+                padding: 5px 10px;
+                border-radius: 20px;
+                font-size: 14px;
+                letter-spacing: 1px;
             }
 
             .project_nav-performance-data {
@@ -60,9 +64,17 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        width: 100%;
         
         .project_footer-icons {
-
+            margin: 0px 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            
+            .icon {
+                padding: 5px;
+            }
         }
 
         .project_footer-options {
