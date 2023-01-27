@@ -9,7 +9,7 @@ export const useProjects = (user:{name:string}, _limit:number) => {
 
     const [loading, setLoading] = useState(false)
     const projectsRef = collectionGroup(db, 'projects')
-    const projectsQuery = query(projectsRef,  limit(2), orderBy('createdAt', 'desc'),)
+    const projectsQuery = query(projectsRef,  limit(3), orderBy('createdAt', 'desc'),)
     const [lastVisible, setLastVisible] = useState<any>(null)
 
     const getProjects = async () => {

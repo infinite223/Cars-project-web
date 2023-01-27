@@ -7,7 +7,7 @@ import { useProjects } from './../../../hooks/useProjects';
 export const ProjectsList = () => {
   // const [projects, setProejcts] = useState<CarprojectData[] | null>(null)
   const user = {name: 'Dawid'}
-  const projects = useProjects(user ,1)
+  const projects = useProjects(user ,3)
   console.log(projects)
   return (
     <div className='projects'>

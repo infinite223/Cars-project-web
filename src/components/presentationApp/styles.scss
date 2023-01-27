@@ -70,6 +70,7 @@
     .PresentationApp_main {
         display: flex;
         width: max-content;
+
         margin-top: 2rem;
         margin-left: 2rem;
         margin-right: 2rem;
@@ -83,6 +84,7 @@
             z-index: 3;
             margin-left: 3rem;
             max-width: 550px;
+            
             display: flex;
             flex-direction: column;
             text-align: left;
@@ -94,16 +96,26 @@
                 min-height: 100vh;
                 justify-content: space-evenly;
             }
+                        
+            @media (min-width: 1030px) {
+                max-width: 650px;
+                margin-left: 4rem;
+            }
             
             h1 {
                 font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
                 color: white;
-                font-size: 3.5rem;
                 z-index: 1;
+                font-size: 3.5rem;
                 margin-top: 0px;
 
                 @media (max-width: 480px) {
                     font-size: 2.5rem;
+                }
+
+
+                @media (min-width: 1300px) {
+                    font-size: 4.2rem;
                 }
             }   
 
@@ -124,7 +136,14 @@
 
                  @media (max-width: 480px) {
                     line-height: 23px;
+                 }  
+                 
+                 @media (min-width: 1300px) {
+                    font-size: 1.4rem;
+                    line-height: 22px;
+                    max-width: 95%;
                  }
+                 
             }
 
             footer {
@@ -135,6 +154,10 @@
                 .PresentationApp_main_content-linkImage {
                     width: 120px;
                     cursor: pointer;
+
+                    @media (min-width: 1030px) {
+                       width: 160px;
+                     }
                 }
 
                 p {
@@ -146,6 +169,11 @@
 
                     @media (max-width: 480px) {
                         max-width: 100px;
+                    }
+                    @media (min-width: 1300px) {
+                        font-size: 18px;
+                        max-width: 200px;
+                        line-height: 18px;
                     }
                 }
             }
@@ -173,6 +201,9 @@
                 @media (max-width: 480px) {
                     width: 300px;
                     opacity: .3;
+                }
+                @media (max-width: 1300px) {
+                    width: 650px;
                 }
             }
             @media (max-width: 480px) {

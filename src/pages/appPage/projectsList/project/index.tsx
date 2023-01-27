@@ -1,15 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { getColorsCircle } from '../../../../utils/functions/colorsCircle'
 import { CarprojectData } from '../../../../utils/types'
 import './styles.scss'
-import { BsFillShareFill, BsHeart } from 'react-icons/bs'
+import { BsFillShareFill, BsHeart, BsThreeDotsVertical } from 'react-icons/bs'
 import { FiHeart } from 'react-icons/fi'
+import { ProjectOptions } from './options/ProjectOptions'
 
-export const Project:React.FC<CarprojectData> = ({car}) => {
+export const Project:React.FC<CarprojectData> = ({car, author}) => {
     const colors = car.performance && getColorsCircle(car.performance[0].value, car.performance[0].type)
-    console.log(colors)
+    const [showOptions, setShowOptions] = useState(false)
+
     return (
     <div className='project'>
+        <div className='project_author'>Dodany przez: 
+            <span style={{color:'white'}}> {author.name}</span>
+        </div>
         <div className='project_nav'>
             <div className='project_nav-data'>
              {(car.performance && colors ) &&<>
@@ -48,15 +53,24 @@ export const Project:React.FC<CarprojectData> = ({car}) => {
             </div>}
         </div>
 
-        <img src={car.imagesCar[0].url} className="project_image"/>
+        <img loading='lazy' src={car.imagesCar[0].url} className="project_image"/>
 
         <div className='project_footer'>
             <div className='project_footer-icons'>
                 <FiHeart color="white" size={26} className="icon"/>
                 <BsFillShareFill color='white' size={24} className="icon"/>
+                {/* <div className='likes'>{car.likes.length} polubień</div> */}
             </div>
-            <div className='project_footer-options'></div>
+            <div className='project_footer-options' onClick={() =>setShowOptions(true)}>
+                <BsThreeDotsVertical color='white' size={24} className="icon"/>
+            </div>
         </div>
+        <div className='project_details'>
+            <div className='likes'>{car.likes.length} polubień</div>
+            <div className='project_footer-date'> 1 day ago </div>
+        </div>
+
+        <ProjectOptions showOptions={showOptions} setShowOptions={setShowOptions}/>
     </div>
   )
 }

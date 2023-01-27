@@ -11,7 +11,7 @@ export const messageSlice = createSlice({
   name: 'message',
   initialState: {
     prompt: {
-      show:true, 
+      show:false, 
       message:'Nie prawidłowe dane!',
       type: 'ERROR'
     }
