@@ -4,7 +4,7 @@ import './styles.scss'
 import { useCycle } from "framer-motion";
 import { isBrowser, isMobile } from 'react-device-detect';
 import useAuth from '../../hooks/useAuth';
-import { Outlet, useNavigate, } from 'react-router-dom';
+import { Outlet, useLocation, useNavigate, } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { BsChatSquareText } from 'react-icons/bs'
 import { RxPerson } from 'react-icons/rx'
@@ -15,22 +15,9 @@ import nameApp from './../../assets/nameApp.png'
 
 export const AppPage = () => {
   const { logout, user }:any =  useAuth()  
-  const [location, setLocation] = useState('projects')
   const navigate = useNavigate()
-
-  console.log(user)
-
-  useEffect(()=>{
-    if(user){
-      navigate(`/app/${location}`)
-      setLocation(`${location}`)
-
-    }
-    else {
-      navigate('/')
-    }
-
-  }, [location])
+  const { pathname } = useLocation();
+console.log(pathname)
 
   return (
     <div className='app'>
@@ -44,14 +31,17 @@ export const AppPage = () => {
           <img src={nameApp} className="app_left-main_navigation-logo"/>
           <div className='app_left-main_navigation_links'>   
             <div className='topNav'>
-              <div className='link' onClick={()=> setLocation('projects')} style={location==='projects'?{color: '#2f3', fontWeight:'600'}:{}}>
+              <div className='link' onClick={()=> navigate('')} style={pathname==='/app'?{color: '#2f3', fontWeight:'600'}:{}}>
                 Projekty
               </div>
-              <div className='link' onClick={()=> setLocation('searchProjects')} style={location==='searchProjects'?{color: '#2f3', fontWeight:'600'}:{}}>
+              <div className='link' onClick={()=> navigate('searchProjects')} style={pathname==='/app/searchProjects'?{color: '#2f3', fontWeight:'600'}:{}}>
                 Szukaj projektów
               </div>
               <div className='link'>
                 Spoty
+              </div>
+              <div className='link'>
+               Problemy
               </div>
               <div className='line'/>
             <div className='link'>
@@ -62,7 +52,7 @@ export const AppPage = () => {
               <RxPerson  size={24}/>
               <div>Mój profil</div>
             </div>
-            <div className='link'>
+            <div className='link add-link'>
               <AiOutlinePlus size={22} />
               <div>Dodaj projekt</div>
             </div>  

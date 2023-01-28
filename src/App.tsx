@@ -19,6 +19,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectMessage } from './reducers/messageSlice';
 import { Message } from './components/message/Message';
 import { SearchProjects } from './components/searchProjects/SearchProjects';
+import { ProjectPage } from './pages/project';
 
 
 function App() {
@@ -28,17 +29,16 @@ function App() {
     createRoutesFromElements(
       <Route path="/">
         <Route index element={<HomePage/>} />
-        {!user?
           <Route path="start" element={<StartPage/>}>
-            <Route index path="login" element={ <LoginForm/>} />
+            <Route index element={ <LoginForm/>} />
             <Route errorElement path="register" element={ <RegisterForm/>} />
-          </Route>:
+          </Route>
           <Route path="app" element={<AppPage/>}>
-            <Route index path="projects" element={ <ProjectsList/>} />
+            <Route index element={ <ProjectsList/>} />
             <Route path='searchProjects' element={<SearchProjects/>}/>
             <Route path="meeting" element={ <LoginForm/>} />
           </Route>
-        }
+          <Route path="project/:id" element={<ProjectPage/>}/>
       </Route>
     )
   );

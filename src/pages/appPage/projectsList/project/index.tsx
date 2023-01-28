@@ -5,13 +5,15 @@ import './styles.scss'
 import { BsFillShareFill, BsHeart, BsThreeDotsVertical } from 'react-icons/bs'
 import { FiHeart } from 'react-icons/fi'
 import { ProjectOptions } from './options/ProjectOptions'
+import { useNavigate } from 'react-router-dom';
 
-export const Project:React.FC<CarprojectData> = ({car, author}) => {
+export const Project:React.FC<CarprojectData> = ({car, author, id, createdAt, place}) => {
     const colors = car.performance && getColorsCircle(car.performance[0].value, car.performance[0].type)
     const [showOptions, setShowOptions] = useState(false)
+    const navigate = useNavigate()
 
     return (
-    <div className='project'>
+    <div className='project' onClick={() => navigate(`./../project/${id}`, { state: {car, author, id, createdAt, place}})}>
         <div className='project_author'>Dodany przez: 
             <span style={{color:'white'}}> {author.name}</span>
         </div>
