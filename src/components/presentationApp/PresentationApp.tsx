@@ -6,17 +6,19 @@ import nameApp from '../../assets/nameApp.png'
 import linkImage from '../../assets/linkImage.png'
 import useMousePosition from './../../hooks/useMousePosition';
 import backgroundImage from '../../assets/carOnBackground_.png'
+import useAuth from '../../hooks/useAuth';
 
 
 export const PresentationApp:React.FC<{cycleOpen: (value:any) => void}> = ({cycleOpen}) => {
     const mousePosition = useMousePosition()
+    const {user}:any = useAuth()
 
     return (
     <motion.div className='PresentationApp_container'
         // whileInView={{gradientTransform:  `rotate(120deg)`}}
         style={{
             // background:`linear-gradient(90deg, rgb(28, 138, 19) ${mousePosition.x?mousePosition.x/10:0}%,  rgb(18, 18, 19)  ${mousePosition.x?mousePosition.x/10:0}%`
-            background:`linear-gradient(90deg, rgb(28, 138, 19) 5%,  rgb(18, 18, 19) 5%`
+            // background:`linear-gradient(90deg, rgb(28, 138, 19) 0%,  rgb(18, 18, 19) 0%`
         }}
     >   
         <nav className='PresentationApp_nav' >
@@ -25,6 +27,7 @@ export const PresentationApp:React.FC<{cycleOpen: (value:any) => void}> = ({cycl
             </div>
             <div className='PresentationApp_nav_right'>
                 <img className='PresentationApp_nav_right-logo' src={nameApp}/>
+                {user&&<div className='PresentationApp_nav_right-loginUser'>{user?.name}</div>}
             </div>
         </nav>
 
@@ -35,19 +38,19 @@ export const PresentationApp:React.FC<{cycleOpen: (value:any) => void}> = ({cycl
                 </motion.h1>
                 <p>
                  Chcesz pokazać innym co stworzyłeś? to indealne miejsce dla Ciebie, udostępnij swój projekt reszcie światu i 
-                 zaprezentuj siebie. Przeglądaj inne projekty samochodów, inpiruj się, twórz spoty... to jedynie cześć możliwości jakie daje Ci
-                 <span> Carsdesign</span>
+                 zaprezentuj siebie. Przeglądaj inne projekty samochodów, inspiruj się, twórz spoty... a to jedynie cześć możliwości jakie daje Ci
+                 <div className='appName'>Cars designs</div>
                 </p>
                 <footer>
-                    <img className='PresentationApp_main_content-linkImage' src={linkImage}/>
-                    <p>
-                        Cars project available on Google play
-                    </p>
+                    {/* <img className='PresentationApp_main_content-linkImage' src={linkImage}/> */}
+                    {/* <p>
+                        Cars designs available on Google play
+                    </p> */}
                 </footer>
             </div>
 
             <div className='PresentationApp_main-images'>
-                <img className='PresentationApp_main-image-img' src={backgroundImage}/>
+                {/* <img className='PresentationApp_main-image-img' src={backgroundImage}/> */}
             </div>
         </div>
     </motion.div>

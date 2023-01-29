@@ -2,22 +2,23 @@
     height: 100%;
     padding-left: 2rem;
     padding-right: 2rem;
-
+    background-image: url('https://images.pexels.com/photos/9481680/pexels-photo-9481680.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+    background-size: cover;
     // background-color: rgb(216, 219, 216);
     // background: linear-gradient(170deg, rgb(1, 104, 32) 30%, rgb(6, 141, 24) 40%, rgba(255,255,255,1) 65%);
 	animation: gradient 15s ease infinite;
     // background: linear-gradient(-105deg, #4ef342, #e71313, #e6a007, #e5e5e3);
-    background-size: 400% 100%;
+    background-size: 120% 150%;
 
     @keyframes gradient {
         0% {
-            background-position: 60% 80%;
+            background-position: 60% 20%;
         }
         50% {
-            background-position:70% 100%;
+            background-position:70% 40%;
         }
         100% {
-            background-position: 60% 0%;
+            background-position: 60% 20%;
         }
     }
 
@@ -59,6 +60,15 @@
                 @media (max-width: 480px) {
                     width: 140px;
                 }
+            }
+
+            .PresentationApp_nav_right-loginUser {
+                color: #2b3;
+                font-size: 20px;
+                align-self: flex-end;
+                text-align: right;
+                margin-top:-5px;
+                letter-spacing: 2px;
             }
 
             @media (max-width: 480px) {
@@ -122,14 +132,16 @@
             p {
                 font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
-                color: rgb(245, 243, 243);
+                color: rgb(255, 255, 255);
                 font-weight: 300;
-                line-height: 18px;
-                max-width: 90%;
+                line-height: 27px;
+                max-width: 100%;
+                font-size: 25px;
                 // letter-spacing: .05rem;
-                 span {
+                .appName {
+                    margin-top: 10px;
                     color: #2b3;
-                    font-weight: 700;
+                    // font-weight: 600;
                     letter-spacing: 1px;
                     // text-transform: uppercase;
                  }
@@ -139,15 +151,15 @@
                  }  
                  
                  @media (min-width: 1300px) {
-                    font-size: 1.4rem;
-                    line-height: 22px;
+                    font-size: 30px;
+                    line-height: 32px;
                     max-width: 95%;
                  }
                  
             }
 
             footer {
-                margin-top: 2rem;
+                margin-top: 1rem;
                 display: flex;
                 align-items: center;
 
@@ -161,9 +173,9 @@
                 }
 
                 p {
-                    font-size: .7rem;
+                    font-size: .85rem;
                     margin-left: 1.5rem;
-                    line-height: 12px;
+                    line-height: 14px;
                     max-width: 150px;
                     letter-spacing: normal;
 
