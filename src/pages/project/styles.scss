@@ -1,0 +1,65 @@
+.projectPage {
+    height: 100vh;
+    width: 100vw;
+
+    display: flex;
+    flex-direction: column;
+
+    .projectPage__nav {
+        width: 100vw;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        gap:10px;
+        background-color: rgb(25, 25, 25);
+        color:white;
+        font-size: 20px;
+    }
+
+    .projectPage__main {
+        display: flex;
+        justify-content: space-between;
+        height: 100%;
+        background-color: rgb(37, 38, 38);
+
+        .projectSection {
+            // width: calc(100vw /3);
+            height: 100%;
+            color:rgb(152, 150, 150);         
+
+            h1 {
+                font-size: 18px;
+                text-align: left;
+                margin-left: 20px;
+                font-weight: normal;
+                letter-spacing: 1px;
+                padding: 10px;
+            }
+
+            &:hover h1 {
+                color:white;
+                transition: all .5s ease;
+            }
+        }
+
+        .projectPage__main_info {
+            background-color: rgb(37, 38, 38);
+            border-right: 3px solid rgb(81, 80, 80);
+        }
+
+        .projectPage__main_photos {
+            background-color: rgb(37, 38, 38);
+            // border-right: 3px solid rgb(81, 80, 80);
+            // border-right: 3px solid rgb(81, 80, 80);
+        }
+
+        .projectPage__main_history {
+            background-color: rgb(37, 38, 38);
+            border-left: 3px solid rgb(81, 80, 80);
+        }
+    }
+
+    .projectPage__footer {
+
+    }
+}
