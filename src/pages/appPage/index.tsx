@@ -17,7 +17,12 @@ export const AppPage = () => {
   const { logout, user }:any =  useAuth()  
   const navigate = useNavigate()
   const { pathname } = useLocation();
-console.log(pathname)
+  
+  useEffect(() => {
+    if(!user){
+      navigate('../../start')
+    }
+  }, [user])
 
   return (
     <div className='app'>

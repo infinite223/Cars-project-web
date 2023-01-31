@@ -1,4 +1,4 @@
-import { signInWithPopup, signInWithEmailAndPassword } from 'firebase/auth';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth, provider } from './../config'
 
 export const login = (e:any, email?:string, password?:string, navigate?:any) => {
@@ -6,16 +6,15 @@ export const login = (e:any, email?:string, password?:string, navigate?:any) => 
 
     const promiseLogin = new Promise((resolve, reject) => {
         if(email && password){
-            signInWithEmailAndPassword(auth, email, password).then((data)=> {
-            
-            }).then(() => {
-                 navigate('/app')
-                 resolve('success')
-                })
-            .catch(() => reject('error'))
+            signInWithEmailAndPassword(auth, email, password)
+            .then((data)=> {
+                navigate('/app')
+                resolve('success')
+            })
+            .catch(() => reject('Nie prawidłowe dane'))
         }
         else {
-            reject('Nie wprowadzono danych')
+          reject('Nie wprowadzono danych')
         }
     }) 
 

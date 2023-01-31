@@ -20,6 +20,7 @@ import { selectMessage } from './reducers/messageSlice';
 import { Message } from './components/message/Message';
 import { SearchProjects } from './components/searchProjects/SearchProjects';
 import { ProjectPage } from './pages/project';
+import { LoadingView } from './components/loadingView';
 
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
 
   return (
     <div className="App">
+      <LoadingView/>
       <Message/>
       <RouterProvider router={router} />
     </div>

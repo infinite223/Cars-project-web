@@ -4,36 +4,46 @@
 
     display: flex;
     flex-direction: column;
-
+    
     .projectPage__nav {
         width: 100vw;
         height: 70px;
         display: flex;
         align-items: center;
+        justify-content: space-between;
         gap:10px;
         background-color: rgb(25, 25, 25);
         color:white;
         font-size: 20px;
+
+        .projectPage__nav-main {
+            display: flex;
+            align-items: center;
+            gap:10px;
+        }
     }
 
     .projectPage__main {
         display: flex;
         justify-content: space-between;
+        width: 100vw;
         height: 100%;
         background-color: rgb(37, 38, 38);
 
         .projectSection {
             // width: calc(100vw /3);
             height: 100%;
-            color:rgb(152, 150, 150);         
+            color:rgb(248, 245, 245);       
+            // width: 400px;  
 
             h1 {
                 font-size: 18px;
                 text-align: left;
-                margin-left: 20px;
+                margin: 0px 20px;
                 font-weight: normal;
                 letter-spacing: 1px;
                 padding: 10px;
+                padding-top: 20px;
             }
 
             &:hover h1 {
@@ -43,23 +53,111 @@
         }
 
         .projectPage__main_info {
-            background-color: rgb(37, 38, 38);
-            border-right: 3px solid rgb(81, 80, 80);
+            // background-color: rgb(37, 38, 38);
+            background-color: rgb(25, 25, 25);
+            z-index: 5;
+            width: 100%;
+            max-height: 100%;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+
+            overflow-y: scroll;
+            &::-webkit-scrollbar {
+                display: none;
+            }
+              
+
+            h1 {
+                align-self: flex-start;
+            }
+
+            .projectPage__main_info-circles {
+                width: 90%;
+                padding: 10px;
+
+                background-color: rgb(25, 25, 25);
+                border-radius: 15px;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+
+                padding-bottom: 600px;
+            }   
         }
 
         .projectPage__main_photos {
-            background-color: rgb(37, 38, 38);
-            // border-right: 3px solid rgb(81, 80, 80);
-            // border-right: 3px solid rgb(81, 80, 80);
+            background-color: rgb(28, 29, 28);
+
+            border-right: 3px solid;
+            z-index: 1;
+
+
+            .images {
+                display: flex;
+                flex-wrap: wrap;
+                margin: 20px;
+                margin-top: 10px;
+                gap:0px;
+
+                .image {
+                    width: 80%;
+                    max-width: 300px;
+                    padding: 0px 10px;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
         }
 
         .projectPage__main_history {
-            background-color: rgb(37, 38, 38);
-            border-left: 3px solid rgb(81, 80, 80);
+            background-color: rgb(28, 29, 28);
+
+            border-left: 3px solid;
         }
     }
 
     .projectPage__footer {
+        position: fixed;
+        bottom: 20px;
 
+        width: 400px;
+        z-index: 6;
+        height: 50px;
+        background-color: rgb(32, 32, 32);
+        align-self: center;
+        left: calc((100%/2) - 200px);
+        //right: 20px;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .projectPage__footer-icons {
+            color:rgb(217, 214, 214);
+            display: flex;
+            margin:0px 15px;
+            gap:15px;
+            align-items: center;
+        }
+
+        .projectPage__footer-author {
+            display: flex;
+            align-items: center;
+            gap:10px;
+            margin-right: 15px;
+
+            .authorText {
+                color: rgb(213, 209, 209);
+            }
+
+            .authorImg {
+                width: 30px;
+                height: 30px;
+                border-radius: 50px;
+            }
+        }
     }
 }

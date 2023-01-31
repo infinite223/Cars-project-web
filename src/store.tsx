@@ -1,12 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit'
+import loadingSlice, { LoadingStore } from './reducers/loadingSlice'
 import messageSlice, { MessageStore } from './reducers/messageSlice'
 
 export default configureStore({
   reducer: {
-    message: messageSlice
+    message: messageSlice,
+    loading: loadingSlice
   },
 })
 
 export interface RootStore {
-    message: {prompt:MessageStore}
+    message: {prompt:MessageStore},
+    loading: LoadingStore
 } 
