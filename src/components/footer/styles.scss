@@ -2,7 +2,7 @@
     width: 100%;
     height: 100%;
     align-items: center;
-    justify-items: center;
+    justify-content: space-between;
 
     background-color: rgb(31, 30, 30);
     display: flex;
@@ -67,7 +67,7 @@
             }
             
             button {
-                background-color: #293;
+                background-color: #273;
                 color: rgb(220, 214, 214);
                 padding: 6px 12px;
                 letter-spacing: 2px;
@@ -85,7 +85,8 @@
         align-items: center;
         justify-content: center;
         flex-direction:row;
-
+        gap:30px;
+        margin-bottom: 20px;
              
         @media (max-width: 480px) {
             flex-direction:column;
@@ -95,6 +96,11 @@
             color: rgb(199, 196, 196);
             margin: 10px;
             font-size: 12px;
+
+            &:hover {
+                cursor: pointer;
+                color: #2b3;
+            }
         }
     }
 }

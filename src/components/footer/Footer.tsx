@@ -1,8 +1,12 @@
 import './styles.scss'
 
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
 export const Footer = () => {
+
+    const navigate = useNavigate()
+    
   return (
     <footer className='footer_conteiner'>
         <div className='footer_conteiner_main'>
@@ -66,7 +70,7 @@ export const Footer = () => {
         </div>
 
         <div className='footer_conteiner_links'>
-            <div className='link'>
+            <div className='link' onClick={() => navigate('links')}>
                 Regulamin
             </div>
             <div className='link'>

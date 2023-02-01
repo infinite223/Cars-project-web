@@ -33,7 +33,8 @@
         .projectSection {
             // width: calc(100vw /3);
             height: 100%;
-            color:rgb(248, 245, 245);       
+            color:rgb(248, 245, 245);     
+            background-color: rgb(22, 22, 22);  
             // width: 400px;  
 
             h1 {
@@ -54,7 +55,6 @@
 
         .projectPage__main_info {
             // background-color: rgb(37, 38, 38);
-            background-color: rgb(25, 25, 25);
             z-index: 5;
             width: 100%;
             max-height: 100%;
@@ -73,10 +73,10 @@
             }
 
             .projectPage__main_info-circles {
-                width: 90%;
-                padding: 10px;
+                width: 96%;
+                padding-top: 10px;
 
-                background-color: rgb(25, 25, 25);
+             //   background-color: rgb(25, 25, 25);
                 border-radius: 15px;
                 display: flex;
                 align-items: center;
@@ -87,9 +87,8 @@
         }
 
         .projectPage__main_photos {
-            background-color: rgb(28, 29, 28);
 
-            border-right: 3px solid;
+            border-right: .5px solid;
             z-index: 1;
 
 
@@ -113,9 +112,7 @@
         }
 
         .projectPage__main_history {
-            background-color: rgb(28, 29, 28);
-
-            border-left: 3px solid;
+            border-left: .5px solid;
         }
     }
 

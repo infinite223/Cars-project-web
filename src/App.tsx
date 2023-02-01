@@ -21,6 +21,8 @@ import { Message } from './components/message/Message';
 import { SearchProjects } from './components/searchProjects/SearchProjects';
 import { ProjectPage } from './pages/project';
 import { LoadingView } from './components/loadingView';
+import { Links } from './components/modals/Links';
+import { RulesLink } from './components/modals/Links/rules';
 
 
 function App() {
@@ -34,6 +36,10 @@ function App() {
             <Route index element={ <LoginForm/>} />
             <Route errorElement path="register" element={ <RegisterForm/>} />
           </Route>
+          <Route path="links" element={<Links/>} >
+              <Route index element={ <RulesLink/>} />
+              <Route errorElement path="policyPrivacy" element={ <RegisterForm/>} />
+            </Route>
           <Route path="app" element={<AppPage/>}>
             <Route index element={ <ProjectsList/>} />
             <Route path='searchProjects' element={<SearchProjects/>}/>

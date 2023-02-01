@@ -32,8 +32,11 @@ export const ProjectPage = () => {
             <motion.div whileHover={colors?{color: colors[0]}:{}}>
               <IoIosArrowBack onClick={() => navigate(-1)} size={30} style={{padding:'10px', marginLeft:'10px'}}/>
             </motion.div>
-            <div className='projectPage__nav-carMake'>{car.CarMake}</div>
-            {colors && <div className='projectPage__nav-model' style={{color: colors[0]}}>{car.model}</div>}
+            <div style={{display:'flex', alignItems:'center', gap:10, marginBottom:'7px'}}>
+              <div className='projectPage__nav-carMake'>{car.CarMake}</div>
+              {colors && <div className='projectPage__nav-model' style={{color: colors[0]}}>{car.model}</div>}
+            </div>
+         
           </div>
           
           <BsThreeDotsVertical style={{padding:'0 10px'}} color='white' size={24} className="icon"/>
