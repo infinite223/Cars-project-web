@@ -6,10 +6,10 @@ import { IoCloseSharp } from "react-icons/io5";
 import useAuth from '../../../hooks/useAuth';
 
 const links = [
-  { name: "Start", to: "#", id: 1 },
-  { name: "About", to: "#", id: 2 },
-  { name: "News", to: "#", id: 3 },
-  { name: "Contact", to: "#", id: 4 }
+  { name: "Start", to: "#", id: 1, link: '/start' },
+  { name: "About", to: "#", id: 2,  link: '/links/about' },
+  { name: "News", to: "#", id: 3,  link: '/links/news' },
+  { name: "Contact", to: "#", id: 4,  link: '/contact' }
 ];
 
 const itemVariants = {
@@ -63,15 +63,16 @@ export const Navigation:React.FC<{open:any, cycleOpen: (value:any) => void}> = (
                     <IoCloseSharp size={45} color={'white'}/>
                 </div>
 
-                {links.map(({ name, to, id }) => (
+                {links.map(({ name, to, id, link }) => (
                     <motion.a
                         key={id}
                         href={to}
                         whileHover={{ scale: 1.1 }}
                         variants={itemVariants}
                         onClick={() => {
-                          user?navigate('app'):navigate('start')
-                          console.log('xd')}
+                          link==='/start'?(user?navigate('app'):navigate('start')):
+                          navigate(link)
+                         }
                         }
                     >
                       <Link to='/start'>

@@ -21,8 +21,11 @@ import { Message } from './components/message/Message';
 import { SearchProjects } from './components/searchProjects/SearchProjects';
 import { ProjectPage } from './pages/project';
 import { LoadingView } from './components/loadingView';
-import { Links } from './components/modals/Links';
-import { RulesLink } from './components/modals/Links/rules';
+import { Links } from './pages/linksPage/Links'
+import { RulesLink } from './pages/linksPage/Links/rules'
+import { NewsLink } from './pages/linksPage/Links/news';
+import { PolicyLink } from './pages/linksPage/Links/policy';
+import { AboutLink } from './pages/linksPage/Links/about';
 
 
 function App() {
@@ -38,7 +41,9 @@ function App() {
           </Route>
           <Route path="links" element={<Links/>} >
               <Route index element={ <RulesLink/>} />
-              <Route errorElement path="policyPrivacy" element={ <RegisterForm/>} />
+              <Route errorElement path="policy" element={ <PolicyLink/>} />
+              <Route errorElement path="news" element={ <NewsLink/>} />
+              <Route errorElement path="about" element={ <AboutLink/>} />
             </Route>
           <Route path="app" element={<AppPage/>}>
             <Route index element={ <ProjectsList/>} />

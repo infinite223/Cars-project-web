@@ -1,0 +1,50 @@
+.news {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 100%;
+
+    .news__list {
+        display: flex;
+        flex-direction: column;
+        width: calc(100% - 40px);
+        margin: 10px 20px;
+
+        .news__item {
+            width: calc(100% - 40px);
+            background-color: #293;
+            color: white;
+            align-items: center;
+            justify-content: space-between;
+            display: flex;
+            text-align: left;
+            padding: 10px 20px ;
+
+            .news__item-info {
+                h1 {
+                    // font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                    letter-spacing: 1px;
+                }
+                p {
+                    margin-top: -5px;
+                }
+            }
+
+            .rightInfo {
+                color: rgb(239, 235, 235);
+               
+                text-align: center;
+
+                .rightInfo-text {
+                    font-size: 18px;
+                }
+                .rightInfo-date {
+                    font-size: 25px;
+                    font-style: italic;
+                    letter-spacing: 1px;
+                    font-weight: 700;
+                }
+            }
+        }
+    }   
+}
