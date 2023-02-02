@@ -70,7 +70,7 @@ export const Navigation:React.FC<{open:any, cycleOpen: (value:any) => void}> = (
                         whileHover={{ scale: 1.1 }}
                         variants={itemVariants}
                         onClick={() => {
-                          link==='/start'?(user?navigate('app'):navigate('start')):
+                          link==='/start'?navigate('start'):
                           navigate(link)
                          }
                         }

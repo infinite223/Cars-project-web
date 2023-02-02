@@ -4,15 +4,16 @@ import './styles.scss'
 interface customInputProps {
     placeholder:string,
     type:string,
-    setValue: (value:SetStateAction<string>) => void
+    setValue: (value:SetStateAction<string>) => void,
+    theme?:string
 }   
 
-export const CustomInput:React.FC<customInputProps> = ({placeholder, type, setValue }) => {
+export const CustomInput:React.FC<customInputProps> = ({placeholder, type, setValue, theme }) => {
 
   return (
     <input 
         placeholder={placeholder}
-        className='customInput'
+        className={theme==='dark'?'customInputDark':'customInput'}
         type={type}
         onChange={(text)=>setValue(text.target.value)}
     />

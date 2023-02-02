@@ -8,8 +8,7 @@ export const login = (e:any, email?:string, password?:string, navigate?:any) => 
         if(email && password){
             signInWithEmailAndPassword(auth, email, password)
             .then((data)=> {
-                navigate('/app')
-                resolve('success')
+                resolve('Udało się zalogować')
             })
             .catch(() => reject('Nie prawidłowe dane'))
         }

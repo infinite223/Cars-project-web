@@ -16,3 +16,24 @@
         box-shadow: 0px 0px 5px rgba(14, 134, 8, 0.75);
     }
 }
+
+.customInputDark {
+    width: 200px;
+    padding: 7px 10px;
+    font-size: 14px;
+    margin: 10px 10px;
+    border-width: 0px;
+    background-color: rgba(56, 56, 56, 0.03);
+    color: #e5e5e5;
+    border:1px solid rgba(194, 191, 191, 0.95);;
+    border-radius: 0px;
+    box-shadow: 0px 0px 3px rgba(234, 234, 234, 0.95);
+    // text-shadow: 0px 0px 5px rgba(66,66,66,.75);
+
+    &:focus, textarea:focus, select:focus{
+        outline: none;
+        box-shadow: 0px 0px 5px rgba(20, 207, 10, 0.95);
+        border:1px solid rgba(20, 207, 10, 0.95);
+
+    }
+}

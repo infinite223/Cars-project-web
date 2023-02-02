@@ -17,8 +17,8 @@ interface RoutesProps {
 }
 
 export const StartPage:React.FC<RoutesProps> = ({location}) => {
-  const [showForm, setShowForm] = useCycle(false, true);
   const navigate = useNavigate()
+  const {user}:any = useAuth()
 
   return (
     <motion.div className='start_container' animate={{ scale: [1.2, 1]}}>

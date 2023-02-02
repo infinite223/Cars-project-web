@@ -4,42 +4,42 @@ import { GoogleAuthProvider, onAuthStateChanged, signInWithCredential, signOut }
 import { initializeApp } from "firebase/app";
 import { doc, getDoc } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
-import { auth } from '../firebase/config';
+import { auth, db } from '../firebase/config';
+import { Navigate } from 'react-router-dom';
 
 const AuthContext = createContext({})
 
 
 export const AuthProvider = ({children}) => {
   const [user, setUser] = useState(null)
+  const [userType, setUserType] = useState('')
+
   const [loadingInitial, setLoadingInitial] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
 
-
   useEffect(() => 
-    onAuthStateChanged(auth, async (user) => {      
+    onAuthStateChanged(auth, (user) => {      
       if(user){
         setUser(user)
-
-        // const getUserData = async () => {
-        //   console.log(user, 'uuu')
-        //   const usersRef = doc(db, "users", user.uid);
-        //   const docSnap = await getDoc(usersRef);
-        //   if (docSnap.data()?.name) {
-        //     setUser(docSnap.data())
-        //   } else {
-        //     // doc.data() will be undefined in this case
-        //     console.log("No such document!");
-        //     setUser({
-        //       name:user.displayName,
-        //       email:user.email,
-        //       image:user.photoURL,
-        //       uid:user.uid
-        //      })
-        //     navigation.navigate('EditProfile')
-        //   }
-        // }
-        // getUserData()
+        const getUserData = async () => {
+          console.log(user, 'uuu')
+          const usersRef = doc(db, "users", user.uid);
+          const docSnap = await getDoc(usersRef);
+          if (docSnap.data()?.name) {
+            setUser(docSnap.data())
+            setUserType('firestore')
+          } else {
+            setUserType('normalAuth')
+            setUser({
+              name:user.displayName?user.displayName:'user',
+              email:user.email,
+              image:user.photoURL,
+              uid:user.uid
+             })
+          }
+        }
+        getUserData()
       }
       else {
         setUser(null)
@@ -75,30 +75,16 @@ export const AuthProvider = ({children}) => {
 //     signFunction()
 //   }, [response]);
 
-    const logout = () => {
-      setLoading(true)
-      if(user.uid){
-        signOut(auth)
-        .then(()=> setUser(null))
-        .catch((err)=>setError(err))
-        .finally(()=>setLoading(false))
-        // const { id_token, accessToken, oauthIdToken } = response.params;
-        // AuthSession.revokeAsync({token: id_token, clientId: envGoogle.authKey}, Google.discovery)
-        // .then(()=>console.log("xd")).catch((e)=>console.log(e))
-      }
-      else {
-        setUser(null)
-      }
-    }
+
   
     const memoedValue = useMemo(() => ({
       user,
+      userType,
       setUser,
       loading,
       error,
     //   signInWithGoogle,
       signInAsTester,
-      logout
     }), [user, loading, error])
 
   return (

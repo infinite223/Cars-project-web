@@ -1,8 +1,6 @@
 import React from 'react'
 import { PresentationApp } from '../../components/presentationApp/PresentationApp'
 import './styles.scss'
-import { useCycle } from "framer-motion";
-import { isBrowser, isMobile } from 'react-device-detect';
 import useAuth from '../../hooks/useAuth';
 import { Outlet, useLocation, useNavigate, } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -11,16 +9,22 @@ import { RxPerson } from 'react-icons/rx'
 import { AiOutlinePlus } from 'react-icons/ai'
 import { CiSettings } from 'react-icons/ci'
 import nameApp from './../../assets/nameApp.png'
+import { signOut } from 'firebase/auth';
+import { auth } from '../../firebase/config';
 
 
 export const AppPage = () => {
-  const { logout, user }:any =  useAuth()  
+  const { logout, user, userType }:any =  useAuth()  
   const navigate = useNavigate()
   const { pathname } = useLocation();
-  
+  console.log(user)
   useEffect(() => {
     if(!user){
       navigate('../../start')
+    }
+
+    if(user && userType === 'normalAuth') {
+      navigate('/start/firststart')
     }
   }, [user])
 
@@ -36,10 +40,10 @@ export const AppPage = () => {
           <img src={nameApp} className="app_left-main_navigation-logo"/>
           <div className='app_left-main_navigation_links'>   
             <div className='topNav'>
-              <div className='link' onClick={()=> navigate('')} style={pathname==='/app'?{color: '#2f3', fontWeight:'600'}:{}}>
+              <div className='link' onClick={()=> navigate('')} style={pathname==='/app'?{color: '#2a3', fontWeight:'600'}:{}}>
                 Projekty
               </div>
-              <div className='link' onClick={()=> navigate('searchProjects')} style={pathname==='/app/searchProjects'?{color: '#2f3', fontWeight:'600'}:{}}>
+              <div className='link' onClick={()=> navigate('searchProjects')} style={pathname==='/app/searchProjects'?{color: '#2a3', fontWeight:'600'}:{}}>
                 Szukaj projektów
               </div>
               <div className='link'>
@@ -57,6 +61,9 @@ export const AppPage = () => {
               <RxPerson  size={24}/>
               <div>Mój profil</div>
             </div>
+            <div className='link' onClick={()=>signOut(auth)}>
+              <div>Wyloguj</div>
+            </div>
             <div className='link add-link'>
               <AiOutlinePlus size={22} />
               <div>Dodaj projekt</div>
@@ -73,7 +80,7 @@ export const AppPage = () => {
       <div className='app_content'>
           <nav className='app_content-top_navigatin'>
             <div className='app_content-top_navigatin-person'>
-              <div className='app_content-top_navigatin-person-name'>Dawid</div>
+              <div className='app_content-top_navigatin-person-name'>{user.name}</div>
               <img className='app_content-top_navigatin-person-image' src={'https://w7.pngwing.com/pngs/527/663/png-transparent-logo-person-user-person-icon-rectangle-photography-computer-wallpaper.png'}/>
             </div>       
           </nav>

@@ -54,7 +54,7 @@
                 gap:10px;
 
                 &:hover {
-                    background-color: rgb(22, 22, 22);
+                    background-color: rgb(41, 41, 41);
                     color: white;
                     cursor: pointer;
                     transition: all .3s ease-in-out;
@@ -64,6 +64,7 @@
             .add-link {
                 background-color: rgb(10, 96, 21);
                 margin: 10px 0px;
+                color: white;
             }
 
             .topNav, .centerNav {
