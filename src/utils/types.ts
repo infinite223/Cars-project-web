@@ -30,9 +30,9 @@ export type Component = {
 }
 
 export type Place = {
-    city: string
-    latitude: number,
-    longitude: number
+    city: string | null
+    latitude: number | null,
+    longitude: number | null
 }
 
 export type Image = {

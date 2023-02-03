@@ -31,7 +31,7 @@ import { Firststart } from './pages/appPage/firststart';
 
 function App() {
   const { user }:any = useAuth()
-
+  console.log(process.env.REACT_APP_GOOGLE_MAPS)
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/">

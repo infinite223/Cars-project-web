@@ -5,10 +5,11 @@ interface customInputProps {
     placeholder:string,
     type:string,
     setValue: (value:SetStateAction<string>) => void,
-    theme?:string
+    theme?:string,
+    required?:boolean
 }   
 
-export const CustomInput:React.FC<customInputProps> = ({placeholder, type, setValue, theme }) => {
+export const CustomInput:React.FC<customInputProps> = ({placeholder, type, setValue, theme, required }) => {
 
   return (
     <input 
@@ -16,6 +17,7 @@ export const CustomInput:React.FC<customInputProps> = ({placeholder, type, setVa
         className={theme==='dark'?'customInputDark':'customInput'}
         type={type}
         onChange={(text)=>setValue(text.target.value)}
+        required={required}
     />
   )
 }
