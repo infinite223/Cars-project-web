@@ -7,23 +7,49 @@ import { GoogleMap, useJsApiLoader, useLoadScript,  } from '@react-google-maps/a
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 import { MapView } from '../../../components/mapView';
 import { useNavigate } from 'react-router-dom';
+import { updateProfile } from './../../../firebase/account/updateProfile';
+import { Place } from '../../../utils/types';
+import { useDispatch } from 'react-redux';
+import { setMessage } from '../../../reducers/messageSlice';
+import { setLoading } from '../../../reducers/loadingSlice';
 
 export const Firststart = () => {
   const [name, setName] = useState('')
-  const { userType, user }:any = useAuth()
+  const [place, setPlace] = useState<Place>({city:'', latitude:0, longitude:0})
+  const [description, setDescription] = useState('')
+  const { userType, user, setUser, setUserType }:any = useAuth()
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const [image, setImage] = useState<any>('https://th.bing.com/th/id/OIP.LG6UqvINZmEBMrUzrhADJAHaHa?pid=ImgDet&rs=1');
+
   function handleChange(e:any) {
-      console.log(e.target.files);
-      setImage(URL.createObjectURL(e.target.files[0]));
-  }
+      setImage(e.target.files[0]);
+   }
 
   useEffect(()=> {
     if(!user){
       navigate('/start')
     }
+    if(setUserType==='firebase')
+      navigate('/start')
   }, [user])
+
+  const tryUpdateProfile = (e:any) => {
+    e.preventDefault();
+    dispatch(setLoading(true))
+
+    updateProfile(user, name, description, image, place).then((res)=> {
+      dispatch(setMessage({show:true, type: "SUCCESS", message:res.message}))
+      setUser(res.user)
+      setUserType('firebase')
+      dispatch(setLoading(false))
+    })
+    .catch((error)=> {
+      dispatch(setMessage({show:true, type: "SUCCESS", message:error}))
+      dispatch(setLoading(false))
+    })  
+  }
   
   return (
     <div className='firststart'>
@@ -34,7 +60,7 @@ export const Firststart = () => {
       </>
       :<h1>Edyuj profil</h1>}
       <div className='firststart-content'>
-      <form>
+      <form onSubmit={(e) => tryUpdateProfile(e)}>
         <div className='firststart-form'>
           <div style={{display:'flex', alignItems:'center', gap:'10px'}}>
             <div className='firststart-formdata'>
@@ -53,7 +79,7 @@ export const Firststart = () => {
         </div>
       
         <div className='firststart-place'>
-          <MapView/>
+          <MapView setPlace={setPlace} place={place}/>
           <div className='firststart-label'>
             <AiOutlineArrowLeft color='#293' size={30}/>
             Ustaw lokalizacje gdzie najczęściej można Cię spotkać

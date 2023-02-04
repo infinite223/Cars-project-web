@@ -34,7 +34,7 @@ export const AuthProvider = ({children}) => {
             setUser({
               name:user.displayName?user.displayName:'user',
               email:user.email,
-              image:user.photoURL,
+              image:user.photoURL,  
               uid:user.uid
              })
           }
@@ -81,6 +81,7 @@ export const AuthProvider = ({children}) => {
       user,
       userType,
       setUser,
+      setUserType,
       loading,
       error,
     //   signInWithGoogle,

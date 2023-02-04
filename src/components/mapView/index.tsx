@@ -17,8 +17,7 @@ const libraries:("places" | "drawing" | "geometry" | "localContext" | "visualiza
 const center = {lat: 44, lng:-90}
 const newlocate = {lat: -34, lng: 151}
 
-export const MapView = () => {
-    const [place, setPlace] = useState<Place>({city:'', latitude:0, longitude:0})
+export const MapView:React.FC<{place:Place, setPlace: (value:Place) => void}> = ({place, setPlace}) => {
     const [mapInstance, setMapInstance] = useState<any>()
     const [marker, setMarker] = useState({lat:0, lng: 0});
     const { isLoaded, loadError } =  useLoadScript({googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API?process.env.REACT_APP_GOOGLE_MAPS_API:'',
@@ -46,7 +45,7 @@ export const MapView = () => {
     <>
      <Search setPlace={setPlace} panTo={panTo}/>
      <GoogleMap
-        ref={mapRef}
+       // ref={mapRef}
         zoom={10}
         center={{
             lat: place.latitude?place.latitude:0,

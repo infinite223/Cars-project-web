@@ -6,6 +6,7 @@ import { Navigation } from './navigation';
 import { LookApp } from '../../components/lookApp/LookApp';
 import { WhatOffers } from '../../components/whatoffers/Whatoffers';
 import { Footer } from '../../components/footer/Footer';
+import { ImagesCharts } from './imagesCharts';
 
 
 export const HomePage = () => {
@@ -21,6 +22,10 @@ export const HomePage = () => {
 
         <section>
           <LookApp/>
+        </section>
+
+        <section style={{height:'auto'}}>
+          <ImagesCharts/>
         </section>
 
         <section>

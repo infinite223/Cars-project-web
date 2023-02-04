@@ -9,7 +9,8 @@
         display: flex;
         background-color: rgb(33, 33, 33);
         padding: 10px;
-        max-width: 850px;
+        // max-width: 850px;
+        width: max-content;
 
         .firststart-place {
             width: 100%;

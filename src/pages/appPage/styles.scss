@@ -8,116 +8,137 @@
     width: 100vw;
 
     display: flex;
+    flex-direction: column;
 
-    .app_left-main_navigation {
-        width: 20vw;
-        height: 100vh;
-
-        background-color: rgb(19, 18, 18);
+    .app-top_navigatin {
         display: flex;
-        flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
+        justify-content: space-between;
 
-        .app_left-main_navigation-logo {
-            width: 120px;
-            height: 30px;
-            margin: 15px;
+        width: 100%;
+        height: 10vh;
+ 
+        background-color: rgb(26, 26, 26);
+
+        .app-navigation-logo {
+            width: 150px;
+            height: 27px;
+            margin: 15px 10px;
         }
 
-        .app_left-main_navigation_links {
+        .app-navigation-buttons {
             display: flex;
-            justify-content: space-between;
-            align-content: space-between;
-            flex-direction: column;
-            width: 20vw;
-            background-color: rgb(19, 18, 18);
-            height: 100%;
-            margin-bottom: 10px;
+            align-items: center;
+            gap: 10px;
+            color:white;
+            margin-right: 20px;
 
-            .line {
-                background-color: rgba(76, 76, 76, .5);
-                width: 100%;
-                height: 1px;
-                margin: 5px 0px;
-            }
-
-            .link {
-                color: rgb(171, 170, 170);
-                padding: 5px 15px;
-                margin:5px 0px;
-                // border-radius: 10px;
-                text-align: left;
-                width: 100%;
-
+            .nav-button {
+                text-transform: uppercase;
+                background-color: rgb(54, 54, 54);
+                padding: 6px 10px;
+                border-radius: 10px;
+                font-size: 15px;
+                letter-spacing: 1px;
+                font-weight: 600;
                 display: flex;
                 align-items: center;
-                gap:10px;
+                gap: 10px;
 
                 &:hover {
-                    background-color: rgb(41, 41, 41);
-                    color: white;
+                    background-color: #283;
+                    transition: all .4s linear;
                     cursor: pointer;
-                    transition: all .3s ease-in-out;
-                } 
+                }
             }
+        }
 
-            .add-link {
-                background-color: rgb(10, 96, 21);
-                margin: 10px 0px;
-                color: white;
-            }
+    }
 
-            .topNav, .centerNav {
+    .app-main {
+        display: flex;
+        height: 90vh;
+
+        .app_left-main_navigation {
+            width: 20vw;
+            height: 100%;
+    
+            background-color: rgb(19, 18, 18);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+    
+            .app_left-main_navigation_links {
                 display: flex;
-                justify-content: center;
-                align-items: flex-start;
+                justify-content: space-between;
+                align-content: space-between;
                 flex-direction: column;
                 width: 20vw;
                 background-color: rgb(19, 18, 18);
+                height: 100%;
+                margin-bottom: 10px;
+    
+                .line {
+                    background-color: rgba(76, 76, 76, .5);
+                    width: 100%;
+                    height: 1px;
+                    margin: 5px 0px;
+                }
+    
+                .link {
+                    color: rgb(171, 170, 170);
+                    padding: 5px 15px;
+                    margin:5px 0px;
+                    // border-radius: 10px;
+                    text-align: left;
+                    width: 100%;
+    
+                    display: flex;
+                    align-items: center;
+                    gap:15px;
+    
+                    .link_imageProfile {
+                        border-radius: 50%;
+                        width: 35px;
+                        height: 35px;
+                        margin-right: 0px;
+                    }
+    
+                    &:hover {
+                        background-color: rgb(26, 26, 26);
+                        color: white;
+                        cursor: pointer;
+                        transition: all .3s ease-in-out;
+                    } 
+                }
+    
+                .add-link {
+                    background-color: rgb(10, 96, 21);
+                    margin: 10px 0px;
+                    color: white;
+                }
+    
+                .topNav, .centerNav {
+                    display: flex;
+                    justify-content: center;
+                    align-items: flex-start;
+                    flex-direction: column;
+                    width: 20vw;
+                    background-color: rgb(19, 18, 18);
+                }
             }
         }
-    }
-
-    .app_content {
-        width: 80vw;
-        height: 100vh;
-
-        background-color: rgb(26, 26, 26);
-        display: flex;
-        align-items: center;
-
-        flex-direction: column;
-        gap:20px;
-
-        .app_content-top_navigatin {
+    
+        .app_content {
+            width: 80vw;
+            height: 90vh;
+    
+            background-color: rgb(19, 18, 18);
             display: flex;
             align-items: center;
-            justify-content: flex-end;
-
-            width: 100%;
-            background-color: rgb(19, 18, 18);
-
-            .app_content-top_navigatin-person {
-                display: flex;
-                align-items: center;
-
-                margin: 11px;
-                gap: 10px;
-                
-                .app_content-top_navigatin-person-name {
-                    color:white;
-                    font-size: 18px;
-                }
-
-                .app_content-top_navigatin-person-image {
-                    width: 35px;
-                    height: 35px;
     
-                    border-radius: 50px;
-                    
-                }
-            }
+            flex-direction: column;
+            gap:20px;
         }
-
     }
 }

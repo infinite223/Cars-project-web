@@ -27,8 +27,7 @@ export const LoginForm = () => {
       .catch((error)=>{ 
         dispatch(setMessage({show:true, type: "ERROR", message:error}))
         dispatch(setLoading(false))
-      })
-     
+      })    
     }
 
   return (
