@@ -1,5 +1,7 @@
 import React from 'react'
 import './styles.scss'
+import googlePlayImage from './../../../assets/linkImage.png'
+import googlePlayIcon from './../../../assets/google-play-icon.png'
 
 export const ImageBaner = () => {
   return (
@@ -14,6 +16,11 @@ export const ImageBaner = () => {
           </div>
         </div>
         <h1>Dołącz do reszty i pobierz aplikacjie</h1>
+        {/* <img className='imageBaner__content-image' src={googlePlayImage}/> */}
+        <div className='imageBaner__content-link'>
+          <img src={googlePlayIcon} className='googlePlayicon'/>
+          Pobierz ze sklepy play
+        </div>
       </div>
     </div>
   )

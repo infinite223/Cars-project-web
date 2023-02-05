@@ -16,6 +16,10 @@
     // background: linear-gradient(-105deg, #4ef342, #e71313, #e6a007, #e5e5e3);
     background-size: 120% 150%;
 
+    @media (max-width: 480px) {
+        background-size: 280% 150%;
+    }
+
     @keyframes gradient {
         0% {
             background-position: 60% 20%;
@@ -32,11 +36,16 @@
         align-items: center;
         display: flex;
         flex-direction: column;
+
         .imageBaner__content-info {
             color: rgb(236, 236, 236);
             display: flex;
             align-items: center;
             gap: 10px;
+
+            @media (max-width: 480px) {
+              flex-direction: column;
+             }  
 
             .imageBaner__content-info-data {
                 padding: 10px 25px;
@@ -52,6 +61,44 @@
             color: white;
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
             font-size: 45px;
+
+            @media (max-width: 480px) {
+                font-size: 38px;
+             }  
+        }
+    }
+    .imageBaner__content-image {
+        width: 150px;
+
+        &:hover {
+            cursor: pointer;
+            transition: all .4s ease-in-out ;
+            transform: scale(1.1);
+        }
+    }
+
+    .imageBaner__content-link {
+        background-color: rgb(10, 10, 10);
+        color: rgb(255, 255, 255);
+        padding: 10px 15px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 20px;
+
+        @media (max-width: 480px) {
+           margin: 20px 0;
+        }
+
+        .googlePlayicon {
+            width: 30px;
+        }
+
+        &:hover {
+            cursor: pointer;
+            transition: all .4s ease-in-out ;
+            transform: scale(0.9);
         }
     }
 }

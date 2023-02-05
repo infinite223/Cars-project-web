@@ -12,58 +12,58 @@ export const Footer = () => {
         <div className='footer_conteiner_main'>
             <div className='footer_conteiner_main_section'>
                 <h2>
-                    About Us
+                    O nas
                 </h2>
                 <p>
-                    What is Cars designs?
+                   Czym jest Cars designs?
                 </p>
 
                 <p>
-                    About author
+                    O autorze
                 </p>
             </div>
 
             <div className='footer_conteiner_main_section'>
                 <h2>
-                    Contact
+                    Kontakt
                 </h2>
 
                 <p>
                     Email: carsprojectapp@gmail.com
                 </p>
                 <p>
-                    On instagram: Cars_designs
+                    Na instagramie: Cars_designs
                 </p>
             </div>
 
             <div className='footer_conteiner_main_section'>
                 <h2>
-                    Features
+                    Nowości
                 </h2>
                 <p>
-                    Chating
+                    Pisanie z innymi
                 </p>
                 <p>
-                    Updating projects
+                    Możliwość aktualizowania swoich projektów
                 </p>
                 <p>
-                    Searching by model and car make
+                    Wyszukiwanie projektu po modelu lub marcę
                 </p>
             </div>
 
             <div className='footer_conteiner_main_section'>
                 <h2>
-                    Subscribe
+                    Zapisz mnie
                 </h2>
 
                 <p>
-                    Subscribe Us to getting news on your email
+                   Dostawaj powiadomienia o nowościach
                 </p>
                 <form>
                     <input placeholder='Twoje imię'/>
                     <input placeholder='Email' type={'email'}/>
 
-                    <button>Subscribe</button>
+                    <button>Wyślij</button>
                 </form>
 
             </div>
@@ -73,10 +73,10 @@ export const Footer = () => {
             <div className='link' onClick={() => navigate('links')}>
                 Regulamin
             </div>
-            <div className='link'>
+            <div className='link' onClick={() => navigate('links/policy')}>
                 Polityka prywatności
             </div>
-            <div className='link'>
+            <div className='link' onClick={() => navigate('links/news')}>
                 Nowości
             </div>
         </div>

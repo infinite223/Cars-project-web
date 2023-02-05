@@ -7,11 +7,13 @@ import linkImage from '../../assets/linkImage.png'
 import useMousePosition from './../../hooks/useMousePosition';
 import backgroundImage from '../../assets/carOnBackground_.png'
 import useAuth from '../../hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
 
 
 export const PresentationApp:React.FC<{cycleOpen: (value:any) => void}> = ({cycleOpen}) => {
     const mousePosition = useMousePosition()
     const {user}:any = useAuth()
+    const navigate = useNavigate()
 
     return (
     <motion.div className='PresentationApp_container'
@@ -37,10 +39,23 @@ export const PresentationApp:React.FC<{cycleOpen: (value:any) => void}> = ({cycl
                     Motorization brings people together
                 </motion.h1>
                 <p>
+                 Chcesz pokazać innym jaki projekt samochodu stworzyłeś? to indealne miejsce dla Ciebie!  
+                 więc skorzystaj z Cars designs 
+                </p>
+                <div className='PresentationApp_main_content-buttons'>
+                    <div className='button-about' onClick={() => navigate('/links/about')}>
+                        O nas
+                    </div>
+                    <div className='button-start' onClick={() => navigate('/start')}>
+                        Zacznij
+                    </div>
+                </div>    
+
+                {/* <p>
                  Chcesz pokazać innym co stworzyłeś? to indealne miejsce dla Ciebie, udostępnij swój projekt samochodu reszcie światu i 
                  zaprezentuj siebie. Przeglądaj inne projekty, inspiruj się, twórz spoty... a to jedynie cześć możliwości jakie daje Ci
                  <div className='appName'>Cars designs</div>
-                </p>
+                </p> */}
                 <footer>
                     {/* <img className='PresentationApp_main_content-linkImage' src={linkImage}/> */}
                     {/* <p>
