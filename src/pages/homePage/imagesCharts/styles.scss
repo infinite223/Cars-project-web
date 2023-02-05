@@ -8,11 +8,13 @@
     position: relative;
 
     .imagesCharts-images {
-        opacity: .5;
-        height: 1100px;
+        margin-top: 150px;
+        opacity: .3;
+        height: 700px;
+        background-color: #293;
         width: 100vw;
         background-image: url('./../../../assets//charts/backgroundCharts.png');
-        background-size: 300% 50%;
+        background-size: 300% 100%;
         // filter: grayscale(px);
         animation: gradient 50s ease infinite;
 

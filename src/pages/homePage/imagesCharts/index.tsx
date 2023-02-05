@@ -6,11 +6,12 @@ import { motion } from 'framer-motion';
 export const ImagesCharts = () =>{
     const navigate = useNavigate()
   return (
-    <motion.div className='imagesCharts' whileInView={{opacity: [0.1, .5, 1]}}>
-        <div className='imagesCharts-images'></div>
-        <motion.div className='imagesCharts-info' whileInView={{left: [-100, 0]}}>
-            <h1>Udostępniaj wykresy</h1>
+    <motion.div  className='imagesCharts' whileInView={{opacity: [.1, 1]}} viewport={{ once: true }} transition={{ delay: .6 }}>
+        <div className='imagesCharts-images'/>
+        <motion.div className='imagesCharts-info' viewport={{ once: true }}  whileInView={{left: [-100, 0]}}   transition={{ delay: .5 }}>
+            <h1>Udostępniaj wykresy, przyrosty, efekty działań</h1>
             <h1>Pokaż innym co ciekawego można stworzyć</h1>
+            {/* <h1>Co z czego można </h1> */}
             <h2>Zacznij od założenia darmowego konta</h2>
             <div className='imagesCharts-button' onClick={()=>navigate('/start/register')}>Utwórz</div>
         </motion.div>

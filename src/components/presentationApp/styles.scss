@@ -2,14 +2,14 @@
     height: 100%;
     padding-left: 2rem;
     padding-right: 2rem;
-    background-image: url('https://images.pexels.com/photos/9481680/pexels-photo-9481680.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
-    background-size: cover;
+   // background-image: url('https://images.pexels.com/photos/9481680/pexels-photo-9481680.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+    //background-size: cover;
     
     // background-color: rgb(216, 219, 216);
     // background: linear-gradient(170deg, rgb(1, 104, 32) 30%, rgb(6, 141, 24) 40%, rgba(255,255,255,1) 65%);
-	animation: gradient 15s ease infinite;
+	//animation: gradient 15s ease infinite;
     // background: linear-gradient(-105deg, #4ef342, #e71313, #e6a007, #e5e5e3);
-    background-size: 120% 150%;
+    //background-size: 120% 150%;
 
     @keyframes gradient {
         0% {
@@ -30,7 +30,7 @@
     .PresentationApp_nav {
         width: 100%;
         height: 100px;
-    
+
         justify-content: space-between;
         align-items: center;
         display: flex;  
@@ -80,11 +80,11 @@
 
     .PresentationApp_main {
         display: flex;
-        width: max-content;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
 
         margin-top: 2rem;
-        margin-left: 2rem;
-        margin-right: 2rem;
 
         @media (max-width: 480px) {
            min-height: 100vh;
@@ -93,12 +93,11 @@
 
         .PresentationApp_main_content {
             z-index: 3;
-            margin-left: 2rem;
+
             max-width: 550px;
             
             display: flex;
             flex-direction: column;
-            text-align: left;
 
             @media (max-width: 480px) {
                 width: 300px;
@@ -115,7 +114,7 @@
             
             h1 {
                 font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-                color: white;
+                color: rgb(0, 0, 0);
                 z-index: 1;
                 font-size: 3.5rem;
                 margin-top: 0px;
@@ -132,19 +131,22 @@
 
             p {
                 //font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-
-                color: rgb(255, 255, 255);
-                font-weight: 400;
+                color: rgba(31, 31, 31, .8);
+                font-weight: 600;
                 line-height: 26px;
                 max-width: 100%;
-                font-size: 23px;
+                font-size: 18px;
                 letter-spacing: .05rem;
                 .appName {
+                    font-size: 20px;
                     margin-top: 10px;
                     color: #2b3;
-                    // font-weight: 600;
+                    font-weight: 800;
                     letter-spacing: 1px;
                     // text-transform: uppercase;
+                    @media (min-width: 1300px) {
+                        font-size: 27px;
+                     }
                  }
 
                  @media (max-width: 480px) {
@@ -152,8 +154,8 @@
                  }  
                  
                  @media (min-width: 1300px) {
-                    font-size: 30px;
-                    line-height: 32px;
+                    font-size: 25px;
+                    line-height: 35px;
                     max-width: 95%;
                  }
                  

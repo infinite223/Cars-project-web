@@ -23,7 +23,7 @@ export const PresentationApp:React.FC<{cycleOpen: (value:any) => void}> = ({cycl
     >   
         <nav className='PresentationApp_nav' >
             <div className='PresentationApp_nav_hamburger-button' onClick={()=>cycleOpen(true)}>
-                <IoReorderThreeOutline size={45} color={'white'}/>
+                <IoReorderThreeOutline size={45} color={'black'}/>
             </div>
             <div className='PresentationApp_nav_right'>
                 <img className='PresentationApp_nav_right-logo' src={nameApp}/>
@@ -32,13 +32,13 @@ export const PresentationApp:React.FC<{cycleOpen: (value:any) => void}> = ({cycl
         </nav>
 
         <div className='PresentationApp_main'>
-            <div className='PresentationApp_main_content'>
-                <motion.h1 viewport={{ once: true }} whileInView={{opacity: [0, .1, .2, .4, .5, .7,  1]}}>
+            <motion.div className='PresentationApp_main_content' viewport={{ once: true }} whileInView={{opacity: [0, .1, .2, .4, .5, .7,  1]}}>
+                <motion.h1>
                     Motorization brings people together
                 </motion.h1>
                 <p>
-                 Chcesz pokazać innym co stworzyłeś? to indealne miejsce dla Ciebie, udostępnij swój projekt reszcie światu i 
-                 zaprezentuj siebie. Przeglądaj inne projekty samochodów, inspiruj się, twórz spoty... a to jedynie cześć możliwości jakie daje Ci
+                 Chcesz pokazać innym co stworzyłeś? to indealne miejsce dla Ciebie, udostępnij swój projekt samochodu reszcie światu i 
+                 zaprezentuj siebie. Przeglądaj inne projekty, inspiruj się, twórz spoty... a to jedynie cześć możliwości jakie daje Ci
                  <div className='appName'>Cars designs</div>
                 </p>
                 <footer>
@@ -47,7 +47,7 @@ export const PresentationApp:React.FC<{cycleOpen: (value:any) => void}> = ({cycl
                         Cars designs available on Google play
                     </p> */}
                 </footer>
-            </div>
+            </motion.div>
 
             <div className='PresentationApp_main-images'>
                 {/* <img className='PresentationApp_main-image-img' src={backgroundImage}/> */}

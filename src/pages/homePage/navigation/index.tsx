@@ -6,10 +6,10 @@ import { IoCloseSharp } from "react-icons/io5";
 import useAuth from '../../../hooks/useAuth';
 
 const links = [
-  { name: "Start", to: "#", id: 1, link: '/start' },
-  { name: "About", to: "#", id: 2,  link: '/links/about' },
-  { name: "News", to: "#", id: 3,  link: '/links/news' },
-  { name: "Contact", to: "#", id: 4,  link: '/contact' }
+  { name: "Zacznij", to: "#", id: 1, link: '/start' },
+  { name: "O aplikacji", to: "#", id: 2,  link: '/links/about' },
+  { name: "Nowości", to: "#", id: 3,  link: '/links/news' },
+  { name: "Kontakt", to: "#", id: 4,  link: '/contact' }
 ];
 
 const itemVariants = {

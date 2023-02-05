@@ -7,6 +7,7 @@ import { LookApp } from '../../components/lookApp/LookApp';
 import { WhatOffers } from '../../components/whatoffers/Whatoffers';
 import { Footer } from '../../components/footer/Footer';
 import { ImagesCharts } from './imagesCharts';
+import { ImageBaner } from './imageBaner';
 
 
 export const HomePage = () => {
@@ -19,6 +20,8 @@ export const HomePage = () => {
         <section>
           <PresentationApp cycleOpen={cycleOpen}/>
         </section>
+
+        <ImageBaner/>
 
         <section>
           <LookApp/>
