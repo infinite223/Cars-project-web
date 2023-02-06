@@ -41,6 +41,11 @@
                 text-transform: uppercase;
                 color: rgb(196, 194, 194);
                 margin: 0px 10px;
+
+                @media (max-width: 480px) {
+                  font-size: 30px;
+                  margin: 0px 0px;
+                }
             }
 
             p {
@@ -48,6 +53,12 @@
                 margin: 5px 10px;
                 max-width: 70%;
                 font-size: .7rem;
+
+                @media (max-width: 480px) {
+                    font-size: 1rem;
+                    max-width: 100%;
+                    margin: 10px 0px;
+                }
             }
 
             input {
@@ -62,6 +73,12 @@
                 border-radius: 0px;
                 box-shadow: 0px 0px 5px rgba(66,66,66,.75);
                 // text-shadow: 0px 0px 5px rgba(66,66,66,.75);
+
+                @media (max-width: 480px) {
+                    font-size: 1.2rem;
+                    width: 100;
+                    margin: 5px 0px;
+                }
             }
             textarea:focus, input:focus{
                 outline: none;
@@ -70,12 +87,16 @@
             button {
                 background-color: #273;
                 color: rgb(220, 214, 214);
-                padding: 6px 12px;
+                padding: 8px 18px;
                 letter-spacing: 2px;
                 font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-
+                border-radius: 5px;
                 margin: 15px 10px;
-                border-radius: 0px;
+
+                @media (max-width: 480px) {
+                 font-size: 20px;
+                 margin: 10px 0px;
+                }
             }
         }
     }
@@ -92,12 +113,18 @@
              
         @media (max-width: 480px) {
             flex-direction:column;
+            padding: 0px;
         }
 
         .link {
             color: rgb(199, 196, 196);
             margin: 10px;
             font-size: 12px;
+            
+            @media (max-width: 480px) {
+               font-size: 20px;
+               margin: 15px;
+            }
 
             &:hover {
                 cursor: pointer;

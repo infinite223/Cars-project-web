@@ -10,9 +10,18 @@
 
     height: 100%;
 
+    @media (max-width: 480px) {
+        width: 100%;
+        font-size: 20px;
+    }
+
     h2 {
         color: gray;
         font-size: 22px;
+
+        @media (max-width: 480px) {
+            font-size: 28px;
+        }
     }
 
     form {
@@ -26,6 +35,10 @@
             color: white;
             padding: 7px 25px;
             border-radius: 5px;  
+            
+            @media (max-width: 480px) {
+                font-size: 20px;
+            }
         }
     }
 

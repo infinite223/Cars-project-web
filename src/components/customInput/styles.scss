@@ -15,6 +15,11 @@
         outline: none;
         box-shadow: 0px 0px 5px rgba(14, 134, 8, 0.75);
     }
+
+    @media (max-width: 480px) {
+        width: 300px;
+        font-size: 20px;
+    }
 }
 
 .customInputDark {

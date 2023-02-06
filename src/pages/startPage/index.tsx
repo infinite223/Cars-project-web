@@ -26,7 +26,7 @@ export const StartPage:React.FC<RoutesProps> = ({location}) => {
       <div className='start_container_main'>
         
         <div className='start_container_main-forms'>
-          <MdOutlineArrowBackIosNew onClick={() => navigate('/')} className='start_container_main-forms-back'/>
+          <MdOutlineArrowBackIosNew size={22} onClick={() => navigate('/')} className='start_container_main-forms-back'/>
           <Outlet />
         </div>
 

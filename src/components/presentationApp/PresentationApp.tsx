@@ -44,7 +44,7 @@ export const PresentationApp:React.FC<{cycleOpen: (value:any) => void}> = ({cycl
                 </p>
                 <div className='PresentationApp_main_content-buttons'>
                     <div className='button-about' onClick={() => navigate('/links/about')}>
-                        O nas
+                        O aplikacji
                     </div>
                     <div className='button-start' onClick={() => navigate('/start')}>
                         Zacznij
