@@ -21,6 +21,7 @@ body {
   scrollbar-width: none;  
   background-color: black;
 
+  scroll-behavior: smooth;
 }
 
 input:-webkit-autofill,

@@ -23,7 +23,7 @@ export const HomePage = () => {
 
         <ImageBaner/>
 
-        <section>
+        <section style={{height:'auto'}}  >
           <LookApp/>
         </section>
 

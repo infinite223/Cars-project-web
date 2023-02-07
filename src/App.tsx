@@ -27,6 +27,7 @@ import { NewsLink } from './pages/linksPage/Links/news';
 import { PolicyLink } from './pages/linksPage/Links/policy';
 import { AboutLink } from './pages/linksPage/Links/about';
 import { Firststart } from './pages/appPage/firststart';
+import { ErrorResponsive } from './pages/errorResponsive';
 
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
             <Route path='searchProjects' element={<SearchProjects/>}/>
             <Route path="meeting" element={ <LoginForm/>} />
           </Route>
+          <Route path='errorResponsive' element={<ErrorResponsive/>}/>
           <Route path="links" element={<Links/>} >
             <Route index element={ <RulesLink/>} />
             <Route errorElement path="policy" element={ <PolicyLink/>} />

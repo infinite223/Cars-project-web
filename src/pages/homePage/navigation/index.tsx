@@ -4,6 +4,7 @@ import './styles.scss'
 import { Navigate, useNavigate, Link } from "react-router-dom";
 import { IoCloseSharp } from "react-icons/io5";
 import useAuth from '../../../hooks/useAuth';
+import { useMediaQuery } from 'react-responsive'
 
 const links = [
   { name: "Zacznij", to: "#", id: 1, link: '/start' },
@@ -38,7 +39,8 @@ export const Navigation:React.FC<{open:any, cycleOpen: (value:any) => void}> = (
   const navigate = useNavigate();
 
   const { user }:any = useAuth()
-
+  const mobileScreen = useMediaQuery({ maxWidth: 624 })
+  console.log(mobileScreen)
   return (
       <AnimatePresence>
         {open && (
@@ -70,8 +72,8 @@ export const Navigation:React.FC<{open:any, cycleOpen: (value:any) => void}> = (
                         whileHover={{ scale: 1.1 }}
                         variants={itemVariants}
                         onClick={() => {
-                          link==='/start'?navigate('start'):
-                          navigate(link)
+                          // link==='/start'?navigate('start'):
+                          navigate((mobileScreen && link==='/start')?'errorResponsive':link)
                          }
                         }
                     >

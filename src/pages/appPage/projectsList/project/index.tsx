@@ -6,14 +6,61 @@ import { BsFillShareFill, BsHeart, BsThreeDotsVertical } from 'react-icons/bs'
 import { FiHeart } from 'react-icons/fi'
 import { ProjectOptions } from './options/ProjectOptions'
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { collectionGroup, getDocs, limit, onSnapshot, orderBy, query, startAfter } from 'firebase/firestore'
+import { useDispatch, useSelector } from 'react-redux';
+import { setProjectsState } from '../../../../reducers/projectsSlice'
+import { selectProjects } from './../../../../reducers/projectsSlice';
+import { db } from '../../../../firebase/config'
 
-export const Project:React.FC<CarprojectData> = ({car, author, id, createdAt, place}) => {
+interface Props {
+    projectsCount:number,
+    project:CarprojectData, 
+    idInApp:number,
+    lastVisible:any,
+    setLastVisible: (value:any) => void
+}
+
+export const Project:React.FC<Props> = ({project: {car, author, id, createdAt, place} ,idInApp, projectsCount, setLastVisible, lastVisible}) => {
     const colors = car.performance && getColorsCircle(car.performance[0].value, car.performance[0].type)
     const [showOptions, setShowOptions] = useState(false)
+    const projectsRef = collectionGroup(db, 'projects')
+    const projectsQuery = query(projectsRef,  limit(3), orderBy('createdAt', 'desc'),)
+
     const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const projects:any = useSelector(selectProjects)
+
+
+    const updateProjects = async () => {
+        if(projectsCount==idInApp+1){
+
+            if(projects.projects?.length){
+                console.log('tuu')
+
+                const next = query(projectsRef, orderBy('createdAt', 'desc'), startAfter(lastVisible), limit(2))
+    
+                onSnapshot(next, async (snapchot) => {   
+                    if(snapchot.docs[0]){
+    
+                        const nextProjects = snapchot.docs.map((doc, i)=> {
+                            return doc.data()
+                        })
+                        console.log(nextProjects)
+                        dispatch(setProjectsState(projects.projects.concat(nextProjects)))
+                        const documentSnapshots = await getDocs(next);
+                        setLastVisible(documentSnapshots.docs[documentSnapshots.docs.length-1])
+                    }    
+                })
+          
+            }
+        }
+    }
 
     return (
-    <div className='project'>
+    <motion.div className='project' 
+            // onViewportEnter={}
+         onViewportEnter={()=> updateProjects()}>
         <div className='project_author'>Dodany przez: 
             <span style={{color:'white'}}> {author.name}</span>
         </div>
@@ -74,6 +121,6 @@ export const Project:React.FC<CarprojectData> = ({car, author, id, createdAt, pl
         </div>
 
         <ProjectOptions showOptions={showOptions} setShowOptions={setShowOptions}/>
-    </div>
+    </motion.div>
   )
 }

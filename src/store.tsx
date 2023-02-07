@@ -1,15 +1,19 @@
 import { configureStore } from '@reduxjs/toolkit'
 import loadingSlice, { LoadingStore } from './reducers/loadingSlice'
+import { CarprojectData } from './utils/types'
 import messageSlice, { MessageStore } from './reducers/messageSlice'
+import projectsSlice from './reducers/projectsSlice'
 
 export default configureStore({
   reducer: {
     message: messageSlice,
-    loading: loadingSlice
+    loading: loadingSlice,
+    projects: projectsSlice
   },
 })
 
 export interface RootStore {
     message: {prompt:MessageStore},
-    loading: LoadingStore
+    loading: LoadingStore,
+    projects: CarprojectData[]
 } 

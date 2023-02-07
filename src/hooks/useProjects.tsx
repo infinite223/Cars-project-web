@@ -1,22 +1,24 @@
 import { collectionGroup, onSnapshot, query, limit, startAfter, getDocs, orderBy, QuerySnapshot } from "firebase/firestore";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
+import { setProjectsState } from "../reducers/projectsSlice";
 import { User } from "../utils/types";
 import { db } from "./../firebase/config";
 
-export const useProjects = (user:{name:string}, _limit:number) => {
-    const [projects, setProjects] = useState<any[] | null>(null)
+export const useProjects = (user:{name:string}, _limit:number, dispatch:any) => {
+    const [projects, setProjects] = useState<any[] | null>([])
     const [_projects, _setProjects] = useState<any[]>([])
 
     const [loading, setLoading] = useState(false)
     const projectsRef = collectionGroup(db, 'projects')
     const projectsQuery = query(projectsRef,  limit(3), orderBy('createdAt', 'desc'),)
     const [lastVisible, setLastVisible] = useState<any>(null)
+    const [loadProjectCounter, setLoadProjectCounter] = useState(0)
 
     const getProjects = async () => {
-        onSnapshot(projectsQuery, (snapchot) => {      
+        onSnapshot(projectsQuery, (snapchot) => {   
             setProjects(snapchot.docs.map((doc, i)=> {
                 return doc.data()
-            }))   
+            }))  
         })
 
         const documentSnapshots = await getDocs(projectsQuery);
@@ -44,13 +46,27 @@ export const useProjects = (user:{name:string}, _limit:number) => {
         }
     }
 
+    // useMemo(() => {
+    //     setLoading(true)
+    //     if(user.name==="Tester") {
+    //         setProjects([])
+    //     }
+    //     else {
+    //         if(projects && _limit>projects?.length){
+    //             getProjects()
+    //         }
+    //     }
+    // }, [limit])
+
     useEffect(()=> {
         setLoading(true)
         if(user.name==="Tester") {
             setProjects([])
         }
         else {
-            getProjects()
+          //  if(projects && _limit>projects?.length+1){
+                getProjects().then(()=>dispatch(setProjectsState(projects)))
+          //  }
         }
     }, [])
 

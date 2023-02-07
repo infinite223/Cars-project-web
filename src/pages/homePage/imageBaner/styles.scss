@@ -54,6 +54,11 @@
                 text-transform: uppercase;
                 font-size: 22px;
                 letter-spacing: 2px;
+
+                @media (max-width: 320px) {
+                    font-size: 18px;
+                    padding: 7px 20px;
+                 }
             }
         }
 
@@ -64,7 +69,11 @@
 
             @media (max-width: 480px) {
                 font-size: 38px;
-             }  
+            }
+            
+            @media (max-width: 320px) {
+                font-size: 28px;
+             }
         }
     }
     .imageBaner__content-image {
@@ -86,6 +95,10 @@
         align-items: center;
         gap: 10px;
         font-size: 20px;
+
+        @media (max-width: 320px) {
+            font-size: 17px;
+         }
 
         @media (max-width: 480px) {
            margin: 20px 0;

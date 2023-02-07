@@ -10,6 +10,9 @@ import { RegisterForm } from '../../components/registerForm';
 import { MdOutlineArrowBackIosNew } from 'react-icons/md'
 import { useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
+import { useMediaQuery } from 'react-responsive'
+import { useEffect } from 'react';
+
 
 interface RoutesProps {
   children?: React.ReactNode;
@@ -19,6 +22,14 @@ interface RoutesProps {
 export const StartPage:React.FC<RoutesProps> = ({location}) => {
   const navigate = useNavigate()
   const {user}:any = useAuth()
+  const mobileScreen = useMediaQuery({ maxWidth: 624 })
+
+  useEffect(()=> {
+    if(mobileScreen) {
+      navigate('/')
+    }
+
+  }, [mobileScreen])
 
   return (
     <motion.div className='start_container' animate={{ scale: [1.2, 1]}}>
