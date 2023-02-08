@@ -1,6 +1,6 @@
 .circleGradient {
-    width: 140px;
-    height: 140px;
+    width: 150px;
+    height: 150px;
 
     @media (min-width: 1400px) {
         width: 180px;
@@ -19,9 +19,10 @@
 	        animation: gradient 5s ease infinite;
 
     .data {
-        width: 133px;
-        height: 133px;
-        background-color: rgb(25, 25, 25);
+        width: 143px;
+        height: 143px;
+        background-color: rgb(19, 18, 18);
+
         border-radius: 50%;
         display: flex;
         align-items: center;

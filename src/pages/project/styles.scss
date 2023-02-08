@@ -27,92 +27,72 @@
         display: flex;
         justify-content: space-between;
         width: 100vw;
-        height: 100%;
-        background-color: rgb(37, 38, 38);
+        height: calc(100vh - 70px);
+        background-color: rgb(19, 18, 18);
 
-        .projectSection {
-            // width: calc(100vw /3);
+        .projectPage__main_content {
+            width: 60vw;
             height: 100%;
-            color:rgb(248, 245, 245);     
-            background-color: rgb(22, 22, 22);  
-            // width: 400px;  
-
-            h1 {
-                font-size: 18px;
-                text-align: left;
-                margin: 0px 20px;
-                font-weight: normal;
-                letter-spacing: 1px;
-                padding: 10px;
-                padding-top: 20px;
-            }
-
-            &:hover h1 {
-                color:white;
-                transition: all .5s ease;
-            }
-        }
-
-        .projectPage__main_info {
-            // background-color: rgb(37, 38, 38);
-            z-index: 5;
-            width: 100%;
-            max-height: 100%;
             display: flex;
-            align-items: center;
             flex-direction: column;
-
+            // align-items: center;
+            color: white;
+            padding: 0 20px;
             overflow-y: scroll;
-            &::-webkit-scrollbar {
-                display: none;
-            }
-              
 
-            h1 {
-                align-self: flex-start;
+            &::-webkit-scrollbar {
+               display: none;
+            };
+
+            .projectPage__main_content-image {
+                width: 100%;
+                height: 350px;
+                border-radius: 5px;
+                margin-bottom:  10px;
+                margin-top: 10px;
+
+                object-fit: cover;
+              //  overflow: hidden;
             }
 
             .projectPage__main_info-circles {
-                width: 96%;
-                padding-top: 10px;
-
-             //   background-color: rgb(25, 25, 25);
+                width: 100%;
+                padding-top: 20px;
                 border-radius: 15px;
                 display: flex;
                 align-items: center;
                 justify-content: space-around;
-
-                padding-bottom: 600px;
             }   
-        }
 
-        .projectPage__main_photos {
-
-            border-right: .5px solid;
-            z-index: 1;
-
-
-            .images {
+            .projectPage__main_content-info{
+                // background-color: rgb(37, 38, 38);
+                z-index: 5;
+                width: 100%;
+                max-height: 100%;
                 display: flex;
-                flex-wrap: wrap;
-                margin: 20px;
-                margin-top: 10px;
-                gap:0px;
-
-                .image {
-                    width: 80%;
-                    max-width: 300px;
-                    padding: 0px 10px;
-
-                    &:hover {
-                        cursor: pointer;
-                    }
+                align-items: center;
+                flex-direction: column;
+    
+                h1 {
+                    align-self: flex-start;
+                    margin-left: 10px;
+                    font-size: 27px;
+                    font-weight: 600    ;
+                }
+    
+                .projectPage__main_info-gradient {
+                    color:white;
+                    padding: 5px 15px;
+                    border-radius: 12px;
+                    font-size: 16px;
+                    letter-spacing: 1px;          
                 }
             }
         }
 
         .projectPage__main_history {
             border-left: .5px solid;
+            width: 40vw;
         }
     }
 

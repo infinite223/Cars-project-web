@@ -8,7 +8,7 @@ import { BsBarChart, BsBarChartLine, BsChatSquareText, BsPeople } from 'react-ic
 import { CgProfile } from 'react-icons/cg'
 import { AiOutlinePlus } from 'react-icons/ai'
 import { CiSettings } from 'react-icons/ci'
-import nameApp from './../../assets/nameApp.png'
+import nameApp from './../../assets/nameApp_white.png'
 import { signOut } from 'firebase/auth';
 import { auth } from '../../firebase/config';
 import { MdOutlineSyncProblem } from 'react-icons/md';

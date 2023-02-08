@@ -36,30 +36,15 @@ export const ProjectPage = () => {
               <div className='projectPage__nav-carMake'>{car.CarMake}</div>
               {colors && <div className='projectPage__nav-model' style={{color: colors[0]}}>{car.model}</div>}
             </div>
-         
           </div>
           
           <BsThreeDotsVertical style={{padding:'0 10px'}} color='white' size={24} className="icon"/>
         </nav>
         <div className='projectPage__main'>
-          <motion.div className='projectPage__main_photos projectSection'
-            style={colors?{borderColor: colors[0]}:{}}
-            initial={{width:'500px'}}
-            whileHover={{
-              width: '600px'
-            }}
-          >
-            <h1>Zdjęcia</h1>
-            <div className='images'>
-              {car.imagesCar.map((image) => <img className='image' src={image.url}/>)}
+          <motion.div className='projectPage__main_content'>
+            <div className='projectPage__main_content-image'>
+              {car.imagesCar.map((image) => <img className='projectPage__main_content-image'  src={image.url}/>)}
             </div>
-          </motion.div>
-          <motion.div className='projectPage__main_info projectSection'
-            whileHover={{
-             // width: '450px'
-            }}
-          >
-            <h1>Podstawowe informacjie</h1>
             <div className='projectPage__main_info-circles'>
               {car.performance?.map((data, i) => {
                 return (
@@ -68,18 +53,40 @@ export const ProjectPage = () => {
                   </>       
                 )
               })}
-      
-            </div>
-           
-            <p>{car.description}</p>
 
+            </div>
+
+            <motion.div className='projectPage__main_content-info'>
+              <h1>Podstawowe informacjie</h1>   
+              <p>{car.description}</p>
+              random text dsadsad
+              {(car.performance && colors )&&
+                      <div className='projectPage__main_info-gradient'
+                          style={{background: `linear-gradient(90deg, 
+                              ${colors[0]} 0%, 
+                              ${colors[1]} 46%,
+                              ${colors[2]} 100%)`}}
+
+                          >
+                          {car.history.length===0?'STOCK':'STAGE '+car.history.length}   
+              </div>}
+            </motion.div>
+            random text dsadsad
+            random text dsadsad
+            random text dsadsad
+            random text dsadsad
+            random text dsadsad
           </motion.div>
-          <motion.div className='projectPage__main_history projectSection'
-            style={colors?{borderColor: colors[0]}:{}}
-            initial={{width:'500px'}}
-            whileHover={{
-              width: '600px'
-            }}
+       
+          <motion.div className='projectPage__main_history'
+            style={colors?{borderColor: 
+              // colors[0]
+              'rgba(221, 221, 221,.1)'
+            }:{}}
+           // initial={{width:'500px'}}
+            // whileHover={{
+            //   width: '600px'
+            // }}
           >
             <h1>Przebieg modyfikacji</h1>
 
