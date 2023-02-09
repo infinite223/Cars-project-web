@@ -7,9 +7,10 @@ import { useEffect, useState } from 'react';
 import { CarprojectData } from '../../utils/types';
 import { IoIosArrowBack } from 'react-icons/io'
 import { getColorsCircle } from '../../utils/functions/colorsCircle';
-import { BsFillShareFill, BsThreeDotsVertical } from 'react-icons/bs'
+import { BsFillShareFill, BsPause, BsPlay, BsThreeDotsVertical } from 'react-icons/bs'
 import { FiSend, FiHeart } from 'react-icons/fi'
 import { CircleGradient } from './circle';
+import { useAudio } from '../../hooks/useAudio';
 
 export const ProjectPage = () => {
   const { logout, user }:any =  useAuth()  
@@ -23,6 +24,9 @@ export const ProjectPage = () => {
   }, [user])
 
   const {car, id, place, createdAt, author} = location.state as CarprojectData;
+  const { toggle, playing }:any  = useAudio(car.soundCheck)
+  console.log(playing, toggle)
+
   const colors = car.performance && getColorsCircle(car.performance[0].value, car.performance[0].type)
   console.log(user)
   return (
@@ -30,9 +34,9 @@ export const ProjectPage = () => {
         <nav className='projectPage__nav'>
           <div className='projectPage__nav-main'>
             <motion.div whileHover={colors?{color: colors[0]}:{}}>
-              <IoIosArrowBack onClick={() => navigate(-1)} size={30} style={{padding:'10px', marginLeft:'10px'}}/>
+              <IoIosArrowBack onClick={() => navigate(-1)} size={30} style={{padding:'0px 10px', marginLeft:'10px', marginTop:'5px'}}/>
             </motion.div>
-            <div style={{display:'flex', alignItems:'center', gap:10, marginBottom:'7px'}}>
+            <div style={{display:'flex', alignItems:'center', gap:10, marginBottom:'0px'}}>
               <div className='projectPage__nav-carMake'>{car.CarMake}</div>
               {colors && <div className='projectPage__nav-model' style={{color: colors[0]}}>{car.model}</div>}
             </div>
@@ -58,24 +62,26 @@ export const ProjectPage = () => {
 
             <motion.div className='projectPage__main_content-info'>
               <h1>Podstawowe informacjie</h1>   
-              <p>{car.description}</p>
-              random text dsadsad
-              {(car.performance && colors )&&
-                      <div className='projectPage__main_info-gradient'
-                          style={{background: `linear-gradient(90deg, 
-                              ${colors[0]} 0%, 
-                              ${colors[1]} 46%,
-                              ${colors[2]} 100%)`}}
+              <p>{car.description}  random text dsadsad</p>
 
-                          >
-                          {car.history.length===0?'STOCK':'STAGE '+car.history.length}   
-              </div>}
+              <div className='projectPage__main_content-info-contaier'>
+                {car.soundCheck&&<div className='soundcheck' onClick={toggle}>
+                  {playing?<BsPause size={22} />:<BsPlay size={22}/>}
+                  <span>Sound check</span>
+                </div>}
+      
+                {(car.performance && colors )&&
+                        <div className='projectPage__main_info-gradient'
+                            style={{background: `linear-gradient(90deg, 
+                                ${colors[0]} 0%, 
+                                ${colors[1]} 46%,
+                                ${colors[2]} 100%)`}}
+
+                            >
+                            {car.history.length===0?'STOCK':'STAGE '+car.history.length}   
+                </div>}
+              </div>
             </motion.div>
-            random text dsadsad
-            random text dsadsad
-            random text dsadsad
-            random text dsadsad
-            random text dsadsad
           </motion.div>
        
           <motion.div className='projectPage__main_history'

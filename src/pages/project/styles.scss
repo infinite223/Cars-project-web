@@ -7,13 +7,13 @@
     
     .projectPage__nav {
         width: 100vw;
-        height: 70px;
+        height: 60px;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap:10px;
+      //  gap:10px;
         background-color: rgb(25, 25, 25);
-        color:white;
+        color:white;    
         font-size: 20px;
 
         .projectPage__nav-main {
@@ -27,7 +27,7 @@
         display: flex;
         justify-content: space-between;
         width: 100vw;
-        height: calc(100vh - 70px);
+        height: calc(100vh - 50px);
         background-color: rgb(19, 18, 18);
 
         .projectPage__main_content {
@@ -47,10 +47,8 @@
             .projectPage__main_content-image {
                 width: 100%;
                 height: 350px;
-                border-radius: 5px;
+                border-radius: 0px 0px 10px 10px;
                 margin-bottom:  10px;
-                margin-top: 10px;
-
                 object-fit: cover;
               //  overflow: hidden;
             }
@@ -65,34 +63,80 @@
             }   
 
             .projectPage__main_content-info{
-                // background-color: rgb(37, 38, 38);
+                margin-top: 20px;
+                background-color: rgb(26, 26, 26);
                 z-index: 5;
                 width: 100%;
                 max-height: 100%;
                 display: flex;
-                align-items: center;
                 flex-direction: column;
+                align-items: flex-start;
+                margin-left: 10px;
+                padding-bottom:300px;
+                border-radius: 10px;
+                margin-bottom: 20px;
     
                 h1 {
                     align-self: flex-start;
-                    margin-left: 10px;
-                    font-size: 27px;
-                    font-weight: 600    ;
+                    margin-left: 20px;
+                    font-size: 22px;
+                    font-weight: 600;
                 }
-    
-                .projectPage__main_info-gradient {
-                    color:white;
-                    padding: 5px 15px;
-                    border-radius: 12px;
-                    font-size: 16px;
-                    letter-spacing: 1px;          
+
+                p{
+                    margin-left: 20px;
+                }
+
+                .projectPage__main_content-info-contaier {
+                    width: calc(100% - 40px);
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin: 0 20px;
+
+                    .soundcheck {
+                        color:white;
+                        padding: 5px 15px;
+                        border-radius: 12px;
+                        font-size: 16px;
+                        letter-spacing: 1px;  
+                        border: 1px solid rgb(137, 134, 134);
+
+                        display: flex;
+                        align-items: center;
+                        gap:15px;
+
+                        &:hover {
+                            cursor: pointer;
+                        }
+                    }
+
+                    .projectPage__main_info-gradient {
+                        color:white;
+                        padding: 5px 15px;
+                        border-radius: 12px;
+                        font-size: 16px;
+                        letter-spacing: 1px;          
+                    }
                 }
             }
         }
 
         .projectPage__main_history {
             border-left: .5px solid;
+            background-color: rgb(26, 26, 26);
+            margin: 20px;
+            border-radius: 10px;
             width: 40vw;
+            display: flex;
+            color: white;
+
+            h1 {
+                align-self: flex-start;
+                margin-left: 20px;
+                font-size: 22px;
+                font-weight: 600;
+            }
         }
     }
 
