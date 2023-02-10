@@ -39,7 +39,7 @@ export const PresentationApp:React.FC<{cycleOpen: (value:any) => void}> = ({cycl
                     Motorization brings people together
                 </motion.h1>
                 <p>
-                 Chcesz pokazać innym jaki projekt samochodu stworzyłeś? to indealne miejsce dla Ciebie!  
+                 Chcesz pokazać innym jak   i projekt samochodu stworzyłeś? to indealne miejsce dla Ciebie!  
                  więc skorzystaj z Cars designs 
                 </p>
                 <div className='PresentationApp_main_content-buttons'>

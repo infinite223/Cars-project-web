@@ -13,12 +13,11 @@ export const ProjectsList = () => {
   // const [projects, setProejcts] = useState<CarprojectData[] | null>(null)
   const user = {name: 'Dawid'}
   const dispatch = useDispatch()
-  const _projects:any = useSelector(selectProjects)
+  const projects :any = useSelector(selectProjects)
   const [lastVisible, setLastVisible] = useState<any>(null)
   //const projects = useProjects(user ,3, dispatch)
   const projectsRef = collectionGroup(db, 'projects')
   const projectsQuery = query(projectsRef,  limit(3), orderBy('createdAt', 'desc'),)
-
 
   useEffect(()=> {
     const getProjects = async () => {
@@ -26,7 +25,7 @@ export const ProjectsList = () => {
           console.log('se') 
             dispatch(setProjectsState(snapchot.docs.map((doc, i)=> {
                 return doc.data()
-            })))  
+            })))
         })
 
         const documentSnapshots = await getDocs(projectsQuery);
@@ -36,12 +35,14 @@ export const ProjectsList = () => {
     getProjects()
   }, [])
 
+  console.log(projects)
+
   return (
     <div className='projects'>
-      {_projects&&
-        _projects.projects?.map((project:any, id:number)=> {
+      {projects&&
+        projects?.map((project:any, id:number)=> {
           return (
-            <Project lastVisible={lastVisible} setLastVisible={setLastVisible} project={project} idInApp={id} projectsCount={_projects.projects.length}/>
+            <Project key={id} lastVisible={lastVisible} setLastVisible={setLastVisible} project={project} idInApp={id} projectsCount={projects.length}/>
           )
         })
       }

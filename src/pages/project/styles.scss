@@ -7,7 +7,7 @@
     
     .projectPage__nav {
         width: 100vw;
-        height: 60px;
+        height: 10vh;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -27,7 +27,7 @@
         display: flex;
         justify-content: space-between;
         width: 100vw;
-        height: calc(100vh - 50px);
+        height: calc(90vh);
         background-color: rgb(19, 18, 18);
 
         .projectPage__main_content {
@@ -63,16 +63,17 @@
             }   
 
             .projectPage__main_content-info{
-                margin-top: 20px;
+                margin-top: 30px;
                 background-color: rgb(26, 26, 26);
                 z-index: 5;
                 width: 100%;
-                max-height: 100%;
+               // max-height: 100%;
+                height: auto;
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
-                margin-left: 10px;
-                padding-bottom:300px;
+                justify-content: space-between;
+                margin-left: 0px;
                 border-radius: 10px;
                 margin-bottom: 20px;
     
@@ -83,8 +84,27 @@
                     font-weight: 600;
                 }
 
-                p{
-                    margin-left: 20px;
+                .description{
+                    margin: 10px 20px;
+                }
+
+                .projectPage__main_content-info-links {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    width: calc(100% - 40px);
+                    margin: 20px;
+
+                    .link {
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+            
+                        
+                        .link-type {
+                            
+                        }
+                    }
                 }
 
                 .projectPage__main_content-info-contaier {
@@ -104,7 +124,7 @@
 
                         display: flex;
                         align-items: center;
-                        gap:15px;
+                        gap:10px;
 
                         &:hover {
                             cursor: pointer;
@@ -152,7 +172,7 @@
         left: calc((100%/2) - 200px);
         //right: 20px;
         border-radius: 15px;
-        display: flex;
+        display: none;
         align-items: center;
         justify-content: space-between;
 

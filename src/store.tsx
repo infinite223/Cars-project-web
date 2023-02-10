@@ -10,10 +10,14 @@ export default configureStore({
     loading: loadingSlice,
     projects: projectsSlice
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 })
 
 export interface RootStore {
     message: {prompt:MessageStore},
     loading: LoadingStore,
-    projects: CarprojectData[]
+    projects: {projects:CarprojectData[] }
 } 

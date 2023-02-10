@@ -7,10 +7,11 @@ import { useEffect, useState } from 'react';
 import { CarprojectData } from '../../utils/types';
 import { IoIosArrowBack } from 'react-icons/io'
 import { getColorsCircle } from '../../utils/functions/colorsCircle';
-import { BsFillShareFill, BsPause, BsPlay, BsThreeDotsVertical } from 'react-icons/bs'
+import { BsFillShareFill, BsInstagram, BsPause, BsPlay, BsThreeDotsVertical, BsYoutube } from 'react-icons/bs'
 import { FiSend, FiHeart } from 'react-icons/fi'
 import { CircleGradient } from './circle';
 import { useAudio } from '../../hooks/useAudio';
+import { AiFillFacebook } from 'react-icons/ai';
 
 export const ProjectPage = () => {
   const { logout, user }:any =  useAuth()  
@@ -28,7 +29,7 @@ export const ProjectPage = () => {
   console.log(playing, toggle)
 
   const colors = car.performance && getColorsCircle(car.performance[0].value, car.performance[0].type)
-  console.log(user)
+  console.log(car.links)
   return (
     <motion.div className='projectPage' animate={{opacity:[0.6, 1]}}>
         <nav className='projectPage__nav'>
@@ -62,8 +63,6 @@ export const ProjectPage = () => {
 
             <motion.div className='projectPage__main_content-info'>
               <h1>Podstawowe informacjie</h1>   
-              <p>{car.description}  random text dsadsad</p>
-
               <div className='projectPage__main_content-info-contaier'>
                 {car.soundCheck&&<div className='soundcheck' onClick={toggle}>
                   {playing?<BsPause size={22} />:<BsPlay size={22}/>}
@@ -80,6 +79,22 @@ export const ProjectPage = () => {
                             >
                             {car.history.length===0?'STOCK':'STAGE '+car.history.length}   
                 </div>}
+              </div>
+              <div className='description'>{car.description}random text dsadsad</div>
+
+              <div className='projectPage__main_content-info-links'>
+              <div className='link' style={{color:car.links.yt?'white':'gray'}}>
+                  <BsYoutube size={20}/>
+                  <div className='link-type'>Youtube</div>
+                </div>
+                <div className='link' style={{color:car.links.yt?'white':'gray'}}>
+                  <BsInstagram size={20}/>
+                  <div className='link-type'>Instagram</div>
+                </div>
+                <div className='link' style={{color:car.links.yt?'white':'gray'}}>
+                  <AiFillFacebook size={22}/>
+                  <div className='link-type'>Facebook</div>
+                </div>
               </div>
             </motion.div>
           </motion.div>

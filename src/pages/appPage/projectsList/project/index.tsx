@@ -33,9 +33,10 @@ export const Project:React.FC<Props> = ({project: {car, author, id, createdAt, p
 
 
     const updateProjects = async () => {
+        console.log(projectsCount)
         if(projectsCount==idInApp+1){
 
-            if(projects.projects?.length){
+            if(projects?.length){
                 console.log('tuu')
 
                 const next = query(projectsRef, orderBy('createdAt', 'desc'), startAfter(lastVisible), limit(2))
@@ -47,7 +48,7 @@ export const Project:React.FC<Props> = ({project: {car, author, id, createdAt, p
                             return doc.data()
                         })
                         console.log(nextProjects)
-                        dispatch(setProjectsState(projects.projects.concat(nextProjects)))
+                        dispatch(setProjectsState(projects.concat(nextProjects)))
                         const documentSnapshots = await getDocs(next);
                         setLastVisible(documentSnapshots.docs[documentSnapshots.docs.length-1])
                     }    
