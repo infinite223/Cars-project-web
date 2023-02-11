@@ -157,6 +157,18 @@
                 font-size: 22px;
                 font-weight: 600;
             }
+
+            .projectPage__main_history-empty {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                font-size: 25px;
+                font-weight: 600;
+                color: rgba(156, 153, 153, .7);
+            }
         }
     }
 

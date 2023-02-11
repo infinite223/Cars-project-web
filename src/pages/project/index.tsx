@@ -12,10 +12,12 @@ import { FiSend, FiHeart } from 'react-icons/fi'
 import { CircleGradient } from './circle';
 import { useAudio } from '../../hooks/useAudio';
 import { AiFillFacebook } from 'react-icons/ai';
+import { OptionsProject } from './optionsProject';
 
 export const ProjectPage = () => {
   const { logout, user }:any =  useAuth()  
   const navigate = useNavigate()
+  const [showOptions, setShowOptions] = useState(false)
   const location = useLocation();
 
   useEffect(() => {
@@ -32,6 +34,7 @@ export const ProjectPage = () => {
   console.log(car.links)
   return (
     <motion.div className='projectPage' animate={{opacity:[0.6, 1]}}>
+        <OptionsProject showOptions={showOptions} setShowOptions={setShowOptions}/>
         <nav className='projectPage__nav'>
           <div className='projectPage__nav-main'>
             <motion.div whileHover={colors?{color: colors[0]}:{}}>
@@ -43,7 +46,7 @@ export const ProjectPage = () => {
             </div>
           </div>
           
-          <BsThreeDotsVertical style={{padding:'0 10px'}} color='white' size={24} className="icon"/>
+          <BsThreeDotsVertical onClick={() => setShowOptions(true)} style={{padding:'0 10px'}} color='white' size={24} className="icon"/>
         </nav>
         <div className='projectPage__main'>
           <motion.div className='projectPage__main_content'>
@@ -109,8 +112,13 @@ export const ProjectPage = () => {
             //   width: '600px'
             // }}
           >
-            <h1>Przebieg modyfikacji</h1>
-
+            {car.history[0]?<>
+              <h1>Przebieg modyfikacji</h1>
+            </>:
+            <div className='projectPage__main_history-empty'>
+              Brak modyfikacji
+            </div>
+            }
           </motion.div>
         </div>
         <motion.footer className='projectPage__footer'>

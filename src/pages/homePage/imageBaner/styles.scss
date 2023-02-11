@@ -9,7 +9,8 @@
 
     background-image: url('https://images.pexels.com/photos/9481680/pexels-photo-9481680.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
     background-size: cover;
-    
+    object-fit: cover;
+    background-attachment: fixed;
     // background-color: rgb(216, 219, 216);
     // background: linear-gradient(170deg, rgb(1, 104, 32) 30%, rgb(6, 141, 24) 40%, rgba(255,255,255,1) 65%);
 	animation: gradient 15s ease infinite;
