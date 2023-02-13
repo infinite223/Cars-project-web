@@ -1,0 +1,87 @@
+.reportModal {
+    width: 100vw;
+    height: 100vh;
+
+    background-color: rgba(24, 24, 24, .4);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+
+    .reportModal__container {
+        width: 400px;
+        height: auto;
+
+        background-color: rgb(14, 14, 14);
+        border-radius: 10px;
+
+        color: white;
+        text-align: left;
+        padding: 5px 25px;
+
+        h1 {
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        .reportModal__options {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+
+            width: 100%;
+            text-align: left;
+            gap: 10px;
+            margin: 10px 0;
+
+            .reportModal__options-item {
+                width: 100%;
+                padding: 7px 12px;
+                background-color: rgba(38, 38, 38, .5);
+                border-radius: 5px;
+
+                &:hover {
+                    background-color: #273;
+                    cursor: pointer;
+                    transition: all .3s ease-in-out;
+                }
+            }
+        }
+
+        .reportModal__options-message {
+            outline: none;
+            padding: 7px 12px;
+            background-color: rgba(38, 38, 38, .5);
+            border-radius: 5px;
+            width: calc(99%);
+            color: white;
+            margin: 0px -10px;
+            border-color: rgb(36, 34, 34);
+            resize: none;
+
+            &::placeholder {
+                color: gray;
+            }
+        }
+
+        .reportModal__container-button {
+            padding: 5px 12px;
+            background-color:  rgb(148, 15, 8);
+            align-self: flex-end;
+
+            width: max-content;
+            margin-left: auto;
+            margin-right: -10px;
+            margin-bottom: 5px;
+            margin-top: 10px;
+            border-radius: 5px;
+
+            &:hover {
+                cursor: pointer;
+                background-color: rgb(42, 41, 41);
+                transition: all .3s linear;
+            }
+        }
+    }
+}

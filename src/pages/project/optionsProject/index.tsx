@@ -4,15 +4,22 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { FaRegShareSquare } from 'react-icons/fa'
 import { BiCopy } from 'react-icons/bi'
 import { MdReportGmailerrorred } from 'react-icons/md'
+import { ReportModal } from '../../../modals/reportModal'
+import { useState } from 'react';
 
 interface Props {
     showOptions: boolean,
-    setShowOptions: (value:boolean) => void
+    setShowOptions: (value:boolean) => void,
+    projectId:string
 }
 
-export const OptionsProject:FC<Props> = ({setShowOptions, showOptions}) => {
+export const OptionsProject:FC<Props> = ({setShowOptions, showOptions, projectId}) => {
+
+    const [showModal, setShowModal] = useState(false)
+
     return (
         <AnimatePresence>
+            <ReportModal setShowModal={setShowModal} showModal={showModal} type={'project'} projectId={projectId}/>
             {showOptions &&
                 <motion.div 
                     onClick={()=>setShowOptions(false)} 
@@ -27,6 +34,7 @@ export const OptionsProject:FC<Props> = ({setShowOptions, showOptions}) => {
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
                         exit={{ scale: 0, opacity: 0 }} 
+                        onClick={(e)=>e.stopPropagation()}
                         className='optionsProject__container'
                     >
                         <div className='optionsProject__container-option'>          
@@ -37,9 +45,9 @@ export const OptionsProject:FC<Props> = ({setShowOptions, showOptions}) => {
                             <BiCopy size={20}/>
                             <div>Kopiuj link</div>
                         </div>
-                        <div className='optionsProject__container-option red'>
+                        <div className='optionsProject__container-option red' onClick={() => {setShowModal(true); setShowOptions(false)}}>
                             <MdReportGmailerrorred size={20}/>
-                            <div>Zgłoś ten projekt</div>
+                            <div>Zgłoś projekt</div>
                         </div>
                     </motion.div>
                 </motion.div>

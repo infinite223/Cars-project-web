@@ -28,13 +28,11 @@ export const ProjectPage = () => {
 
   const {car, id, place, createdAt, author} = location.state as CarprojectData;
   const { toggle, playing }:any  = useAudio(car.soundCheck)
-  console.log(playing, toggle)
-
   const colors = car.performance && getColorsCircle(car.performance[0].value, car.performance[0].type)
-  console.log(car.links)
+
   return (
     <motion.div className='projectPage' animate={{opacity:[0.6, 1]}}>
-        <OptionsProject showOptions={showOptions} setShowOptions={setShowOptions}/>
+        <OptionsProject projectId={id} showOptions={showOptions} setShowOptions={setShowOptions}/>
         <nav className='projectPage__nav'>
           <div className='projectPage__nav-main'>
             <motion.div whileHover={colors?{color: colors[0]}:{}}>

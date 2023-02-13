@@ -21,6 +21,12 @@
             align-items: center;
             gap:10px;
         }
+
+        .icon {
+            &:hover {
+                cursor: pointer;
+            }
+        }
     }
 
     .projectPage__main {
@@ -65,7 +71,7 @@
             .projectPage__main_content-info{
                 margin-top: 30px;
                 background-color: rgb(26, 26, 26);
-                z-index: 5;
+                //z-index: 2;
                 width: 100%;
                // max-height: 100%;
                 height: auto;

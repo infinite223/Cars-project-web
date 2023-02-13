@@ -16,17 +16,27 @@ export const ProjectOptions:React.FC<ProjectOptionsProps> = ({showOptions, setSh
         showOptions&&setTimeout(()=>setShowOptions(false), 7000)
     }, [showOptions])
 
+    const lolxD = (e:any) =>  {
+        if (!e) var e:any = window.event;
+        e.cancelBubble = true;
+        if (e.stopPropagation) {
+            e.stopPropagation();
+            setShowOptions(false)
+        }
+    }
+
   return (
     <AnimatePresence>
         {showOptions &&
+
             <motion.div className='project_background' 
                 key="modal"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                onClick={()=> setShowOptions(false)}
-            >
-                <motion.div className='project_options'
+                onClick={(e) => setShowOptions(false)}
+            >         
+             <motion.div onClick={(e)=> e.stopPropagation()} className='project_options'
                     initial={{ opacity: 0, scale: 0 }}
                     animate={{ opacity: 1, scale:1 }}
                     exit={{ scale: 0, opacity: 0  }}
@@ -41,11 +51,11 @@ export const ProjectOptions:React.FC<ProjectOptionsProps> = ({showOptions, setSh
                     </div>
                     <div className='option red'>
                         <MdReportGmailerrorred size={20}/>
-                        <div>Zgłoś ten projekt</div>
+                        <div>Zgłoś projekt</div>
                     </div>
-                </motion.div>
-                
+                </motion.div>       
             </motion.div>
+           
         }
     </AnimatePresence>
   )
