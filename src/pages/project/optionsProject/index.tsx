@@ -41,7 +41,7 @@ export const OptionsProject:FC<Props> = ({setShowOptions, showOptions, projectId
                             <FaRegShareSquare size={18}/>
                             <div>Udostępnij w aplikacji</div>
                         </div>
-                        <div className='optionsProject__container-option'>
+                        <div className='optionsProject__container-option' onClick={()=> navigator.clipboard.writeText(('xdd'))}>
                             <BiCopy size={20}/>
                             <div>Kopiuj link</div>
                         </div>

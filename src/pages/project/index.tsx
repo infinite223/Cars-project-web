@@ -49,7 +49,8 @@ export const ProjectPage = () => {
         <div className='projectPage__main'>
           <motion.div className='projectPage__main_content'>
             <div className='projectPage__main_content-image'>
-              {car.imagesCar.map((image) => <img className='projectPage__main_content-image'  src={image.url}/>)}
+              <div className='blur'/>
+              <img className='projectPage__main_content-image-img'  src={car.imagesCar[0].url}/>
             </div>
             <div className='projectPage__main_info-circles'>
               {car.performance?.map((data, i) => {
