@@ -83,8 +83,47 @@
                 justify-content: space-around;
             }   
 
+            .projectPage__footer {
+                width: 100%;
+                z-index: 6;
+                background-color: rgb(26, 26, 26);
+                align-self: center;
+                padding: 15px 0;
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-top: 20px;
+        
+                .projectPage__footer-icons {
+                    color:rgb(217, 214, 214);
+                    display: flex;
+                    margin:0px 20px;
+                    gap:15px;
+                    align-items: center;
+                }
+        
+                .projectPage__footer-author {
+                    display: flex;
+                    align-items: center;
+                    gap:10px;
+                    margin-right: 15px;
+        
+                    .authorText {
+                        color: rgb(213, 209, 209);
+                    }
+        
+                    .authorImg {
+                        width: 30px;
+                        height: 30px;
+                        border-radius: 50px;
+                    }
+                }
+            }
+
+
             .projectPage__main_content-info{
-                margin-top: 30px;
+                margin-top: 20px;
                 background-color: rgb(26, 26, 26);
                 //z-index: 2;
                 width: 100%;
@@ -138,6 +177,7 @@
                     .soundcheck {
                         color:white;
                         padding: 5px 15px;
+                        padding-left: 10px;
                         border-radius: 12px;
                         font-size: 16px;
                         letter-spacing: 1px;  
@@ -160,6 +200,17 @@
                         letter-spacing: 1px;          
                     }
                 }
+            }
+        }
+
+        .map {
+            width: 100%;
+
+            .mapView {
+                width: calc(100% - 0px);
+                height: 70px;
+                margin-bottom: 20px;
+                border-radius: 5px;
             }
         }
 
@@ -189,48 +240,6 @@
                 font-size: 25px;
                 font-weight: 600;
                 color: rgba(156, 153, 153, .7);
-            }
-        }
-    }
-
-    .projectPage__footer {
-        position: fixed;
-        bottom: 20px;
-
-        width: 400px;
-        z-index: 6;
-        height: 50px;
-        background-color: rgb(32, 32, 32);
-        align-self: center;
-        left: calc((100%/2) - 200px);
-        //right: 20px;
-        border-radius: 15px;
-        display: none;
-        align-items: center;
-        justify-content: space-between;
-
-        .projectPage__footer-icons {
-            color:rgb(217, 214, 214);
-            display: flex;
-            margin:0px 15px;
-            gap:15px;
-            align-items: center;
-        }
-
-        .projectPage__footer-author {
-            display: flex;
-            align-items: center;
-            gap:10px;
-            margin-right: 15px;
-
-            .authorText {
-                color: rgb(213, 209, 209);
-            }
-
-            .authorImg {
-                width: 30px;
-                height: 30px;
-                border-radius: 50px;
             }
         }
     }
