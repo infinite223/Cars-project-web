@@ -32,7 +32,7 @@ export const ProjectPage = () => {
 
   return (
     <motion.div className='projectPage' animate={{opacity:[0.6, 1]}}>
-        <OptionsProject projectId={id} showOptions={showOptions} setShowOptions={setShowOptions}/>
+        <OptionsProject projectId={id} carData={car} showOptions={showOptions} setShowOptions={setShowOptions}/>
         <nav className='projectPage__nav'>
           <div className='projectPage__nav-main'>
             <motion.div whileHover={colors?{color: colors[0]}:{}}>
@@ -46,7 +46,9 @@ export const ProjectPage = () => {
           
           <BsThreeDotsVertical onClick={() => setShowOptions(true)} style={{padding:'0 10px'}} color='white' size={24} className="icon"/>
         </nav>
+
         <div className='projectPage__main'>
+          
           <motion.div className='projectPage__main_content'>
             <div className='projectPage__main_content-image'>
               <div className='blur'/>

@@ -1,0 +1,25 @@
+.createProjectModal {
+    width: 100vw;
+    height: 100vh;
+
+    background-color: rgba(24, 24, 24, .4);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    z-index: 12;
+
+    .createProjectModal_container {
+        width: 400px;
+        height: auto;
+
+        background-color: rgb(20, 20, 20);
+        border-radius: 10px;
+
+        color: white;
+        text-align: left;
+        padding: 5px 25px;
+
+    }
+}

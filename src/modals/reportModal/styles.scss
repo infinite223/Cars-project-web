@@ -8,21 +8,43 @@
     align-items: center;
     justify-content: center;
     position: absolute;
+    z-index: 12;
 
     .reportModal__container {
         width: 400px;
         height: auto;
 
-        background-color: rgb(14, 14, 14);
+        background-color: rgb(20, 20, 20);
         border-radius: 10px;
 
         color: white;
         text-align: left;
         padding: 5px 25px;
 
-        h1 {
-            font-size: 20px;
-            font-weight: 500;
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+
+            h1 {
+                font-size: 20px;
+                font-weight: 500;
+                margin: 20px 0;
+            }
+
+            .close-icon {   
+                margin-right: -5px;
+                padding: 5px;
+                border-radius: 15px;
+                background-color: rgba(56, 56, 56, 0.5);
+
+                &:hover {
+                    background-color: rgba(77, 76, 76, 0.5);
+                    transition: all .3s ease-in-out;
+                    cursor: pointer;
+                }
+            }
         }
 
         .reportModal__options {
@@ -36,13 +58,13 @@
             margin: 10px 0;
 
             .reportModal__options-item {
-                width: 100%;
+                width: 97%;
                 padding: 7px 12px;
                 background-color: rgba(38, 38, 38, .5);
-                border-radius: 5px;
+
 
                 &:hover {
-                    background-color: #273;
+                    background-color: rgb(41, 41, 41) !important;
                     cursor: pointer;
                     transition: all .3s ease-in-out;
                 }
@@ -53,15 +75,19 @@
             outline: none;
             padding: 7px 12px;
             background-color: rgba(38, 38, 38, .5);
-            border-radius: 5px;
-            width: calc(99%);
+           // border-radius: 5px;
+            width: calc(97%);
             color: white;
-            margin: 0px -10px;
+            margin: 0px -8px;
             border-color: rgb(36, 34, 34);
+            font-size: 17px;
             resize: none;
+            margin-bottom: 10px;
 
             &::placeholder {
                 color: gray;
+                font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                font-size: 17px;
             }
         }
 
@@ -72,9 +98,8 @@
 
             width: max-content;
             margin-left: auto;
-            margin-right: -10px;
-            margin-bottom: 5px;
-            margin-top: 10px;
+            margin-right: -5px;
+            margin-bottom: 10px;
             border-radius: 5px;
 
             &:hover {

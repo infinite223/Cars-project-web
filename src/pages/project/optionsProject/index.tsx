@@ -6,20 +6,22 @@ import { BiCopy } from 'react-icons/bi'
 import { MdReportGmailerrorred } from 'react-icons/md'
 import { ReportModal } from '../../../modals/reportModal'
 import { useState } from 'react';
+import { Car } from '../../../utils/types'
 
 interface Props {
     showOptions: boolean,
     setShowOptions: (value:boolean) => void,
-    projectId:string
+    projectId:string,
+    carData: Car
 }
 
-export const OptionsProject:FC<Props> = ({setShowOptions, showOptions, projectId}) => {
+export const OptionsProject:FC<Props> = ({setShowOptions, showOptions, projectId, carData}) => {
 
     const [showModal, setShowModal] = useState(false)
 
     return (
         <AnimatePresence>
-            <ReportModal setShowModal={setShowModal} showModal={showModal} type={'project'} projectId={projectId}/>
+            <ReportModal name={carData.CarMake+' '+carData.model} setShowModal={setShowModal} showModal={showModal} type={'project'} projectId={projectId}/>
             {showOptions &&
                 <motion.div 
                     onClick={()=>setShowOptions(false)} 
@@ -41,7 +43,7 @@ export const OptionsProject:FC<Props> = ({setShowOptions, showOptions, projectId
                             <FaRegShareSquare size={18}/>
                             <div>Udostępnij w aplikacji</div>
                         </div>
-                        <div className='optionsProject__container-option' onClick={()=> navigator.clipboard.writeText(('xdd'))}>
+                        <div className='optionsProject__container-option' onClick={()=> navigator.clipboard.writeText(carData.CarMake+' '+carData.model)}>
                             <BiCopy size={20}/>
                             <div>Kopiuj link</div>
                         </div>

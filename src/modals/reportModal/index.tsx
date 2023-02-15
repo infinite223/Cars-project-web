@@ -9,12 +9,15 @@ import { db } from '../../firebase/config';
 import { useDispatch } from 'react-redux';
 import { setLoading } from '../../reducers/loadingSlice';
 import { setMessage } from '../../reducers/messageSlice';
+import { Car, User } from '../../utils/types';
+import { IoMdClose } from 'react-icons/io';
 
 interface Props {
     showModal: boolean,
     setShowModal: (value:boolean) => void,
     type: 'user' | 'project' | 'spot',
-    projectId:string
+    projectId:string,
+    name:string 
 }
 
 const projectOptions = [
@@ -23,12 +26,12 @@ const projectOptions = [
     'Projekt łamie regulamin'
 ]
 
-export const ReportModal:FC<Props> = ({ setShowModal, showModal, type, projectId }) => {
+export const ReportModal:FC<Props> = ({ setShowModal, showModal, type, projectId, name }) => {
     const dispatch = useDispatch()
     const [selectedOptions, setSelectedOptions] = useState({0:false, 1:false, 2:false})
     const [reportText, setReportText] = useState('')
     const typeReportDisplay = type==='project'?'projekt':type==='user'?'użytkownika':'spotkanie'
-    
+    const validForm = selectedOptions[0] || selectedOptions[1] || selectedOptions[2] || reportText.length > 4
     const sendReport = () => {
         dispatch(setLoading(true))
         const reportRef = doc(db, `Reports/${projectId}`)
@@ -70,18 +73,25 @@ export const ReportModal:FC<Props> = ({ setShowModal, showModal, type, projectId
             exit={{ opacity: 0 }}
         >
              <div className='reportModal__container' onClick={(e) => e.stopPropagation()}>
-                <h1>
-                   Zgłoś {typeReportDisplay}
-                </h1>
+                <nav>
+                    <h1>
+                        Zgłoś {typeReportDisplay} 
+                        <span style={{color:'rgb(210, 30, 30)'}}>
+                        {' '+name}
+                        </span>
+                    </h1>
 
-                Zaznacz dlaczego chcesz głosić {typeReportDisplay}?
+                    <IoMdClose onClick={()=> setShowModal(false)} size={24} className='close-icon'/>
+                </nav>
+
+                Wybierz dlaczego chcesz zgłosić {typeReportDisplay}?
 
                 <div className='reportModal__options'>
                     {
                         projectOptions.map((option, index) => (
                             <div 
                                 className='reportModal__options-item' 
-                                style={{backgroundColor: selectedOptions[index as keyof typeof selectedOptions]?'#273':'rgba(38, 38, 38, .5)'}}
+                                style={{backgroundColor: selectedOptions[index as keyof typeof selectedOptions]?'rgb(41, 41, 41)':'rgba(38, 38, 38, .5)'}}
                                 onClick={() => setSelectedOptions({...selectedOptions,[index as keyof typeof selectedOptions]:!selectedOptions[index as keyof typeof selectedOptions]})}
                             >
                                 {option}
@@ -91,12 +101,14 @@ export const ReportModal:FC<Props> = ({ setShowModal, showModal, type, projectId
                 </div>
                 <textarea onChange={(text)=> setReportText(text.target.value)} rows={4} className='reportModal__options-message'  placeholder='Jeżeli jest to coś innego, napisz tutaj'/>
 
+                {validForm &&    
                 <div 
                     onClick={() => sendReport()} 
                     className='reportModal__container-button'
+                    
                 >
                     Wyślij
-                </div>
+                </div>}
 
              </div>
          </motion.div>

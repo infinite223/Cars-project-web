@@ -1,13 +1,11 @@
 .optionsProject {
     width: 100vw;
     height: 100vh;
-   // position: relative;
+    position: absolute;
     background-color: rgba(24, 24, 24, .4);
     z-index: 12;
 
     .optionsProject__container {
-        z-index: 12;
-
         position: absolute;
         right: 40px;
         top:40px;
