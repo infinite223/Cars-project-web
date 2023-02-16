@@ -18,10 +18,12 @@ import { GrLineChart } from 'react-icons/gr'
 import { IoPersonCircleOutline, IoPersonCircleSharp } from 'react-icons/io5';
 import { IoMdCreate } from 'react-icons/io';
 import { BiMessageSquareAdd } from 'react-icons/bi';
+import { CreateProjectModal } from './../../modals/createProjectModal/index';
 
 
 export const AppPage = () => {
   const { logout, user, userType }:any =  useAuth()  
+  const [showCreateProject, setShowCreateProject] = useState(false)
   const navigate = useNavigate()
   const { pathname } = useLocation();
   console.log(user)
@@ -37,6 +39,7 @@ export const AppPage = () => {
 
   return (
     <div className='app'>
+      {/* <CreateSpotModal/> */}
         {/* {isMobile&& <>
             <h1>Wesja przeglądarkowa aplikacji jest dostępna tylko na urządzenia z większym ekranem....</h1>
             <p>Zalecamy pobranie darmowej aplikacji Cars designs</p>
@@ -45,7 +48,7 @@ export const AppPage = () => {
           <img src={nameApp} className="app-navigation-logo"/>
 
         <div className='app-navigation-buttons'>
-          <div className='nav-button'>
+          <div className='nav-button' onClick={()=> navigate('../createProject')}>
            <BiMessageSquareAdd size={20}/> 
            <div>projekt</div>
            </div>

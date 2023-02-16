@@ -140,9 +140,9 @@ export const ProjectPage = () => {
                       lng: place.longitude?place.longitude:0
                     }}
                     mapContainerClassName='mapView'
-                    //onClick={onMapClick}
                     onLoad={(map) =>setMapInstance(map)}
                   >
+                    <div className='mapView__city'>{place.city}</div>
                       {mapInstance &&<Marker
                           position={{
                               lat: place.latitude?place.latitude:0,

@@ -1,25 +1,68 @@
-.createProjectModal {
+.createProject {
     width: 100vw;
     height: 100vh;
 
-    background-color: rgba(24, 24, 24, .4);
+   // background-color: rgba(32, 32, 32, 0.4);
 
     display: flex;
     align-items: center;
     justify-content: center;
-    position: absolute;
-    z-index: 12;
+    flex-direction: column;
 
-    .createProjectModal_container {
-        width: 400px;
-        height: auto;
+    .createProject-mainNav {
+        background-color: rgb(26, 26, 26);
+        width: 100vw;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        color: white;
 
-        background-color: rgb(20, 20, 20);
-        border-radius: 10px;
+        .back-icon {
+            &:hover {
+                color: #293;
+                transition: all .3s ease-in-out;
+                cursor: pointer;
+            }
+        }
+
+        h1 {
+            text-align: left;
+            margin-left: 0px;
+            font-size: 20px;
+        }
+    }
+
+    .createProject-container {
+        width: 100%;   
+        height: calc(100vh - 60px);
 
         color: white;
         text-align: left;
-        padding: 5px 25px;
+        display: flex;
+
+        nav {
+            width: 300px;
+            background-color: rgb(35, 35, 35);
+            display: flex;
+    
+            flex-direction: column;
+
+            .link {
+                font-size: 17px;
+                padding: 8px 15px;
+
+                &:hover {
+                    cursor: pointer;
+                    color: white !important;
+                    transition: all .3s ease-in-out;
+                }
+            }
+        }
+
+        .createProject-container_content {
+            width: calc(100% - 300px);
+
+        }
 
     }
 }

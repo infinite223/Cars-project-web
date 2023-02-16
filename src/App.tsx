@@ -28,6 +28,9 @@ import { PolicyLink } from './pages/linksPage/Links/policy';
 import { AboutLink } from './pages/linksPage/Links/about';
 import { Firststart } from './pages/appPage/firststart';
 import { ErrorResponsive } from './pages/errorResponsive';
+import { CreateProjectModal } from './modals/createProjectModal/index';
+import { Basicinfo } from './modals/createProjectModal/stages/basicInfo';
+import { Performance } from './modals/createProjectModal/stages/performance';
 
 
 function App() {
@@ -37,13 +40,16 @@ function App() {
     createRoutesFromElements(
       <Route path="/">
         <Route index element={<HomePage/>} />
-          <Route path="start" element={user?<AppPage/>:<StartPage/>}>
+          <Route path="start" element={user?<AppPage/>:<StartPage/>}>            
             <Route index element={user?<ProjectsList/>: <LoginForm/>} />
             <Route errorElement path="register" element={ <RegisterForm/>} />
             <Route errorElement path="firststart" element={ <Firststart/>} />
-            {/* <Route path='projects'  element={ <ProjectsList/>} /> */}
             <Route path='searchProjects' element={<SearchProjects/>}/>
             <Route path="meeting" element={ <LoginForm/>} />
+          </Route>
+          <Route path='createProject' element={<CreateProjectModal/>} >
+            <Route index element={<Basicinfo/>} />
+            <Route path="performance" element={ <Performance/>} />
           </Route>
           <Route path='errorResponsive' element={<ErrorResponsive/>}/>
           <Route path="links" element={<Links/>} >
@@ -52,11 +58,6 @@ function App() {
             <Route errorElement path="news" element={ <NewsLink/>} />
             <Route errorElement path="about" element={ <AboutLink/>} />
           </Route>
-          {/* <Route path="app" element={<AppPage/>}>
-            <Route index element={ <ProjectsList/>} />
-            <Route path='searchProjects' element={<SearchProjects/>}/>
-            <Route path="meeting" element={ <LoginForm/>} />
-          </Route> */}
           <Route path="project/:id" element={<ProjectPage/>}/>
       </Route>
     )
