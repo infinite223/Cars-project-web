@@ -11,7 +11,6 @@ export const Message = () => {
     const { prompt } = useSelector((state: RootStore) => state.message)
 
     const dispatch = useDispatch()
-    console.log(prompt)
     useEffect(()=>{
       if(prompt.show){
         setTimeout(()=> {

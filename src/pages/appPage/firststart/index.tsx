@@ -27,13 +27,13 @@ export const Firststart = () => {
       setImage(e.target.files[0]);
    }
 
-  useEffect(()=> {
-    if(!user){
-      navigate('/start')
-    }
-    if(setUserType==='firebase')
-      navigate('/start')
-  }, [user])
+  // useEffect(()=> {
+  //   if(!user){
+  //     navigate('/start')
+  //   }
+  //   if(setUserType==='firebase')
+  //     navigate('/start')
+  // }, [user])
 
   const tryUpdateProfile = (e:any) => {
     e.preventDefault();

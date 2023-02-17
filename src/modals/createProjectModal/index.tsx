@@ -61,6 +61,7 @@ export const CreateProjectModal:FC<Props> = ({}) => {
             </nav>
             <div className='createProject-container_content'>
               <Outlet/>
+              {/* i w tle będzie pokazuwało aktualny stan projektu, jak wygląda wersja na PC i może mobilna xD */}
             </div>
           </div>
         </motion.div>

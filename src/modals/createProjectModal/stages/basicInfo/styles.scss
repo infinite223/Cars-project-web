@@ -1,6 +1,8 @@
 .basicinfo {
     color: white;
     margin: 20px;
+    position: relative;
+    height: calc(100% - 40px);
 
     .performance-nav {
         margin: 0 10px;

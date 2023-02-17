@@ -3,12 +3,14 @@ import loadingSlice, { LoadingStore } from './reducers/loadingSlice'
 import { CarprojectData } from './utils/types'
 import messageSlice, { MessageStore } from './reducers/messageSlice'
 import projectsSlice from './reducers/projectsSlice'
+import creatingProjectSlice from './reducers/creatingProjectSlice'
 
 export default configureStore({
   reducer: {
     message: messageSlice,
     loading: loadingSlice,
-    projects: projectsSlice
+    projects: projectsSlice,
+    createProject: creatingProjectSlice
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -20,4 +22,5 @@ export interface RootStore {
     message: {prompt:MessageStore},
     loading: LoadingStore,
     projects: {projects:CarprojectData[] }
+    creatingProject: CarprojectData
 } 
