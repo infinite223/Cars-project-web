@@ -9,6 +9,7 @@ export const Footer = () => {
     
   return (
     <footer className='footer_conteiner'>
+        <div>
         <div className='footer_conteiner_main'>
             <div className='footer_conteiner_main_section'>
                 <h2>
@@ -53,31 +54,30 @@ export const Footer = () => {
 
             <div className='footer_conteiner_main_section'>
                 <h2>
-                    Zapisz mnie
+                    Dostępność
                 </h2>
 
                 <p>
-                   Dostawaj powiadomienia o nowościach
+                    Android
                 </p>
-                <form>
-                    <input placeholder='Twoje imię'/>
-                    <input placeholder='Email' type={'email'}/>
-
-                    <button>Wyślij</button>
-                </form>
-
+                <p>
+                    Przeglądarka 
+                </p>
+                <p>
+                    W przyszłości IOS
+                </p>
             </div>
         </div>
-
-        <div className='footer_conteiner_links'>
-            <div className='link' onClick={() => navigate('links')}>
-                Regulamin
-            </div>
-            <div className='link' onClick={() => navigate('links/policy')}>
-                Polityka prywatności
-            </div>
-            <div className='link' onClick={() => navigate('links/news')}>
-                Nowości
+            <div className='footer_conteiner_links'>
+                <div className='link' onClick={() => navigate('links')}>
+                    Regulamin
+                </div>
+                <div className='link' onClick={() => navigate('links/policy')}>
+                    Polityka prywatności
+                </div>
+                <div className='link' onClick={() => navigate('links/news')}>
+                    Nowości
+                </div>
             </div>
         </div>
     </footer>

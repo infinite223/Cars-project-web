@@ -97,7 +97,7 @@ export const data = {
 export const ImagesCharts = () =>{
     const navigate = useNavigate()
   return (
-    <motion.div  className='imagesCharts' whileInView={{opacity: [.1, 1]}} viewport={{ once: true }} transition={{ delay: .6 }}>
+    <motion.div  className='imagesCharts' whileInView={{opacity: [.1, 1]}} viewport={{ once: true }} transition={{ delay: .2 }}>
         {/* <div className='imagesCharts-images'/> */}
         <Line 
           options={

@@ -2,7 +2,7 @@ import React from 'react'
 import './styles.scss'
 import { IoReorderThreeOutline } from "react-icons/io5";
 import { AnimatePresence, motion, useCycle } from "framer-motion";
-import nameApp from '../../assets/nameApp.png'
+import nameApp from '../../assets/iconTest.png'
 import linkImage from '../../assets/linkImage.png'
 import useMousePosition from './../../hooks/useMousePosition';
 import backgroundImage from '../../assets/carOnBackground_.png'
@@ -39,7 +39,10 @@ export const PresentationApp:React.FC<{cycleOpen: (value:any) => void}> = ({cycl
                     Motorization brings people together
                 </motion.h1>
                 <p>
-                 Chcesz pokazać innym jak   i projekt samochodu stworzyłeś? to indealne miejsce dla Ciebie!  
+                
+                 {/* Chcesz pokazać innym jak   i projekt samochodu stworzyłeś? */}
+                  Kochasz motoryzacje?
+                  to indealne miejsce dla Ciebie!  
                  więc skorzystaj z Cars designs 
                 </p>
                 <div className='PresentationApp_main_content-buttons'>

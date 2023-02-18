@@ -6,6 +6,7 @@ import googlePlayIcon from './../../../assets/google-play-icon.png'
 export const ImageBaner = () => {
   return (
     <div className='imageBaner'>
+      <div className='blackTransition'/>
       <div className='imageBaner__content'>
         <div className='imageBaner__content-info'>
           <div className='imageBaner__content-info-data'>

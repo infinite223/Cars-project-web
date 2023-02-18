@@ -43,7 +43,9 @@
             margin-right: 2rem;
 
             .PresentationApp_nav_right-logo { 
-                width: 170px;
+                width: 50px;
+                border-radius: 10px;
+                border: 3px solid rgba(194, 193, 193, .5);
 
                 @media (max-width: 480px) {
                     width: 130px;

@@ -21,8 +21,6 @@ export const HomePage = () => {
           <PresentationApp cycleOpen={cycleOpen}/>
         </section>
 
-        <ImageBaner/>
-
         <section style={{height:'auto'}}  >
           <LookApp/>
         </section>
@@ -35,7 +33,9 @@ export const HomePage = () => {
           <WhatOffers/>
         </section>
 
-        <section>
+        <ImageBaner/>
+
+        <section style={{height:'auto'}}>
          <Footer/>
         </section>
     </div>

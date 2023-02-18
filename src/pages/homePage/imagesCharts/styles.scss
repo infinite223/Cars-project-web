@@ -82,11 +82,12 @@
 
         h2 {
             margin-top: 50px;
-            font-size: 30px;
-            font-weight: 900;
-       
+            font-size: 25px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
            // text-align: left;
-            color: rgb(107, 107, 107);
+            // color: rgb(107, 107, 107);
 
             
             @media (max-width: 480px) {
