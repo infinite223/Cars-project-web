@@ -18,12 +18,12 @@
     background-size: 120% 150%;
 
     .blackTransition {
-        background-color: rgb(27, 26, 26);
+        background-color: rgb(19, 19, 19);
         width: 100%;
         height: 100%;
         position: absolute;
         -webkit-mask-image: -webkit-gradient(linear, left bottom, 
-        left top, from(rgb(27, 26, 26)), to(rgba(31, 30, 30, .6)));
+        left top, from(rgb(19, 19, 19)), to(rgba(31, 30, 30, .6)));
     }
 
     @media (max-width: 480px) {
@@ -98,7 +98,7 @@
     }
 
     .imageBaner__content-link {
-        background-color: rgb(27, 26, 26);
+        background-color: rgb(19, 19, 19);
         color: rgb(255, 255, 255);
         padding: 10px 15px;
         border-radius: 10px;

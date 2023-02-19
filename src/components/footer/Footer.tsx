@@ -2,6 +2,7 @@ import './styles.scss'
 
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 export const Footer = () => {
 
@@ -11,7 +12,7 @@ export const Footer = () => {
     <footer className='footer_conteiner'>
         <div>
         <div className='footer_conteiner_main'>
-            <div className='footer_conteiner_main_section'>
+            <motion.div className='footer_conteiner_main_section' whileInView={{opacity: [.1, 1], y:[-100, 0]}} transition={{duration:1}}>
                 <h2>
                     O nas
                 </h2>
@@ -22,9 +23,9 @@ export const Footer = () => {
                 <p>
                     O autorze
                 </p>
-            </div>
+            </motion.div>
 
-            <div className='footer_conteiner_main_section'>
+            <motion.div className='footer_conteiner_main_section' whileInView={{opacity: [.1, 1], y:[-100, 0]}} transition={{duration:1, delay:.15}}>
                 <h2>
                     Kontakt
                 </h2>
@@ -35,9 +36,9 @@ export const Footer = () => {
                 <p>
                     Na instagramie: Cars_designs
                 </p>
-            </div>
+                </motion.div>
 
-            <div className='footer_conteiner_main_section'>
+            <motion.div className='footer_conteiner_main_section' whileInView={{opacity: [.1, 1], y:[-100, 0]}} transition={{duration:1, delay:.3}}>
                 <h2>
                     Nowości
                 </h2>
@@ -50,9 +51,9 @@ export const Footer = () => {
                 <p>
                     Wyszukiwanie projektu po modelu lub marcę
                 </p>
-            </div>
+                </motion.div>
 
-            <div className='footer_conteiner_main_section'>
+            <motion.div className='footer_conteiner_main_section' whileInView={{opacity: [.1, 1], y:[-100, 0]}} transition={{duration:1, delay:.4}}>
                 <h2>
                     Dostępność
                 </h2>
@@ -66,9 +67,9 @@ export const Footer = () => {
                 <p>
                     W przyszłości IOS
                 </p>
-            </div>
+                </motion.div>
         </div>
-            <div className='footer_conteiner_links'>
+            <motion.div className='footer_conteiner_links' whileInView={{opacity: [.1, 1]}} transition={{duration:1, delay:.4}}>
                 <div className='link' onClick={() => navigate('links')}>
                     Regulamin
                 </div>
@@ -78,7 +79,7 @@ export const Footer = () => {
                 <div className='link' onClick={() => navigate('links/news')}>
                     Nowości
                 </div>
-            </div>
+            </motion.div>
         </div>
     </footer>
   )

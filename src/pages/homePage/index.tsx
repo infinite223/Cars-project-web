@@ -8,6 +8,7 @@ import { WhatOffers } from '../../components/whatoffers/Whatoffers';
 import { Footer } from '../../components/footer/Footer';
 import { ImagesCharts } from './imagesCharts';
 import { ImageBaner } from './imageBaner';
+import { ImagesScrollView } from './imagesScrollView';
 
 
 export const HomePage = () => {
@@ -29,9 +30,11 @@ export const HomePage = () => {
           <ImagesCharts/>
         </section>
 
-        <section>
+        {/* <section>
           <WhatOffers/>
-        </section>
+        </section> */}
+        <ImagesScrollView/>
+
 
         <ImageBaner/>
 
