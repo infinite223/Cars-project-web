@@ -9,14 +9,14 @@ export const ImageBaner = () => {
     <div className='imageBaner'>
       <div className='blackTransition'/>
       <div className='imageBaner__content'>
-        <div className='imageBaner__content-info'>
+        <motion.div whileInView={{opacity: [.5, 1]}} className='imageBaner__content-info'>
           <div className='imageBaner__content-info-data'>
             15 użytkowników
           </div>
           <div className='imageBaner__content-info-data'>
             12 projektów
           </div>
-        </div>
+        </motion.div>
         
         <motion.h1 whileInView={{opacity: [.5, 1], scale:[.8, 1]}} transition={{duration:1, delay:.15}}>
           Dołącz do reszty i pobierz aplikacjie

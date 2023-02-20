@@ -22,9 +22,9 @@ export const HomePage = () => {
           <PresentationApp cycleOpen={cycleOpen}/>
         </section>
 
-        <section style={{height:'auto'}}  >
+        {/* <section style={{height:'auto'}}  >
           <LookApp/>
-        </section>
+        </section> */}
 
         <section style={{height:'auto'}}>
           <ImagesCharts/>

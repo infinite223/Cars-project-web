@@ -8,21 +8,33 @@ import {
   MotionValue
 } from "framer-motion";
 
+const sections = [
+  {img: ['https://th.bing.com/th/id/OIP.sa2Wt3V3YQUHIKs5ULD5NwHaE8?pid=ImgDet&rs=1','https://th.bing.com/th/id/OIP.sa2Wt3V3YQUHIKs5ULD5NwHaE8?pid=ImgDet&rs=1'], description:"Dodawaj projekty samochodów"},
+  {img: ['https://th.bing.com/th/id/OIP.sa2Wt3V3YQUHIKs5ULD5NwHaE8?pid=ImgDet&rs=1','https://th.bing.com/th/id/OIP.sa2Wt3V3YQUHIKs5ULD5NwHaE8?pid=ImgDet&rs=1'], description:"Dołączaj do motoryzacyjnych spotów"},
+  {img: ['https://th.bing.com/th/id/OIP.sa2Wt3V3YQUHIKs5ULD5NwHaE8?pid=ImgDet&rs=1','https://th.bing.com/th/id/OIP.sa2Wt3V3YQUHIKs5ULD5NwHaE8?pid=ImgDet&rs=1'], description:"Przeglądaj znanę firmy"}
+]
+
 function useParallax(value: MotionValue<number>, distance: number) {
   return useTransform(value, [0, 1], [-distance, distance]);
 }
 
-function Image({ id }: { id: number }) {
+function Image({ id, description, images }: { id: number, description:string, images:string[] }) {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref });
   const y = useParallax(scrollYProgress, 300);
 
   return (
-    <section>
+    <section style={id%2==0?{flexDirection:'row-reverse'}:{}}>
       <div ref={ref}>
-        <img src={`https://th.bing.com/th/id/OIP.sa2Wt3V3YQUHIKs5ULD5NwHaE8?pid=ImgDet&rs=1`} alt="A London skyscraper" />
+        {images.map((src, idImg)=> 
+          <motion.img 
+            whileInView={{scale: [.8, 1+idImg*0.2],opacity: [0, 1], x:id%2==0?[300, 100*idImg]:[-300, -100*idImg]}} 
+            transition={{duration:1, delay:.6 * idImg}}
+            src={`https://th.bing.com/th/id/OIP.sa2Wt3V3YQUHIKs5ULD5NwHaE8?pid=ImgDet&rs=1`} 
+            alt="Images" />
+        )}
       </div>
-      <motion.h2 style={{ y }}>{`#00${id}`}</motion.h2>
+      <motion.h2 style={{ y }}>{description}</motion.h2>
     </section>
   );
 }
@@ -37,10 +49,8 @@ export const ImagesScrollView = () => {
   });
   return (
     <div className='imagesScrollView'>
-
-
-      {[1, 2, 3, 4, 5].map((image) => (
-        <Image id={image} />
+      {sections.map(({img, description}, id) => (
+        <Image images={img} description={description} id={id}/>
       ))}
 
       <motion.div className="progress" style={{ scaleX }} />
