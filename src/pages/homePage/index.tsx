@@ -26,20 +26,20 @@ export const HomePage = () => {
           <LookApp/>
         </section> */}
 
-        <section style={{height:'auto'}}>
-          <ImagesCharts/>
-        </section>
+        {/* <section style={{height:'auto', maxWidth:'100vw'}}> */}
+          {/* <ImagesCharts/> */}
+        {/* </section> */}
 
         {/* <section>
           <WhatOffers/>
         </section> */}
-        <ImagesScrollView/>
+        {/* <ImagesScrollView/> */}
 
 
         <ImageBaner/>
 
         <section style={{height:'auto'}}>
-         <Footer/>
+         {/* <Footer/> */}
         </section>
     </div>
   )

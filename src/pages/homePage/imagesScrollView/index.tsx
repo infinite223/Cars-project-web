@@ -34,7 +34,7 @@ function Image({ id, description, images }: { id: number, description:string, im
             alt="Images" />
         )}
       </div>
-      <motion.h2 style={{ y }}>{description}</motion.h2>
+      <motion.h2 style={{ y }} animate={{y:400}}>{description}</motion.h2>
     </section>
   );
 }
@@ -53,7 +53,7 @@ export const ImagesScrollView = () => {
         <Image images={img} description={description} id={id}/>
       ))}
 
-      <motion.div className="progress" style={{ scaleX }} />
+      {/* <motion.div className="progress" style={{ scaleX }} /> */}
     </div>
   )
 }
