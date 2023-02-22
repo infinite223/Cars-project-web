@@ -28,13 +28,15 @@ function Image({ id, description, images }: { id: number, description:string, im
       <div ref={ref}>
         {images.map((src, idImg)=> 
           <motion.img 
-            whileInView={{scale: [.8, 1+idImg*0.2],opacity: [0, 1], x:id%2==0?[300, 100*idImg]:[-300, -100*idImg]}} 
+            whileInView={{scale: [.6, .8+idImg*0.05],opacity: [0, 1],
+               x:id%2==0?[100, -100*idImg]:[-150, 100*idImg]
+              }} 
             transition={{duration:1, delay:.6 * idImg}}
             src={`https://th.bing.com/th/id/OIP.sa2Wt3V3YQUHIKs5ULD5NwHaE8?pid=ImgDet&rs=1`} 
             alt="Images" />
         )}
       </div>
-      <motion.h2 style={{ y }} animate={{y:400}}>{description}</motion.h2>
+      <motion.h2 style={{ y, textAlign: id%2==0?'left':'right' }} animate={{y:400}}>{description}</motion.h2>
     </section>
   );
 }

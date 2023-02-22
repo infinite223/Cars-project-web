@@ -15,7 +15,7 @@ export const HomePage = () => {
   const [open, cycleOpen] = useCycle(false, true);
   
   return (
-    <div className='home_container'>
+    <div className='' style={{width:'100%'}}>
         <Navigation cycleOpen={cycleOpen} open={open}/>
 
         <section>
@@ -30,16 +30,16 @@ export const HomePage = () => {
           {/* <ImagesCharts/> */}
         {/* </section> */}
 
-        {/* <section>
+        <section>
           <WhatOffers/>
-        </section> */}
-        {/* <ImagesScrollView/> */}
+        </section>
+        <ImagesScrollView/>
 
 
         <ImageBaner/>
 
         <section style={{height:'auto'}}>
-         {/* <Footer/> */}
+         <Footer/>
         </section>
     </div>
   )
