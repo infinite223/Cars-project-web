@@ -12,7 +12,7 @@ export const Footer = () => {
     <footer className='footer_conteiner'>
         <div>
         <div className='footer_conteiner_main'>
-            <motion.div className='footer_conteiner_main_section' whileInView={{opacity: [.1, 1], y:[-100, 0]}} transition={{duration:1}}>
+            <motion.div viewport={{ once: true }} className='footer_conteiner_main_section' whileInView={{opacity: [.1, 1], y:[-100, 0]}} transition={{duration:1}}>
                 <h2>
                     O nas
                 </h2>
@@ -25,7 +25,7 @@ export const Footer = () => {
                 </p>
             </motion.div>
 
-            <motion.div className='footer_conteiner_main_section' whileInView={{opacity: [.1, 1], y:[-100, 0]}} transition={{duration:1, delay:.15}}>
+            <motion.div viewport={{ once: true }} className='footer_conteiner_main_section' whileInView={{opacity: [.1, 1], y:[-100, 0]}} transition={{duration:1, delay:.15}}>
                 <h2>
                     Kontakt
                 </h2>
@@ -38,7 +38,7 @@ export const Footer = () => {
                 </p>
                 </motion.div>
 
-            <motion.div className='footer_conteiner_main_section' whileInView={{opacity: [.1, 1], y:[-100, 0]}} transition={{duration:1, delay:.3}}>
+            <motion.div viewport={{ once: true }} className='footer_conteiner_main_section' whileInView={{opacity: [.1, 1], y:[-100, 0]}} transition={{duration:1, delay:.3}}>
                 <h2>
                     Nowości
                 </h2>
@@ -53,7 +53,7 @@ export const Footer = () => {
                 </p>
                 </motion.div>
 
-            <motion.div className='footer_conteiner_main_section' whileInView={{opacity: [.1, 1], y:[-100, 0]}} transition={{duration:1, delay:.4}}>
+            <motion.div viewport={{ once: true }} className='footer_conteiner_main_section' whileInView={{opacity: [.1, 1], y:[-100, 0]}} transition={{duration:1, delay:.4}}>
                 <h2>
                     Dostępność
                 </h2>
@@ -69,7 +69,7 @@ export const Footer = () => {
                 </p>
                 </motion.div>
         </div>
-            <motion.div className='footer_conteiner_links' whileInView={{opacity: [.1, 1]}} transition={{duration:1, delay:.4}}>
+            <motion.div viewport={{ once: true }} className='footer_conteiner_links' whileInView={{opacity: [.1, 1]}} transition={{duration:1, delay:.4}}>
                 <div className='link' onClick={() => navigate('links')}>
                     Regulamin
                 </div>

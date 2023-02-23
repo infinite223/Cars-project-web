@@ -1,5 +1,9 @@
 import React, { useRef } from 'react'
 import './styles.scss'
+import spot_image from '../../../assets/spot_image.jpg'
+import addProject from '../../../assets/addProject.jpg'
+import project_image from '../../../assets/project_image.jpg'
+
 import {
   motion,
   useScroll,
@@ -7,12 +11,22 @@ import {
   useTransform,
   MotionValue
 } from "framer-motion";
+import { useMediaQuery } from 'react-responsive'
 
 const sections = [
-  {img: ['https://th.bing.com/th/id/OIP.sa2Wt3V3YQUHIKs5ULD5NwHaE8?pid=ImgDet&rs=1','https://th.bing.com/th/id/OIP.sa2Wt3V3YQUHIKs5ULD5NwHaE8?pid=ImgDet&rs=1'], description:"Dodawaj projekty samochodów"},
-  {img: ['https://th.bing.com/th/id/OIP.sa2Wt3V3YQUHIKs5ULD5NwHaE8?pid=ImgDet&rs=1','https://th.bing.com/th/id/OIP.sa2Wt3V3YQUHIKs5ULD5NwHaE8?pid=ImgDet&rs=1'], description:"Dołączaj do motoryzacyjnych spotów"},
-  {img: ['https://th.bing.com/th/id/OIP.sa2Wt3V3YQUHIKs5ULD5NwHaE8?pid=ImgDet&rs=1','https://th.bing.com/th/id/OIP.sa2Wt3V3YQUHIKs5ULD5NwHaE8?pid=ImgDet&rs=1'], description:"Przeglądaj znanę firmy"}
+  {img: [project_image, addProject], description:"Dodawaj i przeglądaj projekty samochodów"},
+  {img: [spot_image, project_image], description:"Bierz udział w motoryzacyjnych spotach"},
+  {img: [addProject, spot_image], description:"Pomagaj innym, udzielaj się w dyskusjach "}
 ]
+
+const variants = {
+  hover: {
+
+  },
+  focus: {
+    scale: 1.2
+  }
+};
 
 function useParallax(value: MotionValue<number>, distance: number) {
   return useTransform(value, [0, 1], [-distance, distance]);
@@ -22,21 +36,30 @@ function Image({ id, description, images }: { id: number, description:string, im
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref });
   const y = useParallax(scrollYProgress, 300);
+  const isMobile = useMediaQuery({ query: '(max-width: 480px)' })
+  console.log(isMobile)
 
   return (
     <section style={id%2==0?{flexDirection:'row-reverse'}:{}}>
-      <div ref={ref}>
+      <motion.div ref={ref}>
+        <motion.div style={id%2==0?{}:{left:0}} className='greenBackground' viewport={{ once: true }} whileInView={{opacity: [0, 1], transition: {duration: 2, delay:.5}}}/>
         {images.map((src, idImg)=> 
           <motion.img 
-            whileInView={{scale: [.6, .8+idImg*0.05],opacity: [0, 1],
-               x:id%2==0?[100, -100*idImg]:[-150, 100*idImg]
-              }} 
-            transition={{duration:1, delay:.6 * idImg}}
-            src={`https://th.bing.com/th/id/OIP.sa2Wt3V3YQUHIKs5ULD5NwHaE8?pid=ImgDet&rs=1`} 
+            whileInView={{scale: [.4, .5+idImg*0.2], opacity: [0, 1],
+               x:!isMobile?(id%2==0?[100, -150*idImg]:[-150, 150*idImg]):
+                [-50, -40+idImg*50],
+               rotate:[0, idImg%2==0?-15:15],
+
+            }} 
+            variants={variants}
+            transition={{duration:1, delay:1.2 * idImg}}
+            whileHover="hover"
+            src={src} 
+            viewport={{ once: true }}
             alt="Images" />
         )}
-      </div>
-      <motion.h2 style={{ y, textAlign: id%2==0?'left':'right' }} animate={{y:400}}>{description}</motion.h2>
+      </motion.div>
+      <motion.h2 viewport={{ once: true }} style={{ y, textAlign: id%2==0?'left':'right' }} animate={{y:400}}>{description}</motion.h2>
     </section>
   );
 }
