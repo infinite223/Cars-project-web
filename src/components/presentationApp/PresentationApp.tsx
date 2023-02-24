@@ -8,12 +8,15 @@ import useMousePosition from './../../hooks/useMousePosition';
 import backgroundImage from '../../assets/carOnBackground_.png'
 import useAuth from '../../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
 
 
 export const PresentationApp:React.FC<{cycleOpen: (value:any) => void}> = ({cycleOpen}) => {
     const mousePosition = useMousePosition()
     const {user}:any = useAuth()
     const navigate = useNavigate()
+    const mobileScreen = useMediaQuery({ maxWidth: 624 })
+
 
     return (
     <motion.div className='PresentationApp_container'
@@ -46,12 +49,20 @@ export const PresentationApp:React.FC<{cycleOpen: (value:any) => void}> = ({cycl
                  więc skorzystaj z Cars designs 
                 </p>
                 <div className='PresentationApp_main_content-buttons'>
-                    <div className='button-about' onClick={() => navigate('/links/about')}>
-                        O aplikacji
-                    </div>
-                    <div className='button-start' onClick={() => navigate('/start')}>
-                        Zacznij
-                    </div>
+                    {mobileScreen?
+                    <>
+                        <div className='button-start' onClick={() => navigate('/links/about')}>
+                            O aplikacji
+                        </div>
+                    </>:
+                    <>               
+                        <div className='button-about' onClick={() => navigate('/links/about')}>
+                            O aplikacji
+                        </div>
+                        <div className='button-start' onClick={() => navigate(mobileScreen?'errorResponsive':'/start')}>
+                            Zacznij
+                        </div>
+                    </>}
                 </div>    
 
                 {/* <p>

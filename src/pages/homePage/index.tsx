@@ -30,9 +30,9 @@ export const HomePage = () => {
           {/* <ImagesCharts/> */}
         {/* </section> */}
 
-        <section>
+        {/* <section>
           <WhatOffers/>
-        </section>
+        </section> */}
         <ImagesScrollView/>
 
 

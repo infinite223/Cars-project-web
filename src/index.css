@@ -35,11 +35,16 @@ body::-webkit-scrollbar {
 ::-webkit-scrollbar-thumb:hover {
   background: #2c3;
 }
+html {
+  scroll-snap-type: y mandatory;
+
+}
 
 body {
   -ms-overflow-style: none; 
   scrollbar-width: none;  
   background-color: black;
+  
 
   scroll-behavior: smooth;
 }

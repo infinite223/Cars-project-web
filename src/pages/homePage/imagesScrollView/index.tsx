@@ -29,7 +29,7 @@ const variants = {
 };
 
 function useParallax(value: MotionValue<number>, distance: number) {
-  return useTransform(value, [0, 1], [-distance, distance]);
+  return useTransform(value, [0, 1], [-distance , distance]);
 }
 
 function Image({ id, description, images }: { id: number, description:string, images:string[] }) {
@@ -37,16 +37,15 @@ function Image({ id, description, images }: { id: number, description:string, im
   const { scrollYProgress } = useScroll({ target: ref });
   const y = useParallax(scrollYProgress, 300);
   const isMobile = useMediaQuery({ query: '(max-width: 480px)' })
-  console.log(isMobile)
 
   return (
     <section style={id%2==0?{flexDirection:'row-reverse'}:{}}>
       <motion.div ref={ref}>
-        <motion.div style={id%2==0?{}:{left:0}} className='greenBackground' viewport={{ once: true }} whileInView={{opacity: [0, 1], transition: {duration: 2, delay:.5}}}/>
+        <motion.div style={id%2==0?{}:{left:0}} className='greenBackground' viewport={{ once: true }} whileInView={{opacity: [0, 1], height: [0, 450], transition: {duration: 2, delay:.5}}}/>
         {images.map((src, idImg)=> 
           <motion.img 
             whileInView={{scale: [.4, .5+idImg*0.2], opacity: [0, 1],
-               x:!isMobile?(id%2==0?[100, -150*idImg]:[-150, 150*idImg]):
+               x:!isMobile?(id%2==0?[150, -150*idImg]:[100, (-150*idImg)+100]):
                 [-50, -40+idImg*50],
                rotate:[0, idImg%2==0?-15:15],
 
@@ -59,21 +58,26 @@ function Image({ id, description, images }: { id: number, description:string, im
             alt="Images" />
         )}
       </motion.div>
-      <motion.h2 viewport={{ once: true }} style={{ y, textAlign: id%2==0?'left':'right' }} animate={{y:400}}>{description}</motion.h2>
+      <motion.h2 viewport={{ once: true }} 
+      style={!isMobile?{ y,
+         textAlign: id%2==0?'left':'right' 
+        }:{}} 
+      initial={{y:250}}
+      >{description}</motion.h2>
     </section>
   );
 }
 
 export const ImagesScrollView = () => {
-
-  const { scrollYProgress } = useScroll();
+  const carouselRef = useRef(null)
+  const { scrollYProgress } = useScroll({ target: carouselRef});
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
     restDelta: 0.001
   });
   return (
-    <div className='imagesScrollView'>
+    <div className='imagesScrollView' ref={carouselRef}>
       {sections.map(({img, description}, id) => (
         <Image images={img} description={description} id={id}/>
       ))}

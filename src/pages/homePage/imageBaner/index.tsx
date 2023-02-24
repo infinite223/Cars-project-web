@@ -9,7 +9,7 @@ export const ImageBaner = () => {
     <div className='imageBaner'>
       <div className='blackTransition'/>
       <div className='imageBaner__content'>
-        <motion.div whileInView={{opacity: [.5, 1]}} className='imageBaner__content-info'>
+        <motion.div viewport={{ once: true }} whileInView={{opacity: [.5, 1]}} className='imageBaner__content-info'>
           <div className='imageBaner__content-info-data'>
             15 użytkowników
           </div>
@@ -18,7 +18,7 @@ export const ImageBaner = () => {
           </div>
         </motion.div>
         
-        <motion.h1 whileInView={{opacity: [.5, 1], scale:[.8, 1]}} transition={{duration:1, delay:.15}}>
+        <motion.h1 viewport={{ once: true }} whileInView={{opacity: [.5, 1], scale:[.8, 1]}} transition={{duration:1, delay:.15}}>
           Dołącz do reszty i pobierz aplikacjie
         </motion.h1>
         {/* <img className='imageBaner__content-image' src={googlePlayImage}/> */}
