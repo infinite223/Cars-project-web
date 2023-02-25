@@ -8,13 +8,12 @@ import { useNavigate } from 'react-router-dom';
 export const Links = () => {
   const navigate = useNavigate()
   const { pathname } = useLocation();
-  console.log(pathname)
 
   return (
     <div className='links'>
       <nav>
         <motion.div whileHover={{color:'#293'}} className="links_nav_back">
-          <IoIosArrowBack onClick={() => navigate('/')} size={30} style={{padding:'10px', marginLeft:'0px'}}/>
+          <IoIosArrowBack onClick={() => navigate('/')} size={30} style={{padding:'20px', marginLeft:'0px'}}/>
         </motion.div>
 
         <div className='links_nav-links'>

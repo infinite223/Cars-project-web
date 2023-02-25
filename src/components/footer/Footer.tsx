@@ -1,15 +1,15 @@
 import './styles.scss'
 
-import React from 'react'
+import React, { FC } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
-export const Footer = () => {
+export const Footer:FC<{scrollType: 'none' | 'center'}> = ({ scrollType }) => {
 
     const navigate = useNavigate()
     
   return (
-    <footer className='footer_conteiner'>
+    <footer className='footer_conteiner' style={{scrollSnapAlign: scrollType}}>
         <div>
         <div className='footer_conteiner_main'>
             <motion.div viewport={{ once: true }} className='footer_conteiner_main_section' whileInView={{opacity: [.1, 1], y:[-100, 0]}} transition={{duration:1}}>
@@ -70,13 +70,13 @@ export const Footer = () => {
                 </motion.div>
         </div>
             <motion.div viewport={{ once: true }} className='footer_conteiner_links' whileInView={{opacity: [.1, 1]}} transition={{duration:1, delay:.4}}>
-                <div className='link' onClick={() => navigate('links')}>
+                <div className='link' onClick={() => navigate('../links')}>
                     Regulamin
                 </div>
-                <div className='link' onClick={() => navigate('links/policy')}>
+                <div className='link' onClick={() => navigate('../links/policy')}>
                     Polityka prywatności
                 </div>
-                <div className='link' onClick={() => navigate('links/news')}>
+                <div className='link' onClick={() => navigate('../links/news')}>
                     Nowości
                 </div>
             </motion.div>

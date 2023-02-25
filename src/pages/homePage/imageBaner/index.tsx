@@ -7,7 +7,8 @@ import { motion } from 'framer-motion';
 export const ImageBaner = () => {
   return (
     <div className='imageBaner'>
-      <div className='blackTransition'/>
+      <div className='blackTransitionTop'/>
+      <div className='blackTransitionBottom'/>
       <div className='imageBaner__content'>
         <motion.div viewport={{ once: true }} whileInView={{opacity: [.5, 1]}} className='imageBaner__content-info'>
           <div className='imageBaner__content-info-data'>

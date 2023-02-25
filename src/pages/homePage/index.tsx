@@ -39,7 +39,7 @@ export const HomePage = () => {
         <ImageBaner/>
 
         <section style={{height:'auto'}}>
-         <Footer/>
+         <Footer scrollType='center'/>
         </section>
     </div>
   )

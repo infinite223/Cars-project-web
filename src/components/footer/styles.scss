@@ -7,9 +7,6 @@
     background-color:rgb(19, 19, 19);
     display: flex;
     flex-direction: column;
-    scroll-snap-align: start;
-
-
 
     .footer_conteiner_main {
         // padding:30px;
@@ -18,6 +15,7 @@
         align-items: flex-start;
         justify-content: space-around;
         flex-direction:row;
+        margin-top: 20px;
         
         @media (max-width: 480px) {
             flex-direction:column;

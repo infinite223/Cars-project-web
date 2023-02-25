@@ -1,0 +1,129 @@
+.startPremiumPage {
+    width: 100vw;
+    height: auto;
+
+    background-color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    .startPremiumPage__content {
+        margin: 100px 0;
+        width: 700px;
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+
+        header {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+            
+            h1 {
+                font-size: 50px;
+                font-weight: 800;
+
+            }
+        
+            p {
+                font-size: 25px;
+                letter-spacing: -1px;
+            }
+        }
+
+        .startPremiumPage__content-container {
+            width: 100%;
+
+            background-color: rgb(238, 238, 238);
+            border-radius: 10px;
+
+            display: flex;
+
+            .box {
+                width: 50%;
+                height: 450px;
+                display: flex;
+                flex-direction: column;
+                position: relative;
+                justify-content: space-between;
+
+                h2 {
+                    // color: rgb(97, 190, 108);
+                }
+                
+                .services {          
+                    .services__item {
+                        text-align: left;
+               
+                        padding: 10px 30px;
+                        font-size: 18px;
+                        font-weight: 500;
+                    }
+
+                    padding-bottom: 20px;
+                }
+
+                h3 {
+                    align-content: flex-end;
+                    font-weight: 900;
+                }
+            }
+
+            .premiumVersion {
+                background-color: #293;
+                border-radius: 10px;
+                color: white;
+            }
+
+            .normalVersion {
+
+            }
+        }
+    }
+
+    .startPremiumPage__baner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        margin-bottom: 150px;
+
+        h1 {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+            letter-spacing: 1px;
+            font-size: 50px;
+            margin-bottom: 25px;
+        }
+
+        p {
+            margin-top: 0;
+            margin-bottom: 35px;
+            font-size: 25px;
+            font-weight: 600;
+            color: gray;
+        }
+
+        .startPremiumPage__baner-button {
+            background-color: #293;
+            padding: 10px 25px;
+            border-radius: 5px;
+            align-self: center;
+            text-transform: uppercase;
+            color: white;
+            font-weight: 700;
+
+            &:hover {
+                cursor: pointer;
+                background-color: #2a3;
+                transition: all .3s ease-in-out;
+            }
+        }
+    }
+}

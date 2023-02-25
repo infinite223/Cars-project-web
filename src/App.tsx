@@ -31,6 +31,7 @@ import { ErrorResponsive } from './pages/errorResponsive';
 import { CreateProjectModal } from './modals/createProjectModal/index';
 import { Basicinfo } from './modals/createProjectModal/stages/basicInfo';
 import { Performance } from './modals/createProjectModal/stages/performance';
+import { StartPremiumPage } from './pages/startPremiumPage/index';
 
 
 function App() {
@@ -51,6 +52,7 @@ function App() {
             <Route index element={<Basicinfo/>} />
             <Route path="performance" element={ <Performance/>} />
           </Route>
+          <Route path='premium' element={<StartPremiumPage/>} />
           <Route path='errorResponsive' element={<ErrorResponsive/>}/>
           <Route path="links" element={<Links/>} >
             <Route index element={ <RulesLink/>} />
