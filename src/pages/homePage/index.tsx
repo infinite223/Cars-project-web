@@ -26,9 +26,9 @@ export const HomePage = () => {
           <LookApp/>
         </section> */}
 
-        {/* <section style={{height:'auto', maxWidth:'100vw'}}> */}
+        <section style={{height:'auto', maxWidth:'100vw'}}>
           {/* <ImagesCharts/> */}
-        {/* </section> */}
+        </section>
 
         {/* <section>
           <WhatOffers/>

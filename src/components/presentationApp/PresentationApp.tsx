@@ -45,8 +45,8 @@ export const PresentationApp:React.FC<{cycleOpen: (value:any) => void}> = ({cycl
                 
                  {/* Chcesz pokazać innym jak   i projekt samochodu stworzyłeś? */}
                   Kochasz motoryzacje?
-                  to indealne miejsce dla Ciebie!  
-                 więc skorzystaj z Cars designs 
+                  to indealne miejsce dla Ciebie!  <br/>
+                  więc skorzystaj z Cars designs 
                 </p>
                 <div className='PresentationApp_main_content-buttons'>
                     {mobileScreen?

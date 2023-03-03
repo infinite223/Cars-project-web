@@ -4,13 +4,15 @@
     align-items: center;
     justify-content: center;
     height: auto;
-    width: 100vw;
+    width: 99vw;
     padding: 40px 0px;
     position: relative;
+    scroll-snap-align: center;
 
     @media (max-width: 480px) {
         flex-direction: column-reverse;    
     }
+
     .imagesCharts-images {
         margin-top: 150px;
         opacity: .3;
