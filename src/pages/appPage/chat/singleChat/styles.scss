@@ -1,0 +1,27 @@
+.singleChat {
+    display: flex;
+    width: calc(100% - 40px);
+    height: calc(100% - 40px);
+    overflow-y: auto;
+    margin: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .singleChat-content {
+        width: 80%;
+        background-color: rgb(26, 26, 26);
+        height: 100%;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        h2 {
+            color: rgba(142, 140, 140, .7);
+            font-size: 17px;
+        }
+    }
+
+}

@@ -45,7 +45,7 @@ function Image({ id, description, images }: { id: number, description:string, im
         {images.map((src, idImg)=> 
           <motion.img 
             whileInView={{scale: [.4, .5+idImg*0.2], opacity: [0, 1],
-              height: [0, 620],
+              height: [0, 620], width: [0, 300],
                x:!isMobile?(id%2==0?[100, -100*idImg]:[100, (-100*idImg)+100]):
                 [-50, -40+idImg*50],
             //   rotate:[0, idImg%2==0?-15:15],

@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useDispatch } from 'react-redux';
 import { setMessage } from '../../../../reducers/messageSlice';
+import { InputProject } from '../../../../components/inputProject';
 
 export const Performance = () => {
     const [carPerformance, setCarPerformance]  = useState({
@@ -41,33 +42,29 @@ export const Performance = () => {
             <div className='linkContent-nav_number'>Etap 2</div>
         </div>
         <div className='linkContent_inputs-container'>
-          <CustomInput 
+          <InputProject 
             fontSize={18} 
             placeholder='Podaj moc (km)' 
             setValue={(text)=>setCarPerformance({...carPerformance, power:parseFloat(text.toString())})} 
             type={'number'} 
-            theme={'dark'}
           />
-          <CustomInput 
+          <InputProject 
             fontSize={18}  
             placeholder='Podaj moment obrotowy (Nm)' 
             setValue={(text)=>setCarPerformance({...carPerformance, torque:parseFloat(text.toString())})}
             type={'number'} 
-            theme={'dark'}
           />
-          <CustomInput 
+          <InputProject 
             fontSize={18} 
             placeholder='Przyśpieszenie 0-100km/h (s)' 
             setValue={(text)=>setCarPerformance({...carPerformance, _0_100:parseFloat(text.toString())})}
             type={'number'} 
-            theme={'dark'}
           />
-          <CustomInput 
+          <InputProject 
             fontSize={18} 
             placeholder='Przyśpieszenie 100-200km/h (s)' 
             setValue={(text)=>setCarPerformance({...carPerformance, _100_200:parseFloat(text.toString())})}
             type={'number'} 
-            theme={'dark'}
           />
         </div>
 

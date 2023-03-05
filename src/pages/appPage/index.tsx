@@ -66,12 +66,14 @@ export const AppPage = () => {
               <img className='link_imageProfile' src={user.imageUri}/>
               <div>{user.name}</div>
             </div>
-              <div className='link' onClick={()=> navigate('')} style={pathname==='/app'?{color: '#2a3', fontWeight:'600'}:{}}>
-                <BsBarChart size={20}/>
+              <div className='link' onClick={()=> navigate('')} 
+                style={pathname==='/start'?{color: 'white', fontWeight:'500'}:{}}
+              >
+                <BsBarChart size={20} color={pathname==='/start'?'#2a3':'gray'}/>
                 <div>Projekty</div>
               </div>
-              <div className='link' onClick={()=> navigate('searchProjects')} style={pathname==='/app/searchProjects'?{color: '#2a3', fontWeight:'600'}:{}}>
-                <FiSearch size={20}/>
+              <div className='link' onClick={()=> navigate('searchProjects')} style={pathname==='/app/searchProjects'?{color: 'white', fontWeight:'600'}:{}}>
+                <FiSearch size={20} color={pathname==='/start/searchProjects'?'#2a3':'gray'}/>
                 <div>Szukaj projektów</div>
               </div>
               <div className='link'>
@@ -83,8 +85,8 @@ export const AppPage = () => {
                <div>Problemy</div>
               </div>
               <div className='line'/>
-            <div className='link'>
-              <BsChatSquareText size={20}/>
+            <div className='link'onClick={()=> navigate('chat/0')} style={pathname.includes('/start/chat/')?{color: 'white', fontWeight:'600'}:{}}>
+              <BsChatSquareText size={20} color={pathname.includes('/start/chat/')?'#2a3':'gray'}/>
               <div>Wiadomości</div>
             </div>
             <div className='link'>

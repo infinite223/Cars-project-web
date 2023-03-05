@@ -32,11 +32,12 @@ import { CreateProjectModal } from './modals/createProjectModal/index';
 import { Basicinfo } from './modals/createProjectModal/stages/basicInfo';
 import { Performance } from './modals/createProjectModal/stages/performance';
 import { StartPremiumPage } from './pages/startPremiumPage/index';
+import { Chat } from './pages/appPage/chat';
 
 
 function App() {
   const { user }:any = useAuth()
-  console.log(process.env.REACT_APP_GOOGLE_MAPS)
+
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/">
@@ -47,6 +48,7 @@ function App() {
             <Route errorElement path="firststart" element={ <Firststart/>} />
             <Route path='searchProjects' element={<SearchProjects/>}/>
             <Route path="meeting" element={ <LoginForm/>} />
+            <Route path='chat/:id' element={<Chat/>} />
           </Route>
           <Route path='createProject' element={<CreateProjectModal/>} >
             <Route index element={<Basicinfo/>} />

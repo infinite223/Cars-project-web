@@ -14,6 +14,7 @@ import { IoMdClose, IoIosArrowBack } from 'react-icons/io';
 import useAuth from '../../hooks/useAuth';
 import { CustomInput } from '../../components/customInput';
 import { Outlet, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
+import { PreViewButton } from './PreViewButton';
 
 interface Props {
     // showModal: boolean,
@@ -46,18 +47,23 @@ export const CreateProjectModal:FC<Props> = ({}) => {
           </div>
           <div className='createProject-container'>
             <nav>
-              <div className='link' onClick={() => navigate('/createProject')} style={pathname==='/createProject'?{color: '#2a3'}:{color:'#aaaa'}}>
-                Podstawowe informacje
+              <div className='links-container'> 
+                <div className='link' onClick={() => navigate('/createProject')} style={pathname==='/createProject'?{color: '#2d3'}:{}}>
+                  Podstawowe informacje
+                </div>
+                <div className='link' onClick={() => navigate('/createProject/performance')} style={pathname==='/createProject/performance'?{color: '#2d3'}:{}}>
+                  Osiągi samochodu
+                </div>
+                <div className='link' style={pathname==='/createProject/photos'?{color: '#2d3'}:{}}>
+                  Zdjęcia
+                </div>
+                <div className='link' style={pathname==='/createProject/photos'?{color: '#2d3'}:{}}>
+                  Przebieg modyfikacji
+                </div>
               </div>
-              <div className='link' onClick={() => navigate('/createProject/performance')} style={pathname==='/createProject/performance'?{color: '#2a3'}:{color:'#aaaa'}}>
-                Osiągi samochodu
-              </div>
-              <div className='link' style={pathname==='/createProject/photos'?{color: '#2a3'}:{color:'#aaaa'}}>
-                Zdjęcia
-              </div>
-              <div className='link' style={pathname==='/createProject/photos'?{color: '#2a3'}:{color:'#aaaa'}}>
-                Przebieg modyfikacji
-              </div>
+
+              <PreViewButton />
+
             </nav>
             <div className='createProject-container_content'>
               <Outlet/>

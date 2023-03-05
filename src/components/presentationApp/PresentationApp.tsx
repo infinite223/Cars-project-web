@@ -9,6 +9,7 @@ import backgroundImage from '../../assets/carOnBackground_.png'
 import useAuth from '../../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
+import { useState } from 'react';
 
 
 export const PresentationApp:React.FC<{cycleOpen: (value:any) => void}> = ({cycleOpen}) => {
@@ -16,10 +17,13 @@ export const PresentationApp:React.FC<{cycleOpen: (value:any) => void}> = ({cycl
     const {user}:any = useAuth()
     const navigate = useNavigate()
     const mobileScreen = useMediaQuery({ maxWidth: 624 })
+    const [colorIcon, setColorIcon] = useState('white')
 
 
     return (
     <motion.div className='PresentationApp_container'
+        onViewportLeave={()=> setColorIcon('white')}
+        onViewportEnter={()=>setColorIcon('black')}
         // whileInView={{gradientTransform:  `rotate(120deg)`}}
         style={{
             // background:`linear-gradient(90deg, rgb(28, 138, 19) ${mousePosition.x?mousePosition.x/10:0}%,  rgb(18, 18, 19)  ${mousePosition.x?mousePosition.x/10:0}%`
@@ -28,11 +32,11 @@ export const PresentationApp:React.FC<{cycleOpen: (value:any) => void}> = ({cycl
     >   
         <nav className='PresentationApp_nav' >
             <div className='PresentationApp_nav_hamburger-button' onClick={()=>cycleOpen(true)}>
-                <IoReorderThreeOutline size={45} color={'black'}/>
+                <IoReorderThreeOutline size={45} color={colorIcon}/>
             </div>
             <div className='PresentationApp_nav_right'>
+                {user&&<div onClick={()=>navigate('Start')} className='PresentationApp_nav_right-loginUser'>{user?.name}</div>}
                 <img className='PresentationApp_nav_right-logo' src={nameApp}/>
-                {user&&<div className='PresentationApp_nav_right-loginUser'>{user?.name}</div>}
             </div>
         </nav>
 

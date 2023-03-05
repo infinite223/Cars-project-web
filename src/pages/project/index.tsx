@@ -134,6 +134,7 @@ export const ProjectPage = () => {
 
               {place && <div className='map'>
                 <GoogleMap
+                    
                     zoom={10}
                     center={{
                       lat: place.latitude?place.latitude:0,

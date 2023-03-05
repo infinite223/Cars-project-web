@@ -42,11 +42,15 @@
         }
             
         .PresentationApp_nav_right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+
             margin-top: 1rem;
-            margin-right: 2rem;
+            margin-right: 4rem;
 
             .PresentationApp_nav_right-logo { 
-                width: 50px;
+                width: 40px;
                 border-radius: 10px;
                 border: 1px solid rgba(194, 193, 193, .5);
 
@@ -57,12 +61,17 @@
             }
 
             .PresentationApp_nav_right-loginUser {
-                color: #2b3;
+                color: rgb(216, 215, 215);
                 font-size: 20px;
-                align-self: flex-end;
                 text-align: right;
-                margin-top:-5px;
-                letter-spacing: 2px;
+      
+
+                &:hover {
+                    cursor: pointer;
+                    text-decoration: solid;
+                    text-decoration-color: rgb(252, 252, 252);
+                    text-decoration-line: underline;
+                }
             }
 
             @media (max-width: 480px) {

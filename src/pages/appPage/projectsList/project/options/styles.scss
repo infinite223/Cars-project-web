@@ -14,7 +14,10 @@
         justify-content: center;
         flex-direction: column;
         z-index: 4;
-        background-color: rgb(36, 36, 36);
+        background-color: rgb(25, 25, 25);
+        box-shadow: 0px 2px 9px -2px rgba(210, 205, 205, 0.75);
+        -webkit-box-shadow: 0px 2px 5px -2px rgba(210, 205, 205, 0.75);
+        -moz-box-shadow: 0px 2px 4px -2px rgba(210, 205, 205, 0.75);
         border-radius: 10px;
         width: 70%;
         height: auto;
@@ -34,13 +37,14 @@
         
     
             &:hover {
-                background-color: rgb(57, 56, 56);
+                background-color: rgb(41, 41, 41);
+                transition: all .3s ease-in-out;
                 cursor: pointer;
             }
         }   
     
         .red {
-            color:rgb(225, 19, 19)
+            color:rgb(255, 35, 35)
         }
     }
 }
