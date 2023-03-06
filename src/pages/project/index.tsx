@@ -14,6 +14,8 @@ import { useAudio } from '../../hooks/useAudio';
 import { AiFillFacebook } from 'react-icons/ai';
 import { OptionsProject } from './optionsProject';
 import { GoogleMap, Marker, useLoadScript } from '@react-google-maps/api';
+import { useSelector } from 'react-redux';
+import { selectChats } from './../../reducers/chatsSlices'
 
 const libraries:("places" | "drawing" | "geometry" | "localContext" | "visualization")[]= ['places']
 
@@ -24,6 +26,7 @@ export const ProjectPage = () => {
   const [mapInstance, setMapInstance] = useState<any>()
   const [showOptions, setShowOptions] = useState(false)
   const location = useLocation();
+  const { chats } = useSelector(selectChats)
 
   useEffect(() => {
     if(!user){
@@ -38,6 +41,22 @@ export const ProjectPage = () => {
   const { isLoaded, loadError } =  useLoadScript({googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API?process.env.REACT_APP_GOOGLE_MAPS_API:'',
     libraries
   })
+
+  const goToChat = () => {
+      const findChat = chats.find((item)=>item.data.from.id === user.uid || item.data.to.id === user.uid)
+
+      if(findChat){
+        navigate(`../start/chat/:${findChat.id}`, {state:{id:findChat.id, block:findChat.block, new:false, data: {to: {id:author.uid, name: author.name, imageUri:author.imageUri}}}})
+      }
+      else {
+        if (window !== undefined) {
+          const newChatId =  window.crypto.randomUUID()
+          navigate(`../start/chat/:${newChatId}`, {state:{id:newChatId, new:true, data: {to: {id:author.uid, name: author.name, imageUri:author.imageUri}}}})
+        }
+      }
+    
+ 
+  }
 
   return (
     <motion.div className='projectPage' animate={{opacity:[0.6, 1]}}>
@@ -76,7 +95,7 @@ export const ProjectPage = () => {
 
             <motion.footer className='projectPage__footer'>
                 <div className='projectPage__footer-icons'>
-                  <motion.div whileHover={colors?{color: colors[0]}:{}}>
+                  <motion.div onClick={goToChat} whileHover={colors?{color: colors[0]}:{}}>
                     <FiSend size={22} className="icon"/>
                   </motion.div>
                   <motion.div whileHover={colors?{color: colors[0]}:{}}>

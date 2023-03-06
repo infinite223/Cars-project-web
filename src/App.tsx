@@ -33,6 +33,7 @@ import { Basicinfo } from './modals/createProjectModal/stages/basicInfo';
 import { Performance } from './modals/createProjectModal/stages/performance';
 import { StartPremiumPage } from './pages/startPremiumPage/index';
 import { Chat } from './pages/appPage/chat';
+import { SingleChat } from './pages/appPage/chat/singleChat/index';
 
 
 function App() {
@@ -48,7 +49,10 @@ function App() {
             <Route errorElement path="firststart" element={ <Firststart/>} />
             <Route path='searchProjects' element={<SearchProjects/>}/>
             <Route path="meeting" element={ <LoginForm/>} />
-            <Route path='chat/:id' element={<Chat/>} />
+            <Route path='chat' element={<Chat/>} >
+              <Route index element={<SingleChat nochat/>}/>
+              <Route path=':id' element={<SingleChat/>}/>
+            </Route>
           </Route>
           <Route path='createProject' element={<CreateProjectModal/>} >
             <Route index element={<Basicinfo/>} />

@@ -3,7 +3,7 @@ import { PresentationApp } from '../../components/presentationApp/PresentationAp
 import './styles.scss'
 import useAuth from '../../hooks/useAuth';
 import { Outlet, useLocation, useNavigate, } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, FC } from 'react';
 import { BsBarChart, BsBarChartLine, BsChatSquareText, BsPeople } from 'react-icons/bs'
 import { CgProfile } from 'react-icons/cg'
 import { AiOutlinePlus } from 'react-icons/ai'
@@ -19,13 +19,32 @@ import { IoPersonCircleOutline, IoPersonCircleSharp } from 'react-icons/io5';
 import { IoMdCreate } from 'react-icons/io';
 import { BiMessageSquareAdd } from 'react-icons/bi';
 import { CreateProjectModal } from './../../modals/createProjectModal/index';
+import { useChats } from './../../hooks/useChats';
+import { useDispatch } from 'react-redux';
 
+const IconItem:FC<{size:number}> = ({size}) => {
+  return (
+    <FaChartLine size={size}/>
+  )
+}
+
+const links = [
+  {name: 'Projekty', Icon: <FaChartLine size={20} style={{marginLeft: '15px'}}/>, navigateTo: '', _pathname: '/start/a' },
+  {name: 'Szukaj projektów', Icon: <FiSearch size={20} style={{marginLeft: '15px'}}/>, navigateTo: 'searchProjects' ,  _pathname: '/start/searchProjects' },
+  {name: 'Spoty',  Icon: <BsPeople size={20} style={{marginLeft: '15px'}}/>, navigateTo: '',  _pathname: '/....' },
+  {name: 'Problemy',  Icon: <MdOutlineSyncProblem size={20} style={{marginLeft: '15px'}}/>, navigateTo: '' ,  _pathname: '/...' },
+  {name: 'Wiadomości',  Icon: <BsChatSquareText size={20} style={{marginLeft: '15px'}}/>, navigateTo: 'chat' ,  _pathname: '/start/chat' },
+  {name: 'Mój profil',  Icon: <IoPersonCircleOutline size={20} style={{marginLeft: '15px'}}/>, navigateTo: '' ,  _pathname: '/...' },
+
+]
 
 export const AppPage = () => {
   const { logout, user, userType }:any =  useAuth()  
   const [showCreateProject, setShowCreateProject] = useState(false)
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   const { pathname } = useLocation();
+  const { loadingChats } = useChats(user.uid, dispatch)
   console.log(user)
   useEffect(() => {
     if(!user){
@@ -36,6 +55,8 @@ export const AppPage = () => {
       navigate('/start/firststart')
     }
   }, [user])
+
+
 
   return (
     <div className='app'>
@@ -62,18 +83,34 @@ export const AppPage = () => {
       <nav className='app_left-main_navigation'>
           <div className='app_left-main_navigation_links'>   
             <div className='topNav'>
-            <div className='link'>
+            <div className='link' style={{marginLeft: '20px'}}>
               <img className='link_imageProfile' src={user.imageUri}/>
               <div>{user.name}</div>
             </div>
-              <div className='link' onClick={()=> navigate('')} 
+
+            {links.map(({name, navigateTo, Icon, _pathname}) => (
+               <div className='link' onClick={()=> navigate(navigateTo)} 
+                style={pathname.includes(_pathname)?{color: 'white', fontWeight:'600', backgroundColor: 'rgb(26, 86, 26)'}:{}}
+               >  
+                {Icon}
+               <div>{name}</div>
+             </div>
+            ))}
+
+              {/* <div className='link' onClick={()=> navigate('')} 
                 style={pathname==='/start'?{color: 'white', fontWeight:'500'}:{}}
               >
-                <BsBarChart size={20} color={pathname==='/start'?'#2a3':'gray'}/>
+                <BsBarChart size={20} color={pathname==='/start'?'#2a3':'rgb(231, 231, 231)'}/>
                 <div>Projekty</div>
               </div>
-              <div className='link' onClick={()=> navigate('searchProjects')} style={pathname==='/app/searchProjects'?{color: 'white', fontWeight:'600'}:{}}>
-                <FiSearch size={20} color={pathname==='/start/searchProjects'?'#2a3':'gray'}/>
+              <div className='link' 
+                onClick={()=> navigate('searchProjects')} 
+                style={pathname==='/start/searchProjects'?{color: 'white', fontWeight:'600', backgroundColor: 'rgba(23, 150, 20, .7)'}:{}}
+              >
+                <FiSearch size={20}
+                  className="link__icon"
+                //  color={pathname==='/start/searchProjects'?'#2a3':'rgb(231, 231, 231)'}
+                 />
                 <div>Szukaj projektów</div>
               </div>
               <div className='link'>
@@ -84,26 +121,22 @@ export const AppPage = () => {
                 <MdOutlineSyncProblem size={24}/>
                <div>Problemy</div>
               </div>
-              <div className='line'/>
-            <div className='link'onClick={()=> navigate('chat/0')} style={pathname.includes('/start/chat/')?{color: 'white', fontWeight:'600'}:{}}>
-              <BsChatSquareText size={20} color={pathname.includes('/start/chat/')?'#2a3':'gray'}/>
+              <div className='line'/> */}
+            {/* <div className='link'onClick={()=> navigate('chat/0')} style={pathname.includes('/start/chat/')?{color: 'white', fontWeight:'600'}:{}}>
+              <BsChatSquareText size={20} color={pathname.includes('/start/chat/')?'#2a3':'rgb(231, 231, 231)'}/>
               <div>Wiadomości</div>
             </div>
             <div className='link'>
               <IoPersonCircleOutline  size={24}/>
               <div>Mój profil</div>
-            </div>
+            </div> */}
             <div className='link' onClick={()=>{signOut(auth); navigate('/start')}}>
-              <div>Wyloguj</div>
+              <div style={{marginLeft:'15px'}}>Wyloguj</div>
             </div>
-            {/* <div className='link add-link'>
-              <AiOutlinePlus size={22} />
-              <div>Dodaj projekt</div>
-            </div>   */}
           </div>
 
           <div className='link'>
-            <CiSettings size={26}/>
+            <CiSettings size={26} style={{marginLeft:'15px'}}/>
             <div>Ustawienia</div>
             </div>
           </div>

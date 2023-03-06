@@ -22,6 +22,24 @@ export type UserList = {
     uid:string
 }
 
+export type Message = {
+    email: string,
+    imageUri: string,
+    message:string,
+    name:string,
+    timestamp: any
+}
+
+export type Chat = {
+    data: {
+        from: {id: string, name: string, imageUri:string}
+        to: {id: string, name: string, imageUri:string}
+    }
+    persons: string[]
+    id:string,
+    block?:boolean
+}
+
 export type Component = {
     type: string,
     name: string,
