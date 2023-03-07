@@ -20,7 +20,8 @@ import { IoMdCreate } from 'react-icons/io';
 import { BiMessageSquareAdd } from 'react-icons/bi';
 import { CreateProjectModal } from './../../modals/createProjectModal/index';
 import { useChats } from './../../hooks/useChats';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectChats } from './../../reducers/chatsSlices';
 
 const IconItem:FC<{size:number}> = ({size}) => {
   return (
@@ -33,9 +34,8 @@ const links = [
   {name: 'Szukaj projektów', Icon: <FiSearch size={20} style={{marginLeft: '15px'}}/>, navigateTo: 'searchProjects' ,  _pathname: '/start/searchProjects' },
   {name: 'Spoty',  Icon: <BsPeople size={20} style={{marginLeft: '15px'}}/>, navigateTo: '',  _pathname: '/....' },
   {name: 'Problemy',  Icon: <MdOutlineSyncProblem size={20} style={{marginLeft: '15px'}}/>, navigateTo: '' ,  _pathname: '/...' },
-  {name: 'Wiadomości',  Icon: <BsChatSquareText size={20} style={{marginLeft: '15px'}}/>, navigateTo: 'chat' ,  _pathname: '/start/chat' },
+  {name: 'Czaty',  Icon: <BsChatSquareText size={20} style={{marginLeft: '15px'}}/>, navigateTo: 'chat' ,  _pathname: '/start/chat' },
   {name: 'Mój profil',  Icon: <IoPersonCircleOutline size={20} style={{marginLeft: '15px'}}/>, navigateTo: '' ,  _pathname: '/...' },
-
 ]
 
 export const AppPage = () => {
@@ -45,6 +45,7 @@ export const AppPage = () => {
   const dispatch = useDispatch()
   const { pathname } = useLocation();
   const { loadingChats } = useChats(user.uid, dispatch)
+  const { chats } = useSelector(selectChats)
   console.log(user)
   useEffect(() => {
     if(!user){
@@ -89,7 +90,12 @@ export const AppPage = () => {
             </div>
 
             {links.map(({name, navigateTo, Icon, _pathname}) => (
-               <div className='link' onClick={()=> navigate(navigateTo)} 
+               <div 
+                className='link' 
+                onClick={()=> navigateTo==='chat'
+                  ?navigate(`chat/:${chats[0].id}`,  {state:chats[0]})
+                  :navigate(navigateTo)
+                } 
                 style={pathname.includes(_pathname)?{color: 'white', fontWeight:'600', backgroundColor: 'rgb(26, 86, 26)'}:{}}
                >  
                 {Icon}

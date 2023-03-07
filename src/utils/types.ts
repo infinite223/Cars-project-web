@@ -35,6 +35,7 @@ export type Chat = {
         from: {id: string, name: string, imageUri:string}
         to: {id: string, name: string, imageUri:string}
     }
+    new?:boolean,
     persons: string[]
     id:string,
     block?:boolean

@@ -17,9 +17,8 @@ export const Chat = () => {
 
   const { chats } = useSelector(selectChats)
   const { user }:any = useAuth()
-  const data = location.state as chatType;
+  const locationData = location.state as chatType;
   const navigate = useNavigate()
-
 
   const deleteChat = async (chatId:string) => {
     await deleteDoc(doc(db, "chats", chatId)).catch(()=> {
@@ -27,24 +26,25 @@ export const Chat = () => {
     })
   }
 
-  console.log(chats, 'nasze czaty')
-
-  useEffect(() => {
-    if(!user){
-      navigate('./start')
-    }
-  }, [])
-
+  // useEffect(() => {
+  //   if(!user){
+  //     navigate('../start')
+  //     console.log(user, 'nasze czaty')
+  //   }
+  // }, [])
 
   return (
     <div className='chat'>
-        <Outlet context={data}/>
+        {locationData&&<Outlet context={locationData}/>}
 
         <div className='chatsList'>
           <h2>Czaty</h2>
-          {chats.map(() => (
-            <div>
-
+          {chats.map(({data}) => (
+            <div className='person' onClick={() => navigate(`${id}`, {state:{id:id?.slice(1), data: data}})}>
+              <img src={data.to.imageUri} className="image__person"/>
+              <div className='name__person'>
+                {data.to.name}
+              </div>
             </div>
           ))}
         </div>

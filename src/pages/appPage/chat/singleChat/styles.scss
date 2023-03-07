@@ -15,7 +15,7 @@
     }
 
     .singleChat-content {
-        width: 80%;
+        width: 450px;
         background-color: rgb(26, 26, 26);
         height: 100%;
         border-radius: 10px;
@@ -28,7 +28,7 @@
             display: flex;
             align-items: center;
             width: calc(100% - 20px);
-            margin: 10px;
+            margin: 10px 15px;
 
             .image-profile {
                 border-radius: 50%;
@@ -39,21 +39,85 @@
             .name-person {
                 color: white;
                 font-size: 18px;
-                margin-left: 10px;
+                margin-left: 15px;
             }
         }
 
         .messages-container {
             display: flex;
+            align-items: flex-end;
+            flex-direction: column;
             width: 100%;
             height: 100%;
           
             border-top: 1px solid rgb(41, 41, 41);
             border-bottom: 1px solid rgb(41, 41, 41);
+
+            .message__conteiner {
+                display: flex;
+                margin: 5px 15px;
+                gap: 10px;
+                border-radius: 10px;
+                align-items: center;
+                padding: 5px 10px;
+
+                .message__text {
+                    font-size: 16px;
+                    color: white;
+                }
+    
+                .imageProfile {
+                    width: 30px;
+                    height: 30px;
+    
+                    border-radius: 50%;
+                }
+            }
+
+            .sender {
+                background-color:rgb(46, 46, 46);
+                align-self: flex-end;
+            }
+            
+            .reciver {
+                background-color:rgb(3, 163, 27);
+                align-self: flex-start;
+            }
         }
 
         footer {
+            width: 100%;
+            display: flex;
+            align-items: center;
 
+            form {
+                width: 100%;
+                display: flex;
+                align-items: center;
+
+                .message-input {
+                    margin: 10px;
+                    background-color: rgb(37, 37, 37);
+                    border-radius: 50px;
+                    outline: none;
+                    border-style: none;
+                    color: white;
+                    width: 100%;
+                    font-size: 15px;
+                    padding: 9px 15px;
+                }
+    
+                .send-button {
+                  margin-right: 15px;
+                  color: white;
+
+                  &:hover {
+                    color: gray;
+                    cursor: pointer;
+                    transition: all .2s ease-in-out;
+                  }
+                }
+            }
         }
     }
 

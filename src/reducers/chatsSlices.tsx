@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { RootStore } from "../store";
 
 const initialState = {
-    chats: [1]
+    chats: []
 }
 
 export const chatsSlice = createSlice({

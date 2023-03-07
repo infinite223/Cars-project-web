@@ -19,5 +19,33 @@
             margin-left: 20px;
             font-size: 20px;
         }
+
+        .person {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 10px;
+            border-radius: 10px;
+            padding: 10px;
+
+            .name__person {
+                color: white;
+                font-size: 17px;
+            }
+
+            .image__person {
+                width: 35px;
+                height: 35px;
+
+                border-radius: 50%;
+            }
+
+            &:hover {
+                background-color: rgb(41, 41, 41);;
+                cursor: pointer;
+                transition: all .3s ease-in-out;
+            }
+        }
+        
     }
 }

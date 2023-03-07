@@ -43,8 +43,8 @@ export const ProjectPage = () => {
   })
 
   const goToChat = () => {
-      const findChat = chats.find((item)=>item.data.from.id === user.uid || item.data.to.id === user.uid)
-
+      const findChat = chats.find((item)=>item.data.from.id === author.uid || item.data.to.id === author.uid)
+      console.log(findChat, 's')
       if(findChat){
         navigate(`../start/chat/:${findChat.id}`, {state:{id:findChat.id, block:findChat.block, new:false, data: {to: {id:author.uid, name: author.name, imageUri:author.imageUri}}}})
       }
@@ -54,8 +54,6 @@ export const ProjectPage = () => {
           navigate(`../start/chat/:${newChatId}`, {state:{id:newChatId, new:true, data: {to: {id:author.uid, name: author.name, imageUri:author.imageUri}}}})
         }
       }
-    
- 
   }
 
   return (

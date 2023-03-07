@@ -28,6 +28,7 @@ export const StartPage:React.FC<RoutesProps> = ({location}) => {
     if(mobileScreen) {
       navigate('/')
     }
+    navigate('../start')
 
   }, [mobileScreen])
 
