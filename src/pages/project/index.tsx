@@ -44,14 +44,15 @@ export const ProjectPage = () => {
 
   const goToChat = () => {
       const findChat = chats.find((item)=>item.data.from.id === author.uid || item.data.to.id === author.uid)
-      console.log(findChat, 's')
+    
+      console.log(chats)
       if(findChat){
-        navigate(`../start/chat/:${findChat.id}`, {state:{id:findChat.id, block:findChat.block, new:false, data: {to: {id:author.uid, name: author.name, imageUri:author.imageUri}}}})
+        navigate(`../start/chat/${findChat.id}`, {state:{id:findChat.id, block:findChat.block, new:false, data: {to: {id:author.uid, name: author.name, imageUri:author.imageUri}}}})
       }
       else {
         if (window !== undefined) {
           const newChatId =  window.crypto.randomUUID()
-          navigate(`../start/chat/:${newChatId}`, {state:{id:newChatId, new:true, data: {to: {id:author.uid, name: author.name, imageUri:author.imageUri}}}})
+          navigate(`../start/chat/${newChatId}`, {state:{id:newChatId, new:true, data: {to: {id:author.uid, name: author.name, imageUri:author.imageUri}}}})
         }
       }
   }
@@ -78,16 +79,13 @@ export const ProjectPage = () => {
           <motion.div className='projectPage__main_content'>
             <div className='projectPage__main_content-image'>
               <div className='blur'/>
-              <img className='projectPage__main_content-image-img'  src={car.imagesCar[0].url}/>
+              <img className='blur_1_image' style={{zIndex:2}} src={car.imagesCar[0].url}/>
+              <img className='projectPage__main_content-image-img'   src={car.imagesCar[0].url}/>
             </div>
             <div className='projectPage__main_info-circles'>
-              {car.performance?.map((data, i) => {
-                return (
-                  <>
-                    {data?.value&&<CircleGradient key={i} type={data?.type} value={data?.value}/>}
-                  </>       
-                )
-              })}
+              {car.performance?.map((data, i) =>               
+                    data?.value&&<CircleGradient key={i} type={data?.type} value={data?.value}/>                 
+              )}
 
             </div>
 
@@ -150,7 +148,7 @@ export const ProjectPage = () => {
             </motion.div>
 
               {place && <div className='map'>
-                <GoogleMap
+                {/* <GoogleMap
                     
                     zoom={10}
                     center={{
@@ -167,7 +165,7 @@ export const ProjectPage = () => {
                               lng:place.longitude?place.longitude:0
                           }}
                       />}
-                </GoogleMap>
+                </GoogleMap> */}
               </div>}
           </motion.div>
           

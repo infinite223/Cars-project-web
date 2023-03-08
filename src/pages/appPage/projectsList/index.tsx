@@ -10,32 +10,11 @@ import { collectionGroup, getDocs, limit, onSnapshot, orderBy, query } from 'fir
 import { db } from '../../../firebase/config';
 
 export const ProjectsList = () => {
-  // const [projects, setProejcts] = useState<CarprojectData[] | null>(null)
-  const user = {name: 'Dawid'}
   const dispatch = useDispatch()
   const projects :any = useSelector(selectProjects)
   const [lastVisible, setLastVisible] = useState<any>(null)
-  //const projects = useProjects(user ,3, dispatch)
-  const projectsRef = collectionGroup(db, 'projects')
-  const projectsQuery = query(projectsRef,  limit(3), orderBy('createdAt', 'desc'),)
 
-  useEffect(()=> {
-    const getProjects = async () => {
-        onSnapshot(projectsQuery, (snapchot) => {  
-          console.log('se') 
-            dispatch(setProjectsState(snapchot.docs.map((doc, i)=> {
-                return doc.data()
-            })))
-        })
 
-        const documentSnapshots = await getDocs(projectsQuery);
-        setLastVisible(documentSnapshots.docs[documentSnapshots.docs.length-1])
-    } 
-
-    getProjects()
-  }, [])
-
-  console.log(projects)
 
   return (
     <div className='projects'>

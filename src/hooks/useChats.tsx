@@ -5,15 +5,17 @@ import { setProjectsState } from "../reducers/projectsSlice";
 import { User } from "../utils/types";
 import { db } from "./../firebase/config";
 
-export const useChats = (userUid:string,  dispatch:any) => {
+export const useChats = (user:any,  dispatch:any) => {
     const [loadingChats, setLoadingChats] = useState<boolean>(false)
 
     useEffect(()=> {
+      if(user){
         setLoadingChats(true) 
         const chatsRef = collection(db, "chats")
-
-        const chatsQuery = query(chatsRef, where("persons", "array-contains", userUid))
-        const unsubscribe = onSnapshot(chatsQuery, (snapchot) => {      
+        
+        const chatsQuery = query(chatsRef, where("persons", "array-contains", user.uid))
+        const unsubscribe = onSnapshot(chatsQuery, (snapchot) => {  
+          console.log('read snapshot, allChats state') 
           dispatch(setChats(snapchot.docs.map((doc, i)=> {
                 return doc.data()
             })))  
@@ -21,8 +23,11 @@ export const useChats = (userUid:string,  dispatch:any) => {
       
         setLoadingChats(false) 
 
-      return unsubscribe
-    }, [])
+        return () => {
+          if(user) unsubscribe();
+        };
+      }
+    }, [user])
 
     return { loadingChats }
 }

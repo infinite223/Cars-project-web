@@ -6,7 +6,7 @@ import { Chat as chatType, Message } from '../../../../utils/types';
 import './styles.scss'
 import { useState } from 'react';
 import useAuth from '../../../../hooks/useAuth';
-import { setDoc, doc, serverTimestamp, collection, query, onSnapshot, orderBy, DocumentData } from 'firebase/firestore';
+import { setDoc, doc, serverTimestamp, collection, query, onSnapshot, orderBy, DocumentData, updateDoc } from 'firebase/firestore';
 import { db } from '../../../../firebase/config';
 import { useEffect } from 'react';
 
@@ -21,12 +21,13 @@ export const SingleChat:FC<{nochat?:boolean}> = ({nochat}) => {
     const sendMessage = (e:any) => {
       e.preventDefault();
       
-      if(message.length > 0){
+      if(message.length > 0 && user){
         if(newChat){
-          const chatRef = doc(db, `chats/${props.data.to.id}`);
+          const chatRef = doc(db, `chats/${props.id}`);
           setDoc(chatRef, {
             blcok:false,
             persons: [user.uid, props.data.to.id],
+            lastMessage: { message:message, fromUid: user.uid },
             data: {
               from: {
                 id:user.uid,
@@ -50,7 +51,11 @@ export const SingleChat:FC<{nochat?:boolean}> = ({nochat}) => {
           message: message, 
           name: user.name,
           imageUri: user.imageUri,
-          email:user.email
+          email:user.email,
+        }).then( async () => {
+          await updateDoc(doc(db, "chats", props.id), {
+            "lastMessage": {message, fromUid:user.uid, time: serverTimestamp()}
+          }).then(() => console.log('git xd'));
         })
   
         setMessage('')
@@ -59,27 +64,29 @@ export const SingleChat:FC<{nochat?:boolean}> = ({nochat}) => {
     }
 
     useEffect(()=> {
-      console.log(props.new, 'ssd')
-      if(!props.new){
-        const messagesRef = collection(db, "chats/" + `${props.id}` + "/messages")
+      if(!newChat){
+        const messagesRef = collection(db, `chats/${props.id}` + "/messages")
         const messagesQuery = query(messagesRef, orderBy("timestamp"));
   
         const unsubscribe = onSnapshot(messagesQuery, (snapchot) => {  
               const dataMessages:any = (snapchot.docs.map((doc, i)=> {
                   return {id: doc.id, data:doc.data()}
               }))      
-  
+              console.log('read snapshot, singleChat state') 
+
               setMessages(dataMessages)
           })  
         
-        return unsubscribe
+          return () => {
+            unsubscribe();
+          };
       }
 
-    }, [id])
-    console.log(props.id)
+    }, [id, newChat])
+
   return (
     <div className='singleChat'>
-       {(nochat &&props.data.to)?
+       {(nochat && props.data.to)?
             <h2>
                 Nie wybrano żadnego czatu
             </h2>:
@@ -91,12 +98,12 @@ export const SingleChat:FC<{nochat?:boolean}> = ({nochat}) => {
           <div className='messages-container'>
             {messages.map(({data:{email, imageUri, message}, id }) => {
               return email===user.email?(
-                <div className='sender message__conteiner'>
+                <div className='sender message__conteiner' key={id}>
                   {/* <img src={imageUri} className="imageProfile"/> */}
                   <div className='message__text'>{message}</div>
                 </div>
               ):(
-                <div className='reciver message__conteiner'>
+                <div className='reciver message__conteiner' key={id}>
                   <img src={imageUri} className="imageProfile"/>
                   <div className='message__text'>{message}</div>
                 </div>

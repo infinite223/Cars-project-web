@@ -33,17 +33,29 @@ export const Chat = () => {
   //   }
   // }, [])
 
+
   return (
     <div className='chat'>
         {locationData&&<Outlet context={locationData}/>}
 
         <div className='chatsList'>
           <h2>Czaty</h2>
-          {chats.map(({data}) => (
-            <div className='person' onClick={() => navigate(`${id}`, {state:{id:id?.slice(1), data: data}})}>
+          <div className='line'/>
+          {chats.map(({data, id, lastMessage}) => (
+            <div key={id} className='person' onClick={() => navigate(`${id}`, {state:{id:id, data: data}})}>
               <img src={data.to.imageUri} className="image__person"/>
-              <div className='name__person'>
-                {data.to.name}
+              <div className='container__lastMessage'> 
+                <div className='name__person'>
+                  {data.to.name}
+                </div>
+                <div className='lastMessage'>
+                  {lastMessage.fromUid === user.uid
+                    ?'ja: '+(lastMessage.message.length<15?lastMessage.message:lastMessage.message.substring(0, 16)+"...")
+                    :(lastMessage.message.length<15?lastMessage.message:lastMessage.message.substring(0, 16)+"...")}
+                </div>
+              </div>
+              <div style={{marginLeft:'5px', color:'white'}}>
+                  {lastMessage.time?.toDate().getUTCDate()}
               </div>
             </div>
           ))}

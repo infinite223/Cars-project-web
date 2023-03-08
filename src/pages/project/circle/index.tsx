@@ -5,14 +5,14 @@ import { motion } from 'framer-motion';
 
 interface CircleGradientProps { 
     value:number,
-    type:string
+    type:string,
 }
 
 export const CircleGradient:React.FC<CircleGradientProps> = ({value, type}) => {
 
     const colors = performance && getColorsCircle(value, type)
     const displayType = type==='hp'?'hp':type==='nm'?"Nm":type==='_0_100'?'0-100km/h':'100-200km/h'
-
+    // console.log(a)
   return (
     <motion.div className='circleGradient'
         animate={{}}

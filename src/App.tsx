@@ -34,10 +34,38 @@ import { Performance } from './modals/createProjectModal/stages/performance';
 import { StartPremiumPage } from './pages/startPremiumPage/index';
 import { Chat } from './pages/appPage/chat';
 import { SingleChat } from './pages/appPage/chat/singleChat/index';
+import { useChats } from './hooks/useChats';
+import { collectionGroup, limit, onSnapshot, orderBy, query } from 'firebase/firestore';
+import { setProjectsState } from './reducers/projectsSlice';
+import { db } from './firebase/config';
 
 
 function App() {
   const { user }:any = useAuth()
+  const dispatch = useDispatch()
+  
+  const { loadingChats } =  useChats(user, dispatch)
+
+  const projectsRef = collectionGroup(db, 'projects')
+  const projectsQuery = query(projectsRef,  limit(3), orderBy('createdAt', 'desc'),)
+
+  useEffect(()=> {
+    const getProjects = async () => {
+        onSnapshot(projectsQuery, (snapchot) => {  
+            console.log('read snapshot, updateProjects state') 
+            dispatch(setProjectsState(snapchot.docs.map((doc, i)=> {
+                return doc.data()
+            })))
+        })
+
+        // const documentSnapshots = await getDocs(projectsQuery);
+        // setLastVisible(documentSnapshots.docs[documentSnapshots.docs.length-1])
+    } 
+
+    return () => {
+      user&&getProjects()
+    }
+  }, [user])
 
   const router = createBrowserRouter(
     createRoutesFromElements(

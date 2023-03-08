@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { PresentationApp } from '../../components/presentationApp/PresentationApp'
 import './styles.scss'
 import useAuth from '../../hooks/useAuth';
@@ -44,20 +44,19 @@ export const AppPage = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const { pathname } = useLocation();
-  const { loadingChats } = useChats(user.uid, dispatch)
+
+  // const { loadingChats } = useMemo(() => useChats(user.uid, dispatch), []);
   const { chats } = useSelector(selectChats)
-  console.log(user)
+
   useEffect(() => {
     if(!user){
-      navigate('../../start')
+      window.history.replaceState(null, '', "/");
     }
 
     if(user && userType === 'normalAuth') {
       navigate('/start/firststart')
     }
   }, [user])
-
-
 
   return (
     <div className='app'>
@@ -89,54 +88,23 @@ export const AppPage = () => {
               <div>{user.name}</div>
             </div>
 
-            {links.map(({name, navigateTo, Icon, _pathname}) => (
+            {links.map(({name, navigateTo, Icon, _pathname}, id) => (
                <div 
+                key={id.toString()}
                 className='link' 
                 onClick={()=> navigateTo==='chat'
                   ?navigate(`chat/:${chats[0].id}`,  {state:chats[0]})
                   :navigate(navigateTo)
                 } 
-                style={pathname.includes(_pathname)?{color: 'white', fontWeight:'600', backgroundColor: 'rgb(26, 86, 26)'}:{}}
+                style={pathname.includes(_pathname)?{color: 'white', fontWeight:'600', backgroundColor: '#273'}:{}}
                >  
                 {Icon}
                <div>{name}</div>
              </div>
             ))}
 
-              {/* <div className='link' onClick={()=> navigate('')} 
-                style={pathname==='/start'?{color: 'white', fontWeight:'500'}:{}}
-              >
-                <BsBarChart size={20} color={pathname==='/start'?'#2a3':'rgb(231, 231, 231)'}/>
-                <div>Projekty</div>
-              </div>
-              <div className='link' 
-                onClick={()=> navigate('searchProjects')} 
-                style={pathname==='/start/searchProjects'?{color: 'white', fontWeight:'600', backgroundColor: 'rgba(23, 150, 20, .7)'}:{}}
-              >
-                <FiSearch size={20}
-                  className="link__icon"
-                //  color={pathname==='/start/searchProjects'?'#2a3':'rgb(231, 231, 231)'}
-                 />
-                <div>Szukaj projektów</div>
-              </div>
-              <div className='link'>
-                <BsPeople size={20}/>
-                <div>Spoty</div>
-              </div>
-              <div className='link'>
-                <MdOutlineSyncProblem size={24}/>
-               <div>Problemy</div>
-              </div>
-              <div className='line'/> */}
-            {/* <div className='link'onClick={()=> navigate('chat/0')} style={pathname.includes('/start/chat/')?{color: 'white', fontWeight:'600'}:{}}>
-              <BsChatSquareText size={20} color={pathname.includes('/start/chat/')?'#2a3':'rgb(231, 231, 231)'}/>
-              <div>Wiadomości</div>
-            </div>
-            <div className='link'>
-              <IoPersonCircleOutline  size={24}/>
-              <div>Mój profil</div>
-            </div> */}
-            <div className='link' onClick={()=>{signOut(auth); navigate('/start')}}>
+             
+            <div className='link' onClick={()=>{signOut(auth); window.history.replaceState(null, '', "/")}}>
               <div style={{marginLeft:'15px'}}>Wyloguj</div>
             </div>
           </div>
