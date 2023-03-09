@@ -22,6 +22,12 @@ export const HomePage = () => {
           <PresentationApp cycleOpen={cycleOpen}/>
         </section>
 
+        <section>
+          <div style={{height:'400px'}}>
+
+          </div>
+        </section>
+
         {/* <section style={{height:'auto'}}  >
           <LookApp/>
         </section> */}

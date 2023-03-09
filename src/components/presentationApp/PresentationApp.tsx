@@ -32,7 +32,7 @@ export const PresentationApp:React.FC<{cycleOpen: (value:any) => void}> = ({cycl
     >   
         <nav className='PresentationApp_nav' >
             <div className='PresentationApp_nav_hamburger-button' onClick={()=>cycleOpen(true)}>
-                <IoReorderThreeOutline size={45} color={colorIcon}/>
+                <IoReorderThreeOutline size={55} color={colorIcon}/>
             </div>
             <div className='PresentationApp_nav_right'>
                 {user&&<div onClick={()=>navigate('Start')} className='PresentationApp_nav_right-loginUser'>{user?.name}</div>}

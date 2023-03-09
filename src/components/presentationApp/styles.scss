@@ -37,7 +37,7 @@
             }
 
                 @media (max-width: 480px) {
-                    margin-left: 1rem;
+                    margin-left: 8px;
                 }
         }
             
@@ -56,7 +56,7 @@
 
                 @media (max-width: 480px) {
                     width: 40px;
-                    margin-right: 1rem;
+                    margin-right: 8px;
                 }
             }
 
@@ -97,17 +97,21 @@
         .PresentationApp_main_content {
             z-index: 3;
 
-            max-width: 50vw;
+            max-width: 60vw;
             text-align: left;
             
             display: flex;
             flex-direction: column;
            
             padding-right: 40px;
+            margin-top: 20px;
 
             @media (max-width: 480px) {
-                width: 300px;
+                // text-align: center;
+                max-width: 380px;
+                padding-right: 0px;
                 margin-left: 0rem;
+                margin-top: 80px;
                 height: 100%;
                 justify-content: center;
             }
@@ -121,8 +125,10 @@
             h1 {
                 font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
                 color: rgb(0, 0, 0);
+                font-weight: 500;
                 z-index: 1;
                 font-size: 3.5rem;
+                letter-spacing: -1px;
                 //text-transform: uppercase;
                 margin-top: 50px;
                 margin-left: 80px;
@@ -130,7 +136,7 @@
 
                 @media (max-width: 480px) {
                     font-size: 2.2rem;
-                    margin: 10px;
+                    margin: 20px;
                     letter-spacing: 1px;
                 }
 
@@ -143,12 +149,11 @@
             p {
                 //font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
                 color: rgba(31, 31, 31, 1);
-                font-weight: 600;
+                font-weight: 400;
                 line-height: 26px;
                 margin-left: 80px;
-                font-size: 18px;
-             
-                
+                font-size: 22px;
+                     
                 .appName {
                     font-size: 20px;
                     margin-top: 10px;
@@ -165,6 +170,7 @@
                     line-height: 23px;
                     font-size: 23px;
                     padding: 5px 0;
+                    margin: 20px;
                  }  
 
                  @media (max-width: 320px) {
@@ -190,8 +196,11 @@
                 font-size: 20px;
 
                 @media (max-width: 480px) {
+                    padding: 0px 0;
                     font-size: 16px;
+                    margin-left: 20px;              
                 }
+
                 @media (max-width: 320px) {
                    font-size: 13px;
                 }
@@ -208,6 +217,7 @@
                     
                     @media (max-width: 320px) {
                         padding: 7px 15px;
+                        margin-top: 0px;
                     }
     
                     &:hover {
@@ -220,8 +230,8 @@
                 }
     
                 .button-start {
-                    border:2px solid  #293;
-                    background-color: #293;
+                    border:2px solid  #283;
+                    background-color: #283;
                     color: white;
                     padding: 10px 25px;
                     margin-top: 20px;
