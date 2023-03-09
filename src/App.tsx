@@ -38,6 +38,7 @@ import { useChats } from './hooks/useChats';
 import { collectionGroup, limit, onSnapshot, orderBy, query } from 'firebase/firestore';
 import { setProjectsState } from './reducers/projectsSlice';
 import { db } from './firebase/config';
+import { StartLoading } from './components/startLoading';
 
 
 function App() {

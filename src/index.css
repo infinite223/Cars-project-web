@@ -35,10 +35,12 @@ body::-webkit-scrollbar {
 ::-webkit-scrollbar-thumb:hover {
   background: #2c3;
 }
-html {
-  scroll-snap-type: y mandatory;
-
+@media (min-width: 680px) {
+  html {
+    scroll-snap-type: y mandatory;
+  }
 }
+
 
 body {
   -ms-overflow-style: none; 

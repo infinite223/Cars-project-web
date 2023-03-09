@@ -30,7 +30,7 @@ export const PresentationApp:React.FC<{cycleOpen: (value:any) => void}> = ({cycl
             // background:`linear-gradient(90deg, rgb(28, 138, 19) 0%,  rgb(18, 18, 19) 0%`
         }}
     >   
-        <nav className='PresentationApp_nav' >
+        <nav className='PresentationApp_nav'>
             <div className='PresentationApp_nav_hamburger-button' onClick={()=>cycleOpen(true)}>
                 <IoReorderThreeOutline size={55} color={colorIcon}/>
             </div>

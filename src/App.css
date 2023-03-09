@@ -3,6 +3,12 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+/* 
+  scroll-snap-type: y mandatory;
+  overflow: auto;
+  flex-direction: column;
+  flex: none;
+  flex-flow: column nowrap; */
 }
 
 .App-logo {
