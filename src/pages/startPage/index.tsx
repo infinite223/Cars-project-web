@@ -34,18 +34,25 @@ export const StartPage:React.FC<RoutesProps> = ({location}) => {
 
   return (
     <motion.div className='start_container' animate={{ scale: [1.2, 1]}}>
-
+      
       <div className='start_container_main'>
+        <Outlet/>
+      </div>
         
-        <div className='start_container_main-forms'>
+        {/* <div className='start_container_main-forms'>
           <MdOutlineArrowBackIosNew size={22} onClick={() => navigate('/')} className='start_container_main-forms-back'/>
           <Outlet />
-        </div>
+        </div> */}
 
-        <div className='start_container_main-logocontainer'>
-          {/* image, background */}
+      <div className='start_container_rightside'>
+        <div className='start_container_rightside-content'>
+          <h2>
+            Nie masz jeszcze konta?
+          </h2>
+          <div className='button-nav'>
+            Utwórz darmowe konto
+          </div>
         </div>
-
       </div>
     </motion.div>
   )

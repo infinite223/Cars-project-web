@@ -14,8 +14,7 @@ export const StartLoading = () => {
   const [count, setCount] = useState(1)
   const [display, setDisplay] = useState('flex')
   const isMobile = useMediaQuery({ maxWidth: 624 })
-
-
+  
   useEffect(() => {
     if(count<8){
         setTimeout(() => {

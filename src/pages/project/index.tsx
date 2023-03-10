@@ -44,6 +44,7 @@ export const ProjectPage = () => {
 
   const goToChat = () => {
       const findChat = chats.find((item)=>item.data.from.id === author.uid || item.data.to.id === author.uid)
+      
     
       console.log(chats)
       if(findChat){

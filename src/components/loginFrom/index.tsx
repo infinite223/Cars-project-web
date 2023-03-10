@@ -36,12 +36,16 @@ export const LoginForm = () => {
         <div style={{alignItems:'center', display:'flex', flexDirection:'column'}}>
             <h2>Zaloguj się do Cars Designs</h2>
             <form onSubmit={tryLogin}>
+              {/* <input 
+                onChange={(text) => setEmail(text.target.value)}  
+                placeholder='E-mail' type='email'/>
+              <input onChange={(text) => setPassword(text.target.value)}  placeholder='Password' type='password'/> */}
                 <CustomInput setValue={setEmail} placeholder='E-mail' type='email'/>
                 <CustomInput setValue={setPassword} placeholder='Password' type='password'/>
                 
                 <button>Zaloguj</button>
             </form>
-            <p>Nie masz konta? <Link to={'/start/register'} className="loginForm-link"> Zarejestruj się</Link></p>
+            {/* <p>Nie masz konta? <Link to={'/start/register'} className="loginForm-link"> Zarejestruj się</Link></p> */}
         </div>
 
     </div>
