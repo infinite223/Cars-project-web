@@ -4,11 +4,12 @@ import { useParams, useOutletContext } from 'react-router-dom';
 import { Chat as chatType, Message } from '../../../../utils/types';
 
 import './styles.scss'
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import useAuth from '../../../../hooks/useAuth';
 import { setDoc, doc, serverTimestamp, collection, query, onSnapshot, orderBy, DocumentData, updateDoc } from 'firebase/firestore';
 import { db } from '../../../../firebase/config';
 import { useEffect } from 'react';
+import { BsThreeDotsVertical } from 'react-icons/bs';
 
 export const SingleChat:FC<{nochat?:boolean}> = ({nochat}) => {
     const { id } = useParams();
@@ -17,6 +18,14 @@ export const SingleChat:FC<{nochat?:boolean}> = ({nochat}) => {
     const [message, setMessage] = useState('')
     const [messages, setMessages] = useState<{id:number, data:Message}[]>([])
     const [newChat, setNewChat] = useState(props.new)
+    const chatRef:any = useRef()
+
+    useEffect(() => {
+      // if(chatRef){
+        chatRef.current?.scrollIntoView({ behavior: 'smooth' })
+        console.log(chatRef.current.scrollIntoView)
+      // }
+    }, [id, messages])
     
     const sendMessage = (e:any) => {
       e.preventDefault();
@@ -92,8 +101,12 @@ export const SingleChat:FC<{nochat?:boolean}> = ({nochat}) => {
             </h2>:
         <div className='singleChat-content'>
           <nav>
-            <img src={props?.data.to.imageUri} className='image-profile'/>
-            <div className='name-person'>{props?.data.to?.name}</div>
+            <div className='nav__personData'>
+              <img src={props?.data.to.imageUri} className='image-profile'/>
+              <div className='name-person'>{props?.data.to?.name}</div>
+            </div>
+   
+            <BsThreeDotsVertical color='white'/>
           </nav>
           <div className='messages-container'>
             {messages.map(({data:{email, imageUri, message}, id }) => {
@@ -105,11 +118,12 @@ export const SingleChat:FC<{nochat?:boolean}> = ({nochat}) => {
               ):(
                 <div className='reciver message__conteiner' key={id}>
                   <img src={imageUri} className="imageProfile"/>
-                  <div className='message__text'>{message}</div>
+                  <div className='message__text reciver__text'>{message}</div>
                 </div>
               )
             })
             }
+             <div ref={chatRef} />
           </div>
 
           <footer>

@@ -4,11 +4,11 @@ import './styles.scss'
 import { motion, useCycle } from "framer-motion";
 import { LoginForm } from '../../components/loginFrom';
 import {
-  Outlet,
+  Outlet, useLocation,
 } from "react-router-dom";
 import { RegisterForm } from '../../components/registerForm';
 import { MdOutlineArrowBackIosNew } from 'react-icons/md'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useRoutes } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import { useMediaQuery } from 'react-responsive'
 import { useEffect } from 'react';
@@ -23,6 +23,8 @@ export const StartPage:React.FC<RoutesProps> = ({location}) => {
   const navigate = useNavigate()
   const {user}:any = useAuth()
   const mobileScreen = useMediaQuery({ maxWidth: 624 })
+  let { pathname } = useLocation();
+  console.log(pathname)
 
   useEffect(()=> {
     if(mobileScreen) {
@@ -46,12 +48,25 @@ export const StartPage:React.FC<RoutesProps> = ({location}) => {
 
       <div className='start_container_rightside'>
         <div className='start_container_rightside-content'>
-          <h2>
-            Nie masz jeszcze konta?
-          </h2>
-          <div className='button-nav'>
-            Utwórz darmowe konto
-          </div>
+          {pathname==='/start/register'?
+            <>
+             <h2 style={{width:'350px'}}>
+                Masz już stworzone konto?
+              </h2>
+              <div className='button-nav' onClick={() => navigate('/start')}>
+                Zaloguj się
+              </div>
+            </>
+          :
+            <>
+              <h2>
+                Nie masz jeszcze konta?
+              </h2>
+              <div className='button-nav' onClick={() => navigate('register')}>
+                Utwórz darmowe konto
+              </div>
+            </>
+          }
         </div>
       </div>
     </motion.div>

@@ -1,4 +1,4 @@
-.loginForm {
+.registerForm {
     width: 100%;
 
     display: flex;
@@ -68,6 +68,14 @@
             
             @media (max-width: 480px) {
                 font-size: 20px;
+            }
+
+               
+            &:hover {
+                background-color: rgb(183, 240, 183);
+                color: rgb(0, 0, 0);
+                transition: all .3s ease-in-out;
+                cursor: pointer;
             }
         }
     }

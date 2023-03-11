@@ -1,8 +1,12 @@
 import React, { useRef } from 'react'
 import './styles.scss'
-import spot_image from '../../../assets/spot_image.jpg'
-import addProject from '../../../assets/addProject.jpg'
-import project_image from '../../../assets/project_image.jpg'
+import spotView from '../../../assets/phone/spotView.jpg'
+import createSpot from '../../../assets/phone/createSpot.jpg'
+import projectView from '../../../assets/phone/projectView.jpg'
+import projects from '../../../assets/phone/projects.jpg'
+import rightBar from '../../../assets/phone/rightBar.jpg'
+import stagesView from '../../../assets/phone/stagesView.jpg'
+import stagesAdd from '../../../assets/phone/stagesAdd.jpg'
 import { HiOutlineArrowLeft, HiOutlineArrowRight } from 'react-icons/hi'  
 
 import {
@@ -13,11 +17,12 @@ import {
   MotionValue
 } from "framer-motion";
 import { useMediaQuery } from 'react-responsive'
+import { PhoneFrame } from '../../../components/phoneFrame'
 
 const sections = [
-  {img: [project_image, addProject], description:"Dodawaj i przeglądaj projekty samochodów", header: 'Projekty'},
-  {img: [spot_image, project_image], description:"Bierz udział w motoryzacyjnych spotach", header: 'Spoty'},
-  {img: [addProject, spot_image], description:"Pomagaj innym, udzielaj się w dyskusjach ", header: 'Pomoc'}
+  {img: [projects, projectView], description:"Dodawaj i przeglądaj projekty samochodów", header: 'Projekty'},
+  {img: [createSpot, spotView], description:"Bierz udział w motoryzacyjnych spotach", header: 'Spoty'},
+  {img: [stagesAdd, stagesView], description:"Dodawaj wykresu i pokazuj etapy swojego projektu", header: 'Pomoc'}
 ]
 
 const variants = {
@@ -57,6 +62,7 @@ function Image({ id, description, images, header }: { id: number, description:st
             viewport={{ once: true }}
             alt="Images" />
         )}
+        {/* <PhoneFrame/> */}
       </motion.div>
       <div className='text__container'>
         <motion.h2 viewport={{ once: true }} 

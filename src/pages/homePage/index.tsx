@@ -38,8 +38,10 @@ export const HomePage = () => {
         <section>
           <PresentationApp cycleOpen={cycleOpen}/>
         </section>
-        <section style={{height:'400px'}}>
-         
+        <section>
+          <div className='startMobile_presentation'>
+
+          </div>
         </section>
         {/* <section>
             <Speedometer

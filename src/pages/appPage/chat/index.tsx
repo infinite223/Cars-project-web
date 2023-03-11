@@ -9,6 +9,7 @@ import { selectChats } from '../../../reducers/chatsSlices';
 import { useEffect } from 'react';
 import useAuth from '../../../hooks/useAuth';
 import { Chat as chatType } from '../../../utils/types';
+import Moment from 'react-moment';
 
 export const Chat = () => {
 
@@ -43,19 +44,25 @@ export const Chat = () => {
           <div className='line'/>
           {chats.map(({data, id, lastMessage}) => (
             <div key={id} className='person' onClick={() => navigate(`${id}`, {state:{id:id, data: data}})}>
-              <img src={data.to.imageUri} className="image__person"/>
-              <div className='container__lastMessage'> 
-                <div className='name__person'>
-                  {data.to.name}
-                </div>
-                <div className='lastMessage'>
-                  {lastMessage.fromUid === user.uid
-                    ?'ja: '+(lastMessage.message.length<15?lastMessage.message:lastMessage.message.substring(0, 16)+"...")
-                    :(lastMessage.message.length<15?lastMessage.message:lastMessage.message.substring(0, 16)+"...")}
+              <div className='person__left'>
+                <img src={data.to.imageUri} className="image__person"/>
+                <div className='container__lastMessage'> 
+                  <div className='name__person'>
+                    {data.to.name}
+                  </div>
+                  <div className='lastMessage'>
+                    {lastMessage.fromUid === user.uid
+                      ?'ja: '+(lastMessage.message.length<15?lastMessage.message:lastMessage.message.substring(0, 16)+"...")
+                      :(lastMessage.message.length<15?lastMessage.message:lastMessage.message.substring(0, 16)+"...")}
+                  </div>
                 </div>
               </div>
-              <div style={{marginLeft:'5px', color:'white'}}>
-                  {lastMessage.time?.toDate().getUTCDate()}
+             
+              <div style={{marginLeft:'5px', color:'gray', fontSize:'13px', letterSpacing:'0px', lineHeight:'11px', maxWidth:'30%', textAlign:'right'}}>
+                  {/* {lastMessage.time?.toDate().getUTCDate()} */}
+                  <Moment  fromNow>{lastMessage?.time?.toDate()}</Moment>
+
+                  {/* {moment(lastMessage.time).format()} */}
               </div>
             </div>
           ))}

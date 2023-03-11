@@ -58,7 +58,7 @@ export const RegisterForm = () => {
 
                 <button type='submit'>Utwórz</button>
             </form>
-            <p>Masz już konto<Link to={'/start'} className="registerForm-link"> Zaloguj się</Link></p>
+            {/* <p>Masz już konto<Link to={'/start'} className="registerForm-link"> Zaloguj się</Link></p> */}
         </div>
 
     </div>

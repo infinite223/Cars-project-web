@@ -1,6 +1,5 @@
-.registerForm {
-    margin: 20px;
-    width: 200px;
+.loginForm {
+    width: 100%;
 
     display: flex;
     flex-direction: column;
@@ -15,9 +14,35 @@
         font-size: 20px;
     }
 
+    h3 {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        text-transform: uppercase;
+        color: rgb(155, 156, 155);
+        font-size: 15px;
+        text-align: left;
+        margin: 0px;
+        width: 320px;
+
+
+        @media (max-width: 480px) {
+            font-size: 20px;
+        }
+    }
+
     h2 {
-        color: gray;
-        font-size: 20px;
+        // color: rgb(35, 35, 35);
+        // font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        width: 320px;
+
+        font-size: 30px;
+        letter-spacing: 0px;
+        font-weight: 900;
+        background: -webkit-linear-gradient( #026116, #2b3);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+
+        margin: 20px;
+        text-align: left;
 
         @media (max-width: 480px) {
             font-size: 28px;
@@ -29,25 +54,36 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        width: 280px;
         
         button {
             background-color: #293;
             color: white;
-            padding: 7px 25px;
+            padding: 14px 25px;
+            width: calc(100% + 40px);
             border-radius: 5px;  
+            font-size: 17px;
+            font-weight: 400;
+            letter-spacing: 1px;
             
             @media (max-width: 480px) {
                 font-size: 20px;
             }
+            
+            &:hover {
+                background-color: rgb(183, 240, 183);
+                color: rgb(0, 0, 0);
+                transition: all .3s ease-in-out;
+                cursor: pointer;
+            }
         }
     }
-
 
     p {
         font-size: smaller;
         color: gray;
 
-        .registerForm-link {
+        .loginForm-link {
             color: rgb(35, 125, 250);
             text-decoration: none;
             font-weight: 600;
@@ -55,15 +91,15 @@
     }
 
     ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-        color: rgb(139, 137, 137);
+        color: rgba(139, 137, 137, .7);
         opacity: 1; /* Firefox */
       }
       
       :-ms-input-placeholder { /* Internet Explorer 10-11 */
-        color: rgb(139, 137, 137);
+        color: rgba(139, 137, 137, .7);
       }
       
       ::-ms-input-placeholder { /* Microsoft Edge */
-        color: rgb(139, 137, 137);
+        color: rgba(139, 137, 137, .7);
       }
 }

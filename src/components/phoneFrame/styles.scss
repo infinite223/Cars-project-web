@@ -1,0 +1,31 @@
+.phone {
+  position: relative;
+  display: flex;
+  width: 250px;
+  height:  500px;
+  background-color: aqua;
+
+  .notch-container {
+    position: absolute;
+    top: 10;
+    width: 100%;
+    height: 100px;
+
+    .notch {
+        width: 20vh;
+        height: 4.25vh;
+        margin: 0 auto;
+        background-color: #262525;
+        border-bottom-left-radius: 2.334vh;
+        border-bottom-right-radius: 2.334vh;
+      }
+  }
+
+  .screenImage {
+    width: 250px;
+    height:  500px;
+    // display: block;
+    border: 1.334vh solid #000000;
+    border-radius: 4.5vh;
+  }
+}

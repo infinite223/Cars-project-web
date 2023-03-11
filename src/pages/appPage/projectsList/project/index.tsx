@@ -12,10 +12,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setProjectsState } from '../../../../reducers/projectsSlice'
 import { selectProjects } from './../../../../reducers/projectsSlice';
 import { db } from '../../../../firebase/config'
+import Moment from 'react-moment';
 
 interface Props {
     projectsCount:number,
-    project:CarprojectData, 
+    project:CarprojectData,     
     idInApp:number,
     lastVisible:any,
     setLastVisible: (value:any) => void
@@ -117,7 +118,9 @@ export const Project:React.FC<Props> = ({project: {car, author, id, createdAt, p
         </div>
         <div className='project_details'>
             <div className='likes'>{car.likes.length} polubień</div>
-            <div className='project_footer-date'> 1 day ago </div>
+            <div className='project_footer-date'> 
+             <Moment fromNow>{createdAt?.toDate()}</Moment>
+             </div>
         </div>
 
         <ProjectOptions showOptions={showOptions} setShowOptions={setShowOptions}/>
