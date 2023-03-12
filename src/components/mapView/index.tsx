@@ -20,6 +20,8 @@ const newlocate = {lat: -34, lng: 151}
 export const MapView:React.FC<{place:Place, setPlace: (value:Place) => void}> = ({place, setPlace}) => {
     const [mapInstance, setMapInstance] = useState<any>()
     const [marker, setMarker] = useState({lat:0, lng: 0});
+    const [map, setMap] = React.useState(null)
+
     const { isLoaded, loadError } =  useLoadScript({googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API?process.env.REACT_APP_GOOGLE_MAPS_API:'',
             libraries
         })
@@ -31,15 +33,28 @@ export const MapView:React.FC<{place:Place, setPlace: (value:Place) => void}> = 
         }
     },[])
 
+    const onUnmount = React.useCallback(function callback(map:any) {
+        setMap(null)
+      }, [])
+
     const mapRef = useRef<any>()
     const onMapLoad = useCallback((lat:number, lng:number)=> {
         mapRef.current.panTo({lat, lng})
         mapRef.current.setZoom(14)
     }, [])
 
+    const onLoad = React.useCallback(function callback(map:any) {
+        // This is just an example of getting and using the map instance!!! don't just blindly copy!
+        const bounds = new window.google.maps.LatLngBounds(center);
+        map.fitBounds(bounds);
+    
+        setMap(map)
+      }, [])
+
     const panTo = useCallback((map:any)=> {
         mapRef.current = map
     }, [])
+
 
   return (
     <>
@@ -54,7 +69,9 @@ export const MapView:React.FC<{place:Place, setPlace: (value:Place) => void}> = 
         mapContainerClassName='mapView'
         onClick={onMapClick}
         // onLoad={onMapLoad}
-        onLoad={(map) =>setMapInstance(map)}
+        onLoad={onLoad}
+        onUnmount={onUnmount}
+        // onLoad={(map) =>setMapInstance(map)}
     >
         {mapInstance &&<Marker
             position={{

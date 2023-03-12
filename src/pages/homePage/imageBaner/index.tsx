@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './styles.scss'
 import googlePlayImage from './../../../assets/linkImage.png'
 import googlePlayIcon from './../../../assets/google-play-icon.png'
 import { motion } from 'framer-motion';
 
 export const ImageBaner = () => {
+  const [showInfo, setShowInfo] = useState(false)
+
   return (
     <div className='imageBaner'>
       <div className='blackTransitionTop'/>
@@ -12,10 +14,10 @@ export const ImageBaner = () => {
       <div className='imageBaner__content'>
         <motion.div viewport={{ once: true }} whileInView={{opacity: [.5, 1]}} className='imageBaner__content-info'>
           <div className='imageBaner__content-info-data'>
-            15 użytkowników
+            8 użytkowników
           </div>
           <div className='imageBaner__content-info-data'>
-            12 projektów
+            5 projektów
           </div>
         </motion.div>
         
@@ -23,10 +25,15 @@ export const ImageBaner = () => {
           Dołącz do reszty i pobierz aplikacjie
         </motion.h1>
         {/* <img className='imageBaner__content-image' src={googlePlayImage}/> */}
-        <div className='imageBaner__content-link'>
+        <motion.div className='imageBaner__content-link' onHoverStart={() => setShowInfo(true)}  onHoverEnd={() => setShowInfo(false)}>
           <img src={googlePlayIcon} className='googlePlayicon'/>
-          Pobierz ze sklepy play
-        </div>
+            Pobierz ze sklepy play
+            {(showInfo)&&
+            <div className='info'>
+                Aplikacja jest w trakcie budowy... okres publikacji jest przewidywany na koniec lipca 2023 roku
+            </div>
+            }
+        </motion.div>
       </div>
     </div>
   )

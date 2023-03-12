@@ -30,7 +30,7 @@ export const StartPage:React.FC<RoutesProps> = ({location}) => {
     if(mobileScreen) {
       navigate('/')
     }
-    navigate('../start')
+    // navigate('../start')
 
   }, [mobileScreen])
 
@@ -50,7 +50,7 @@ export const StartPage:React.FC<RoutesProps> = ({location}) => {
         <div className='start_container_rightside-content'>
           {pathname==='/start/register'?
             <>
-             <h2 style={{width:'350px'}}>
+             <h2>
                 Masz już stworzone konto?
               </h2>
               <div className='button-nav' onClick={() => navigate('/start')}>

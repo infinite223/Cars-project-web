@@ -44,6 +44,7 @@ export const Firststart = () => {
       setUser(res.user)
       setUserType('firebase')
       dispatch(setLoading(false))
+      navigate('/start')  
     })
     .catch((error)=> {
       dispatch(setMessage({show:true, type: "SUCCESS", message:error}))
@@ -59,7 +60,24 @@ export const Firststart = () => {
         <p>Zanim zaczniesz, uzupełnij pozostałe dane</p>
       </>
       :<h1>Edyuj profil</h1>}
-      <div className='firststart-content'>
+      <div className='firststart__content'>
+        <div className='firststart__content-main'>
+          <h3>Miło że dołączyłeś!</h3>
+            <div className='firststart__content-main__image'> 
+              <input onChange={handleChange} className='imageUpload'  type="file" name="profile_photo" placeholder="Photo" capture></input>
+              <img className='firststart-formimg-img' src={image}/>
+            </div>
+            <form onSubmit={(e) => tryUpdateProfile(e)}>
+
+                <CustomInput placeholder='Nazwa użytkonika' required setValue={setName} type='text' theme="dark"/>
+                <CustomInput placeholder='Krótki opis' required setValue={setDescription} type='text' theme="dark"/>
+
+            <button>Aktualizuj profil</button>
+            </form>
+
+        </div>
+      </div>
+      <div className='firststart-content' style={{display:'none'}}>
       <form onSubmit={(e) => tryUpdateProfile(e)}>
         <div className='firststart-form'>
           <div style={{display:'flex', alignItems:'center', gap:'10px'}}>

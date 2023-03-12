@@ -19,6 +19,7 @@ import DangerPath from 'react-speedometer/dist/DangerPath';
 import Progress from 'react-speedometer/dist/Progress';
 import Marks from 'react-speedometer/dist/Marks';
 import { StartLoading } from './../../components/startLoading';
+import { FaArrowDown } from 'react-icons/fa';
 
 export const HomePage = () => {
   const [open, cycleOpen] = useCycle(false, true);
@@ -40,7 +41,11 @@ export const HomePage = () => {
         </section>
         <section>
           <div className='startMobile_presentation'>
+          <div className='text'>upcoming...</div>
 
+            <h1>Cars designs</h1>
+            <h2>Zobacz ile może Ci zoferować</h2>
+            <FaArrowDown size={45} color='#293'/>
           </div>
         </section>
         {/* <section>

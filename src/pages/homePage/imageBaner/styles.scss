@@ -121,6 +121,7 @@
         align-items: center;
         gap: 10px;
         font-size: 20px;
+        position: relative;
 
         @media (max-width: 320px) {
             font-size: 17px;
@@ -137,7 +138,19 @@
         &:hover {
             cursor: pointer;
             transition: all .4s ease-in-out ;
-            transform: scale(0.9);
+            // transform: scale(0.9);
+        }
+
+        .info {
+            position: absolute;
+            background-color: rgba(31, 31, 31, .9);
+            width: 300px;
+            padding: 10px 20px;
+            border-radius: 10px;
+            bottom: -100px;
+            right: -40px;
+            font-size: 15px;
+            color: rgb(199, 199, 199);
         }
     }
 }

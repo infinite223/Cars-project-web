@@ -19,6 +19,8 @@ export const RegisterForm = () => {
    const dispatch = useDispatch()
 
    const tryRegister = (e:any) => {
+    e.preventDefault();
+
     dispatch(setLoading(true))
     if(repeatPassword === password){
       if(password.length>5){
