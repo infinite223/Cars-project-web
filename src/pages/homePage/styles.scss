@@ -1,5 +1,10 @@
 section {
     height: 100vh;
+
+    @media (max-width: 480px) {
+        height: auto;
+    }
+
     width: 100%;
     background-color: white;
     display: flex;
@@ -21,6 +26,11 @@ section {
       flex-direction: column;
       gap: 20px;
 
+      @media (max-width: 480px) {
+        gap: 30px;
+        padding: 20px 0;
+      }
+
       .text {
         color: rgb(197, 197, 197);
         letter-spacing: 2px;
@@ -37,11 +47,19 @@ section {
         font-weight: 900;
         letter-spacing: 1px;
         margin: 0px;
+
+        @media (max-width: 480px) {
+          font-size: 38px;
+        }
       }
 
       h2 {
         color: rgb(14, 14, 14);
         font-size: 35px;
+
+        @media (max-width: 480px) {
+          font-size: 30px;
+        }
       }
     }
 

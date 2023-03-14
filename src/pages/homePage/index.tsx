@@ -36,7 +36,7 @@ export const HomePage = () => {
         <StartLoading/>
         <Navigation cycleOpen={cycleOpen} open={open}/>
 
-        <section>
+        {/* <section>
           <PresentationApp cycleOpen={cycleOpen}/>
         </section>
         <section>
@@ -47,7 +47,7 @@ export const HomePage = () => {
             <h2>Zobacz ile może Ci zoferować</h2>
             <FaArrowDown size={45} color='#293'/>
           </div>
-        </section>
+        </section> */}
         {/* <section>
             <Speedometer
               value={count}
@@ -82,10 +82,10 @@ export const HomePage = () => {
         <ImagesScrollView/>
 
 
-        <ImageBaner/>
+        {/* <ImageBaner/> */}
 
         <section style={{height:'auto'}}>
-         <Footer scrollType='center'/>
+         {/* <Footer scrollType='center'/> */}
         </section>
     </div>
   )

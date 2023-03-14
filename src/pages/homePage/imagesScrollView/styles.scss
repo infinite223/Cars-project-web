@@ -1,12 +1,13 @@
 
 .imagesScrollView {
-    width: 100%;
+    width: 100vw;
     height: auto;
     position: relative;
     // border-bottom: 1px solid rgb(171, 171, 171);
+
     section {
         height: 100vh;
-        width: calc(100% - 40px);
+        width: 100%;
         display: flex;
         justify-content: space-around;
         align-items: center;
@@ -15,55 +16,72 @@
 
         background-color:rgb(19, 19, 19);
         gap:0px;
-        padding: 50px 20px;
+        // padding: 50px 20px;
 
         @media (max-width: 480px) {
           justify-content: center;
           padding: 0px 0px;
-          width: 100%
+          width: 100vw
         }
   
 
         .text__container {
+          z-index: 5;
           display: flex;
           flex-direction: column;
-          align-items: center;
+          height: 100%;
           justify-content: center;
           margin: 0px 0px;
-          width: 50%;      
+          width: 100%;     
+          // background-color: rgb(51, 52, 51); 
 
-          h2 {
+          .main__text {
+            width: 80%;
             font-size: 50px;
+            line-height: 70px;
             font-weight: 500;
             letter-spacing: -1px;
+            background-color: red;
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: white;
             // text-shadow: 6px 6px 7px #293;
             background: -webkit-linear-gradient( #293, #eee);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            // text-transform: uppercase;
+            text-transform: uppercase;
+            height: auto;
             // color: white;
       
             @media (max-width: 480px) {
-              max-width: 90vw;
+              // max-width: 250px;
               // position: absolute;
               // text-align: center !important;
               margin: 40px 0px;
               font-size: 35px;
+              line-height: 45px;
+              width: calc(100% - 40px);
+              padding:0px 20px;
             }
   
             @media (max-width: 370px) {
-              font-size: 32px;
+              font-size: 28px;
             }
           }
   
           .header__Text { 
-            width: min-content;
+            width: 80%;
+            height: auto;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            padding:0px 20px;
+            
+            // background-color: aqua;
             color: rgb(225, 225, 225);
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
             
-            height: auto;
-            text-align: left;
+            // height: auto;
+
             letter-spacing: 1px;
             // text-transform: uppercase;
             // background-color: rgb(247, 247, 247);
@@ -73,18 +91,20 @@
             margin-right: 0px;
 
             @media (max-width: 480px) {
-              margin-right: -10px;
+              // align-items: flex-start;
+
             }
 
             .icon__container {
               height: auto;
-              margin: 0px;
-              width: min-content;
+              // margin: 0px;
+              // width: min-content;
             }
           }
         }
 
         div {
+          // display: none;
           width: 100px;
           height: 100vh;
           position: relative;
@@ -108,6 +128,8 @@
         }
 
         img {
+          // display: none;
+          z-index: 3;
           position: absolute;
           top: -20px;
           left: -80px;
@@ -126,10 +148,10 @@
             left: auto;
             right: auto;
             bottom: auto;
-            margin-right: 10px;
+            // margin-right: 10px;
           }
           @media (max-width: 320px) {
-            left: -40px;
+            // left: -40px;
           }
         }    
       }

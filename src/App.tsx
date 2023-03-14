@@ -39,6 +39,7 @@ import { collectionGroup, limit, onSnapshot, orderBy, query } from 'firebase/fir
 import { setProjectsState } from './reducers/projectsSlice';
 import { db } from './firebase/config';
 import { StartLoading } from './components/startLoading';
+import { ProfilePage } from './pages/profilePage/index';
 
 
 function App() {
@@ -86,6 +87,9 @@ function App() {
           <Route path='createProject' element={<CreateProjectModal/>} >
             <Route index element={<Basicinfo/>} />
             <Route path="performance" element={ <Performance/>} />
+          </Route>
+          <Route path='profile' element={<ProfilePage/>} >
+
           </Route>
           <Route path='premium' element={<StartPremiumPage/>} />
           <Route path='errorResponsive' element={<ErrorResponsive/>}/>
